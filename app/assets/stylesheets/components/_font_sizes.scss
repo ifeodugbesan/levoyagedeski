@@ -1,0 +1,17 @@
+h1 {
+  @include for-phone-only {
+    font-size: 32px;
+  }
+}
+
+h3 {
+  @include for-phone-only {
+    font-size: 20px;
+  }
+}
+
+h5 {
+  @include for-phone-only {
+    font-size: 16px;
+  }
+}
