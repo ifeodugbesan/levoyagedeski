@@ -1,1 +1,275 @@
 // Specific CSS for your home-page
+
+.home-wrapper {
+  overflow: hidden;
+}
+
+.home-banner {
+  width: 100%;
+  height: calc(100vw * 0.5);
+  max-height: 720px;
+  @include for-medium-devices-down {
+    height: calc(100vw * 0.6);
+  }
+  @include for-phone-only {
+    height: calc(100vw * 0.8);
+  }
+}
+
+.home-banner-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.stay-connected {
+  background: #87BABD;
+  padding: 60px 20px 5px 20px;
+}
+
+.stay-connected-content {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 50px 0;
+  @include for-medium-devices-down {
+    justify-content: space-around;
+  }
+  @include for-small-devices-down {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.stay-connected-left, .stay-connected-right {
+  width: 35%;
+  // max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include for-medium-devices-down {
+    width: 40%;
+  }
+  @include for-small-devices-down {
+    width: 80%;
+  }
+}
+
+.stay-connected-left {
+  @include for-small-devices-down {
+    margin-bottom: 50px;
+  }
+}
+
+.stay-connected-img-container {
+  position: relative;
+}
+
+.stay-connected-img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.stay-connected-text {
+  margin-top: 24px;
+  width: 60%;
+  @include for-medium-devices-down {
+    width: 90%;
+  }
+}
+
+.stay-connected-icon {
+  height: 50px;
+  position: absolute;
+  @include for-medium-devices-down {
+    height: 40px;
+  }
+}
+
+.left-icon {
+  bottom: 70px;
+  left: -25px;
+  @include for-medium-devices-down {
+    left: -20px;
+  }
+}
+
+.right-icon {
+  top: 35px;
+  right: -25px;
+  @include for-medium-devices-down {
+    right: -20px;
+  }
+}
+
+.home-family {
+  max-height: 800px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #B8C9E2;
+}
+
+// .home-family-background {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//
+//   z-index: 0;
+// }
+
+.home-family-content {
+  position: absolute;
+  padding-top: 60px;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  @include for-small-devices-down {
+    position: unset;
+  }
+}
+
+.home-bus {
+  position: relative;
+  z-index: 3;
+  width: 80%;
+  max-height: 800px;
+  top: 60px;
+  object-fit: cover;
+  @include for-small-devices-down {
+    position: unset;
+    width: 100%;
+  }
+}
+
+.le-wagon-box {
+  background: #F59E81;
+  color: #4D77B7;
+  padding: 12px 16px;
+  border-radius: 3px;
+  margin-right: 2px;
+}
+
+.home-family-content-text {
+  width: 25%;
+  transform: rotate(-9deg);
+  position: absolute;
+  top: 25%;
+  right: 10%;
+  @include for-large-devices-down {
+    width: 30%;
+    top: 35%;
+    font-size: 24px;
+  }
+  @include for-medium-devices-down {
+    font-size: 22px;
+  }
+  @include for-small-devices-down {
+    font-size: 20px;
+    transform: rotate(0deg);
+    position: unset;
+    width: 80%;
+    margin: 40px auto 0 auto;
+  }
+}
+
+.home-work {
+  background: #FFE19C;
+  padding: 60px 20px;
+}
+
+.home-slant-break {
+  position: relative;
+}
+
+.home-family-message {
+  position: absolute;
+  transform: rotate(-9deg);
+  z-index: 30;
+  width: 100%;
+  top: 0;
+  @include for-phone-only {
+    top: 30px;
+  }
+}
+
+.home-work-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 100px 0;
+  @include for-medium-devices-down {
+    flex-direction: column;
+    margin: 0;
+  }
+}
+
+.home-work-text {
+  width: 40%;
+  @include for-medium-devices-down {
+    width: 100%;
+    margin: 24px 0;
+  }
+  h3 {
+    @include for-medium-devices-down {
+      font-size: 22px;
+      text-align: center;
+    }
+    @include for-small-devices-down {
+      font-size: 20px;
+    }
+  }
+}
+
+.work-card {
+  background: #FBFAFA;
+  width: 500px;
+  height: 328px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
+  padding: 20px 50px;
+  @include absCenterColumn;
+  @include for-phone-only {
+    height: auto;
+    width: 100%;
+    padding: 40px;
+  }
+  @include for-xsmall-phone-only {
+    padding: 30px;
+  }
+}
+
+.work-card-logo img {
+  height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

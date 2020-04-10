@@ -1,5 +1,7 @@
 .navbar-lewagon {
   background: white;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,7 +13,7 @@
 }
 
 .logo {
-  height: 60px;
+  height: 55px;
   margin-right: 8px;
   @include for-phone-only {
     height: 40px;
@@ -26,7 +28,7 @@
 }
 
 .logo-text {
-  height: 30px;
+  height: 26px;
   @include for-phone-only {
     height: 20px;
   }
@@ -39,7 +41,7 @@
 .nav-link {
   display: inline-block;
   font-weight: 900;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Cera', sans-serif;
   color: #0E0000;
 }
 

@@ -1,16 +1,41 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@700;900&display=swap');
 
-// Define fonts for body and headers
-$body-font: 'Lato', sans-serif;
-$headers-font: 'Poppins', sans-serif;
+@font-face {
+  font-family: "Cera";
+  src: font-url('cera/CeraPro-Thin.eot');
+  src: font-url('cera/CeraPro-Thin.eot?#iefix') format('embedded-opentype'),
+       font-url('cera/CeraPro-Thin.woff') format('woff'),
+       font-url('cera/CeraPro-Thin.ttf') format('truetype');
+  font-weight: 200;
+}
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: "Cera";
+  src: font-url('cera/CeraPro-Regular.eot');
+  src: font-url('cera/CeraPro-Regular.eot?#iefix') format('embedded-opentype'),
+       font-url('cera/CeraPro-Regular.woff') format('woff'),
+       font-url('cera/CeraPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Cera";
+  src: font-url('cera/CeraPro-Bold.eot');
+  src: font-url('cera/CeraPro-Bold.eot?#iefix') format('embedded-opentype'),
+       font-url('cera/CeraPro-Bold.woff') format('woff'),
+       font-url('cera/CeraPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Cera";
+  src: font-url('cera/CeraPro-Black.eot');
+  src: font-url('cera/CeraPro-Black.eot?#iefix') format('embedded-opentype'),
+       font-url('cera/CeraPro-Black.woff') format('woff'),
+       font-url('cera/CeraPro-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
+$body-font: 'Lato', sans-serif;
+$headers-font: 'Cera', sans-serif;
