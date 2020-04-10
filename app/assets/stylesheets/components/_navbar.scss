@@ -1,5 +1,4 @@
 .navbar-lewagon {
-  justify-content: space-between;
   background: white;
 }
 
@@ -7,6 +6,83 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon .navbar-brand {
+  font-weight: 900;
+}
+
+.logo {
+  height: 60px;
+  margin-right: 8px;
+  @include for-phone-only {
+    height: 40px;
+  }
+}
+
+.logo-signed-in {
+  height: 60px;
+  @include for-phone-only {
+    height: 40px;
+  }
+}
+
+.logo-text {
+  height: 30px;
+  @include for-phone-only {
+    height: 20px;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #0E0000;
+}
+
+.nav-link {
+  display: inline-block;
+  font-weight: 900;
+  font-family: 'Poppins', sans-serif;
+  color: #0E0000;
+}
+
+.hamburger {
+  margin: 6px 2.5px;
+  @include absCenterColumn;
+}
+
+.navbar-toggler {
+  height: 40px;
+  width: 56px;
+}
+
+.hamburger-stick {
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: #8A8A8A;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.ham-one {
+  margin-bottom: 6px;
+}
+
+.ham-three {
+  margin-top: 6px;
+}
+
+.hamburger-cross {
+  .ham-one {
+    transform: rotate(45deg);
+    margin-bottom: -8px
+  }
+
+  .ham-two {
+    position: absolute;
+    width: 0;
+    opacity: 0;
+  }
+
+  .ham-three {
+    transform: rotate(-45deg);
+  }
 }
