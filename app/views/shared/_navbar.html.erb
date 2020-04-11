@@ -66,6 +66,11 @@
     </div>
   </div>
 <% end %>
+<% if user_signed_in? %>
+  <div class="batch-bar">
+    <h6 class="boldest m-0 text-center"><%= current_user.batch.number %></h6>
+  </div>
+<% end %>
 
 <script>
   navbarToggler = document.querySelector('.navbar-toggler');

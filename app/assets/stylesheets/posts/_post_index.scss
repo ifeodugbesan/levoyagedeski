@@ -1,0 +1,124 @@
+.post-card {
+  width: 580px;
+  border: 1px solid #87BABD;
+  border-radius: 5px;
+  margin: 0 auto 20px auto;
+  @include for-phone-only {
+    border-radius: 0;
+    width: 100%;
+    border: none;
+  }
+}
+
+.post-card-image img {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+}
+
+.post-card-content {
+  margin: 10px;
+  @include for-phone-only {
+    margin-bottom: 0;
+  }
+}
+
+.post-card-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.post-card-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.post-card-heart {
+  height: 35px;
+}
+
+#new_comment {
+  position: relative;
+  .form-group {
+    margin: 0;
+  }
+}
+
+.post-comment-form {
+
+}
+
+.post-card-form-input {
+  border: none;
+  border-top: 1px solid #87BABD;
+  border-radius: 0 0 4px 4px;
+  height: 50px;
+  padding-right: 72px;
+  &:focus {
+    outline: none;
+    border-color: #87BABD;
+    box-shadow: none;
+  }
+  @include for-phone-only {
+    border: none;
+  }
+}
+
+.post-card-form-input::placeholder {
+  color: #D1D1D1;
+}
+
+.post-card-form-button {
+  position: absolute;
+  height: 50px;
+  right: 0;
+  top: 0;
+  width: 70px;
+  background: #FFF;
+  border: none;
+  border-radius: 0 0 4px 0;
+  border-top: 1px solid #87BABD;
+  color: #87BABD;
+  font-weight: bolder;
+  font-size: 14px;
+  @include for-phone-only {
+    border: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

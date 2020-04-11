@@ -13,7 +13,38 @@
                       autofocus: true,
                       label: false,
                       placeholder: 'Email',
-                      input_html: { autocomplete: "email", class: 'devise-input' }%>
+                      input_html: { autocomplete: "email", class: 'devise-input' } %>
+          <%= f.input :first_name,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: 'First name',
+                      input_html: { autocomplete: "first name", class: 'devise-input' } %>
+          <%= f.input :last_name,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: 'Last name',
+                      input_html: { autocomplete: "last name", class: 'devise-input' } %>
+          <%= f.input :username,
+                      required: false,
+                      autofocus: true,
+                      label: false,
+                      placeholder: 'Username (optional)',
+                      input_html: { autocomplete: "username", class: 'devise-input' } %>
+          <%= f.input :github,
+                      required: false,
+                      autofocus: true,
+                      label: false,
+                      placeholder: 'Github username (optional)',
+                      input_html: { autocomplete: "github", class: 'devise-input' } %>
+          <%= f.association :batch,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      label_method: :number,
+                      prompt: 'Batch number',
+                      input_html: { autocomplete: "batch", class: 'devise-input' } %>
           <%= f.input :password,
                       required: true,
                       label: false,
@@ -25,6 +56,10 @@
                       label: false,
                       placeholder: 'Confirm password',
                       input_html: { autocomplete: "new-password", class: 'devise-input' } %>
+          <%= f.input :avatar, as: :file,
+                      required: false,
+                      label: false %>
+
         </div>
         <div class="form-actions d-flex justify-content-center">
           <%= f.button :submit, "Sign up", class: 'primary-button my-4' %>
