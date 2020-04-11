@@ -1,0 +1,89 @@
+.devise-wrapper {
+  min-height: calc(100vh - 81px);
+  width: 100%;
+  background: #7CB1B5;
+  display: flex;
+  justify-contant: center;
+  align-items: center;
+  @include for-small-devices-down {
+    min-height: calc(100vh - 66px);
+  }
+}
+
+.devise-container {
+  height: 700px;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 5px;
+  display: flex;
+  background: #FFF;
+  @include for-small-devices-down {
+    flex-direction: column;
+    height: auto;
+    margin: 20px auto;
+  }
+}
+
+.devise-form {
+  width: 50%;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  @include for-small-devices-down {
+    width: 90%;
+    margin: 0 auto;
+    padding: 32px 20px;
+  }
+}
+
+.devise-image {
+  width: 50%;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  @include for-small-devices-down {
+    display: none;
+  }
+}
+
+.di-right {
+  img {
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.di-left {
+  img {
+    border-radius: 5px 0 0 5px;
+  }
+}
+
+#new_user {
+  width: 90%;
+}
+
+.devise-input {
+  height: 50px;
+}
+
+.devise-input::placeholder {
+ color: #D1D1D1;
+}
+
+.devise-links {
+  width: 90%;
+}
+
+.devise-form-title {
+  margin-top: 48px;
+  @include for-small-devices-down {
+    margin-top: 0;
+    margin-bottom: 48px;
+  }
+}
