@@ -13,6 +13,9 @@
 .post-card-image img {
   width: 100%;
   border-radius: 4px 4px 0 0;
+  @include for-phone-only {
+    border-radius: 0;
+  }
 }
 
 .post-card-content {
@@ -32,6 +35,7 @@
 .post-card-avatar {
   width: 50px;
   height: 50px;
+  object-fit: cover;
   border-radius: 50%;
   margin-right: 2px;
   border: 1px solid rgba(0,0,0,0.1);
