@@ -1,9 +1,8 @@
 .devise-wrapper {
   min-height: calc(100vh - 81px);
   width: 100%;
-  background: #7CB1B5;
   display: flex;
-  justify-contant: center;
+  justify-content: center;
   align-items: center;
   @include for-small-devices-down {
     min-height: calc(100vh - 66px);
