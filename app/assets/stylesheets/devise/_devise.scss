@@ -19,8 +19,9 @@
   background: #FFF;
   @include for-small-devices-down {
     flex-direction: column;
-    height: auto;
+    min-height: auto;
     margin: 20px auto;
+
   }
 }
 

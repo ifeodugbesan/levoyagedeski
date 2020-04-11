@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
-    @posts = policy_scope(Post)
+    @posts = policy_scope(Post).order(created_at: :desc)
     # @posts = policy_scope(Post).where.not(user: current_user)
     @comment = Comment.new
   end
@@ -19,7 +19,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to post_path(@post)
+      # redirect_to post_path(@post)
+      redirect_to posts_path
     else
       render :new
     end

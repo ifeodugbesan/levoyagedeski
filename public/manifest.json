@@ -1,0 +1,21 @@
+{
+  "short_name": "le voyage",
+  "name": "le voyage",
+  "icons": [
+    {
+      "src": "/images/lev-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/lev-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#4E77B7",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#4E77B7"
+}
