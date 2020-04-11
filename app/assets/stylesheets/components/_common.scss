@@ -4,6 +4,13 @@ body {
   margin: 0 auto;
 }
 
+.min-height {
+  min-height: calc(100vh - 81px);
+  @include for-phone-only {
+    min-height: calc(100vh - 66px);
+  }
+}
+
 // FONT WEIGHTS
 .lighter {
   font-weight: lighter;

@@ -12,8 +12,12 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <div class="min-height">
+      <%= yield %>
+    </div>
+    <% if params[:controller] == 'pages' && params[:action] == 'home' %>
+      <%= render 'shared/footer' %>
+    <% end %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
