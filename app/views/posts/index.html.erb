@@ -1,3 +1,6 @@
+<%= link_to new_post_path, class: 'add-new-button' do %>
+  <%= image_tag 'add-new.png' %>
+<% end %>
 <% @posts.each do |post| %>
   <div class="post-card">
     <% if post.photo.attached? %>

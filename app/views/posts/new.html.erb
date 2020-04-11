@@ -1,5 +1,7 @@
-<%= simple_form_for @post do |f| %>
-  <%= f.input :photo, as: :file %>
-  <%= f.input :caption %>
-  <%= f.submit 'Post', class: 'primary-button' %>
-<% end %>
+<div class="container">
+  <%= simple_form_for @post do |f| %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :caption %>
+    <%= f.submit 'Post', class: 'primary-button' %>
+  <% end %>
+</div>
