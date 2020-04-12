@@ -4,9 +4,21 @@ h1 {
   }
 }
 
+h2 {
+  @include for-phone-only {
+    font-size: 26px;
+  }
+}
+
 h3 {
   @include for-phone-only {
     font-size: 20px;
+  }
+}
+
+h4 {
+  @include for-phone-only {
+    font-size: 18px;
   }
 }
 

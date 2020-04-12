@@ -6,6 +6,7 @@
   border: none;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   color: white;
+  border-radius: 5px;
   font-weight: bold;
   transition: all 0.3s ease;
   &:hover {
@@ -20,6 +21,7 @@
   background: -o-linear-gradient(#FF551F, #F98A66);
   background: linear-gradient(#FF551F, #F98A66);
   border: none;
+  border-radius: 5px;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   color: #0E0000;
   font-weight: bold;
@@ -28,4 +30,8 @@
     color: #0E0000;
     box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
   }
+}
+
+.pwa-popup-button {
+  box-shadow: none;
 }
