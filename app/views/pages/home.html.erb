@@ -71,21 +71,3 @@
     </div>
   <% end %>
 </div>
-
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    pwaUnderlay = document.querySelector('.pwa-underlay')
-    pwaPopup = document.querySelector('.pwa-popup')
-    if (pwaPopup) {
-      setTimeout(function() {
-        pwaUnderlay.style.top = 0;
-        pwaUnderlay.style.opacity = 1;
-        if (window.innerWidth > 576) {
-          pwaPopup.style.top = 'calc(50vh - 275px)';
-        } else {
-          pwaPopup.style.top = `calc(50vh - ${ pwaPopup.offsetHeight / 2 }px`
-        }
-      }, 2000);
-    }
-});
-</script>

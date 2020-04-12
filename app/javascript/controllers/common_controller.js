@@ -7,6 +7,19 @@ export default class extends Controller {
 
   connect() {
     console.log('Connect. Who dis?')
+    if (this.hasPwaPopupTarget) {
+      const pwaUnderlay = this.pwaUnderlayTarget
+      const pwaPopup = this.pwaPopupTarget
+      setTimeout(function() {
+        pwaUnderlay.style.top = 0;
+        pwaUnderlay.style.opacity = 1;
+        if (window.innerWidth > 576) {
+          pwaPopup.style.top = 'calc(50vh - 275px)';
+        } else {
+          pwaPopup.style.top = `calc(50vh - ${ pwaPopup.offsetHeight / 2 }px`
+        }
+      }, 2000);
+    }
   }
 
   hide() {

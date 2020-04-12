@@ -258,17 +258,6 @@
   transition: opacity 0.3s ease;
 }
 
-.pwa-container {
-  position: fixed;
-  top: 100vh;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(0,0,0,0.3);
-  @include absCenter;
-}
-
 .pwa-popup {
   position: fixed;
   top: 100vh;
