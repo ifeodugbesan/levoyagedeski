@@ -1,0 +1,47 @@
+<h1 class="boldest text-center"><%= @batch.number %></h1>
+<div class="container">
+  <div class="events-container">
+    <h3 class="boldest text-center">Events</h3>
+    <% if policy(Event).create? %>
+      <div class="mb-3 d-flex justify-content-center" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+        <%= image_tag 'add-new.png', width: 50 %>
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <%= simple_form_for [@batch, @event] do |f| %>
+              <div class="modal-header">
+                <h3 class="modal-title text-center boldest" id="exampleModalLabel">New event</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
+                <%= f.input :description, label: false, placeholder: 'Description', input_html: { class: 'devise-input' } %>
+                <%= f.input :time %>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit 'Create Event', class: 'primary-button' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% @events.each_with_index do |event, index| %>
+      <% unless index == 0 %>
+        <hr>
+      <% end %>
+      <div class="event-card mb-3">
+        <h6 class="boldest mb-2"><%= event.time.strftime('%A %e %B %Y') %></h6>
+        <h6 class="bold m-0"><%= event.title %></h6>
+        <p class="m-0"><%= event.description %></p>
+        <p class="bold m-0"><%= event.time.strftime('%l:%M %p') %></p>
+      </div>
+    <% end %>
+    <% if @events.count > 4 %>
+      <h6 class="boldest text-center">Show all <%= pluralize(@events.count, 'event') %></h6>
+    <% end %>
+  </div>
+</div>

@@ -67,10 +67,14 @@
   </div>
 <% end %>
 <% if user_signed_in? %>
-  <div class="batch-bar">
-    <h6 class="boldest m-0 text-center"><%= current_user.batch.number %></h6>
-    <h6 class="boldest m-0 text-center"><%= link_to "Temp log out button", destroy_user_session_path, method: :delete, class: "nav-link" %></h6>
-  </div>
+  <% unless params[:controller] == 'batches' %>
+    <div class="batch-bar">
+      <%= link_to batch_path(current_user.batch), class: 'no-decoration' do %>
+        <h6 class="boldest m-0 text-center"><%= current_user.batch.number %></h6>
+      <% end %>
+      <h6 class="boldest m-0 text-center"><%= link_to "Temp log out button", destroy_user_session_path, method: :delete, class: "nav-link" %></h6>
+    </div>
+  <% end %>
 <% end %>
 
 <script>
