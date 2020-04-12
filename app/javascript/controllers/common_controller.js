@@ -11,6 +11,7 @@ export default class extends Controller {
       const pwaUnderlay = this.pwaUnderlayTarget
       const pwaPopup = this.pwaPopupTarget
       setTimeout(function() {
+        pwaUnderlay.style.display = 'block';
         pwaUnderlay.style.top = 0;
         pwaUnderlay.style.opacity = 1;
         if (window.innerWidth > 576) {
