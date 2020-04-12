@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:destroy]
   resources :likes, only: [:destroy]
+  resources :batches, only: [:show] do
+    resources :events, only: [:new, :create, :edit, :update]
+  end
+  resources :events, only: [:destroy]
   get '/seen_pwa', to: 'pages#seen_pwa'
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
