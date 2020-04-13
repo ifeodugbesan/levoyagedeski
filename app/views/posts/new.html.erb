@@ -2,6 +2,6 @@
   <%= simple_form_for @post do |f| %>
     <%= f.input :photo, as: :file %>
     <%= f.input :caption %>
-    <%= f.submit 'Post', class: 'primary-button' %>
+    <%= f.submit 'Post', class: 'primary-button', data: { action: 'click->common#showLoader' } %>
   <% end %>
 </div>
