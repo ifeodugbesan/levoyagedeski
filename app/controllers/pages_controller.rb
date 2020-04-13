@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :seen_pwa]
+  skip_before_action :authenticate_user!, only: [:home, :resources, :seen_pwa]
 
   def home
-    redirect_to posts_path if user_signed_in?
+    redirect_to user_path(current_user) if user_signed_in?
+  end
+
+  def resources
   end
 
   def seen_pwa
