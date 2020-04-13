@@ -6,7 +6,7 @@ export default class extends Controller {
                     "pwaUnderlay",
                     "pwaHomeNavbar",
                     "loader",
-                    "loaderUnderlay"
+                    "loaderUnderlay",
                    ]
 
   connect() {

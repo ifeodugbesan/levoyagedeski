@@ -1,0 +1,5 @@
+<div class="container" style="display: flex; flex-direction: column;align-items: center;">
+  <h1><%= @user.username ? @user.username : @user.full_name %></h1>
+  <%= cl_image_tag @user.avatar.key, width: 50 %>
+</div>
+
