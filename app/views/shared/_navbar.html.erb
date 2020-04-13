@@ -1,70 +1,81 @@
-<% if user_signed_in? %>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <div class="show-web w-100 d-flex justify-content-center align-items-center">
-      <%= link_to "Posts", "#", class: "nav-link" %>
-      <%= link_to "Work", "#", class: "nav-link" %>
-      <%= link_to root_path, class: "#{ user_signed_in? ? 'nav-link' : 'navbar-brand'}" do %>
-        <%= image_tag "logo.png", class: "logo-signed-in" %>
-      <% end %>
-      <%= link_to "Articles", "#", class: "nav-link" %>
-      <%= link_to "Tips", "#", class: "nav-link" %>
+<div class="navbar-container">
+  <% if user_signed_in? %>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-target="navbar.navbar">
+      <div class="show-web w-100 d-flex justify-content-center align-items-center">
+        <%= link_to "Posts", "#", class: "nav-link" %>
+        <%= link_to "Work", "#", class: "nav-link" %>
+        <%= link_to root_path, class: "#{ user_signed_in? ? 'nav-link' : 'navbar-brand'}" do %>
+          <%= image_tag "logo.png", class: "logo-signed-in" %>
+        <% end %>
+        <%= link_to "Articles", "#", class: "nav-link" %>
+        <%= link_to "Tips", "#", class: "nav-link" %>
+      </div>
+      <div class="show-mobile">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "logo.png", class: "logo" %>
+          <%= image_tag "logo-text.png", class: "logo-text" %>
+        <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <div class="hamburger-stick ham-one"></div>
+          <div class="hamburger-stick ham-two"></div>
+          <div class="hamburger-stick ham-three"></div>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="show-mobile">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <%= link_to "Posts", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Work", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Articles", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Tips", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="show-mobile">
+  <% else %>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between" data-target="navbar.navbar">
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "logo.png", class: "logo" %>
         <%= image_tag "logo-text.png", class: "logo-text" %>
       <% end %>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="hamburger">
-        <div class="hamburger-stick ham-one"></div>
-        <div class="hamburger-stick ham-two"></div>
-        <div class="hamburger-stick ham-three"></div>
-      </div>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="show-mobile">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <div class="hamburger-stick ham-one"></div>
+          <div class="hamburger-stick ham-two"></div>
+          <div class="hamburger-stick ham-three"></div>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to "Posts", "#", class: "nav-link" %>
-          </li>
           <li class="nav-item">
-            <%= link_to "Work", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Articles", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Tips", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
           </li>
         </ul>
       </div>
     </div>
-  </div>
-<% else %>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logo.png", class: "logo" %>
-      <%= image_tag "logo-text.png", class: "logo-text" %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="hamburger">
-        <div class="hamburger-stick ham-one"></div>
-        <div class="hamburger-stick ham-two"></div>
-        <div class="hamburger-stick ham-three"></div>
-      </div>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
-        </li>
-      </ul>
+  <% end %>
+</div>
+<% unless params[:controller] == 'pages' && params[:action] == 'home' %>
+  <div class="pwa-top-bar" data-target="navbar.pwaTopBar">
+    <div class="navbar-brand" data-action="click->navbar#scrollTop">
+      <%= image_tag "logo.png", class: "pwa-logo" %>
+      <%= image_tag "logo-text.png", class: "pwa-logo-text" %>
     </div>
   </div>
+  <div class="pwa-top-bar-spacer" data-target="navbar.pwaTopBarSpacer"></div>
 <% end %>
 <% if user_signed_in? %>
   <% unless params[:controller] == 'batches' %>

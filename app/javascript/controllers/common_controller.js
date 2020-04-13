@@ -1,25 +1,35 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "pwaPopup",
-                     "pwaUnderlay"
+  static targets = [
+                    "pwaPopup",
+                    "pwaUnderlay",
+                    "pwaHomeNavbar",
+                    "loader",
+                    "loaderUnderlay"
                    ]
 
   connect() {
-    console.log('Connect. Who dis?')
+    console.log('Common connect. Who dis?')
+    if (navigator.standalone) {
+      this.pwaHomeNavbarTarget.classList.remove('d-none');
+    }
     if (this.hasPwaPopupTarget) {
       const pwaUnderlay = this.pwaUnderlayTarget
       const pwaPopup = this.pwaPopupTarget
-      setTimeout(function() {
-        pwaUnderlay.style.display = 'block';
-        pwaUnderlay.style.top = 0;
-        pwaUnderlay.style.opacity = 1;
-        if (window.innerWidth > 576) {
-          pwaPopup.style.top = 'calc(50vh - 275px)';
-        } else {
-          pwaPopup.style.top = `calc(50vh - ${ pwaPopup.offsetHeight / 2 }px`
-        }
-      }, 2000);
+      if (!navigator.standalone) {
+        setTimeout(function() {
+          pwaUnderlay.style.display = 'block';
+          pwaPopup.style.display = 'flex';
+          pwaUnderlay.style.top = 0;
+          pwaUnderlay.style.opacity = 1;
+          if (window.innerWidth > 576) {
+            pwaPopup.style.top = 'calc(50vh - 275px)';
+          } else {
+            pwaPopup.style.top = `calc(50vh - ${ pwaPopup.offsetHeight / 2 }px`
+          }
+        }, 2000);
+      }
     }
   }
 
@@ -34,4 +44,9 @@ export default class extends Controller {
     }, 300)
   }
 
+  showLoader() {
+    console.log('showloader who dis?')
+    this.loaderTarget.style.display = 'inline-block';
+    this.loaderUnderlayTarget.style.display = 'block';
+  }
 }

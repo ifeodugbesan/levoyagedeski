@@ -3,7 +3,7 @@
   <div class="events-container">
     <h3 class="boldest text-center">Events</h3>
     <% if policy(Event).create? %>
-      <div class="mb-3 d-flex justify-content-center" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+      <div class="mb-3 d-flex justify-content-center align-items-center" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
         <%= image_tag 'add-new.png', width: 50 %>
       </div>
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

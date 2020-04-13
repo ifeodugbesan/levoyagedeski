@@ -28,15 +28,20 @@
     <%= render 'shared/pwa' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+  <body data-controller="navbar common">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="min-height">
+      <div class="loader-underlay" data-target="common.loaderUnderlay"></div>
+      <div class="loader" data-target="common.loader">
+        <%= image_tag "logo.png", class: "loader-logo" %>
+      </div>
       <%= yield %>
     </div>
     <% if params[:controller] == 'pages' && params[:action] == 'home' %>
       <%= render 'shared/footer' %>
     <% end %>
+    <%= render 'shared/pwa_navbar' %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>

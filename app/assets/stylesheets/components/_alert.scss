@@ -1,6 +1,36 @@
 .alert {
   position: fixed;
-  bottom: 16px;
+  bottom: 70px;
   right: 16px;
   z-index: 1000;
+}
+
+@media only screen
+  and (device-width: 375px)
+  and (device-height: 812px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .alert {
+      bottom: 90px;
+    }
+}
+
+@media only screen
+  and (device-width: 414px)
+  and (device-height: 896px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .alert {
+      bottom: 90px;
+    }
+}
+
+@media only screen
+  and (device-width: 414px)
+  and (device-height: 896px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .alert {
+      bottom: 90px;
+    }
 }
