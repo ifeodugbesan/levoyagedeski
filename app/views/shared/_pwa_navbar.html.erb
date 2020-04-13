@@ -1,0 +1,38 @@
+<div class="pwa-navbar-container">
+  <div class="pwa-navbar-spacer" data-target="navbar.pwaNavbarSpacer"></div>
+  <div class="pwa-navbar" data-target="navbar.pwaNavbar">
+    <%= link_to root_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
+      <div class="pwa-navbar-section">
+        <!-- CONDITION BELOW - OR HOME PAGE FOR LOGGED IN USERS -->
+        <% if params[:controller] == 'pages' && params[:action] == 'home' %>
+          <%= image_tag 'home-blue.png', class: 'pwa-navbar-icon' %>
+        <% else %>
+          <%= image_tag 'home.png', class: 'pwa-navbar-icon' %>
+        <% end %>
+        <p class="pwa-navbar-text <%= params[:controller] == 'pages' && params[:action] == 'home' ? 'pwa-active' : '' %>">Home</p>
+      </div>
+    <% end %>
+    <%= link_to posts_path, class: "pwa-navbar-section no-decoration #{ user_signed_in? ? '' : 'pwa-opacity' }" do %>
+      <div class="pwa-navbar-section">
+        <% if params[:controller] == 'posts' %>
+          <%= image_tag 'posts-blue.png', class: 'pwa-navbar-icon' %>
+        <% else %>
+          <%= image_tag 'posts.png', class: 'pwa-navbar-icon' %>
+        <% end %>
+        <p class="pwa-navbar-text <%= params[:controller] == 'posts' ? 'pwa-active' : '' %>">Posts</p>
+      </div>
+    <% end %>
+    <div class="pwa-navbar-section">
+      <%= image_tag 'careers.png', class: 'pwa-navbar-icon' %>
+      <p class="pwa-navbar-text">Career</p>
+    </div>
+    <div class="pwa-navbar-section">
+      <%= image_tag 'resources.png', class: 'pwa-navbar-icon' %>
+      <p class="pwa-navbar-text">Resources</p>
+    </div>
+    <div class="pwa-navbar-section">
+      <%= image_tag 'articles.png', class: 'pwa-navbar-icon' %>
+      <p class="pwa-navbar-text">Articles</p>
+    </div>
+  </div>
+</div>

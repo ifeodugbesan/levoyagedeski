@@ -89,6 +89,162 @@
   }
 }
 
+.pwa-opacity {
+  opacity: 0.1;
+  pointer-events: none;
+}
+
 .batch-bar {
   // height: 30px;
 }
+
+////////////////////////////////// PWA NAVBAR //////////////////////////////
+
+.pwa-navbar-spacer {
+  height: 60px;
+  display: none;
+}
+
+.pwa-navbar {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  z-index: 2500;
+  bottom: 0;
+  background: #051a40;
+  border-top: 1px solid #575757;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.pwa-top-bar {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  z-index: 2500;
+  top: 0;
+  background: #FFF;
+}
+
+.pwa-top-bar-spacer {
+  height: 60px;
+  display: none;
+
+}
+
+.pwa-navbar-section {
+  height: 100%;
+  flex: 1;
+  @include absCenterColumn;
+}
+
+.pwa-navbar-icon {
+  height: 20px;
+}
+
+.pwa-navbar-text {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 2px 0 0 0;
+  color: #FFF;
+}
+
+.pwa-active {
+  color: #4E77B7;
+}
+
+.pwa-logo {
+  height: 55px;
+  margin-right: 8px;
+  @include for-phone-only {
+    height: 40px;
+  }
+}
+
+.pwa-logo-text {
+  height: 26px;
+  @include for-phone-only {
+    height: 20px;
+  }
+}
+
+@media only screen
+  and (device-width: 375px)
+  and (device-height: 812px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .pwa-navbar-spacer {
+      height: 81px;
+    }
+    .pwa-navbar {
+      height: 80px;
+      padding-bottom: 20px;
+    }
+}
+
+@media only screen
+  and (device-width: 414px)
+  and (device-height: 896px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .pwa-navbar-spacer {
+      height: 81px;
+    }
+    .pwa-navbar {
+      height: 80px;
+      padding-bottom: 20px;
+    }
+}
+
+@media only screen
+  and (device-width: 414px)
+  and (device-height: 896px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .pwa-navbar-spacer {
+      height: 81px;
+    }
+    .pwa-navbar {
+      height: 80px;
+      padding-bottom: 20px;
+    }
+}
+
+// PWA NAVBAR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
