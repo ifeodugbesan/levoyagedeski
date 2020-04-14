@@ -1,0 +1,17 @@
+.devise-input {
+  height: 50px;
+}
+
+.devise-input::placeholder {
+ color: #D1D1D1;
+}
+
+#resource_category {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: #FFF;
+}
+

@@ -1,0 +1,19 @@
+<% resources.each do |resource| %>
+  <div class="col-sm-6 col-lg-4">
+    <div class="resource-card">
+      <%= link_to resource.link, target: '_blank' do %>
+        <%= cl_image_tag resource.photo.key, class: 'resource-image' %>
+      <% end %>
+      <p class="boldest mt-2 mb-0"><%= resource.title %></p>
+      <p class="lighter"><%= resource.description %></p>
+      <div class="resource-links">
+        <%= link_to edit_resource_path(resource) do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <%= link_to resource_path(resource), method: :delete, data: { confirm: 'Are you sure you want to delete this resource?' } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -2,13 +2,13 @@
   <% if user_signed_in? %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-target="navbar.navbar">
       <div class="show-web w-100 d-flex justify-content-center align-items-center">
-        <%= link_to "Posts", "#", class: "nav-link" %>
+        <%= link_to "Posts", posts_path, class: "nav-link", style: 'margin-left: 46px' %>
         <%= link_to "Work", "#", class: "nav-link" %>
         <%= link_to root_path, class: "#{ user_signed_in? ? 'nav-link' : 'navbar-brand'}" do %>
           <%= image_tag "logo.png", class: "logo-signed-in" %>
         <% end %>
         <%= link_to "Articles", "#", class: "nav-link" %>
-        <%= link_to "Tips", "#", class: "nav-link" %>
+        <%= link_to "Resources", resources_path, class: "nav-link" %>
       </div>
       <div class="show-mobile">
         <%= link_to root_path, class: "navbar-brand" do %>
@@ -27,7 +27,7 @@
         <div class="show-mobile">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <%= link_to "Posts", "#", class: "nav-link" %>
+              <%= link_to "Posts", posts_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "Work", "#", class: "nav-link" %>
@@ -36,7 +36,7 @@
               <%= link_to "Articles", "#", class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Tips", "#", class: "nav-link" %>
+              <%= link_to "Resources", resources_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
@@ -81,9 +81,8 @@
   <% unless params[:controller] == 'batches' %>
     <div class="batch-bar">
       <%= link_to batch_path(current_user.batch), class: 'no-decoration' do %>
-        <h6 class="boldest m-0 text-center"><%= current_user.batch.number %></h6>
+        <h6 class="boldest m-b2 text-center"><%= current_user.batch.number %></h6>
       <% end %>
-      <h6 class="boldest m-0 text-center"><%= link_to "Temp log out button", destroy_user_session_path, method: :delete, class: "nav-link" %></h6>
     </div>
   <% end %>
 <% end %>

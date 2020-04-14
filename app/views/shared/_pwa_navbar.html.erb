@@ -30,12 +30,12 @@
     <% end %>
     <%= link_to resources_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
-        <% if params[:controller] == 'pages' && params[:action] == 'resources' %>
+        <% if params[:controller] == 'resources' %>
           <%= image_tag 'resources-blue.png', class: 'pwa-navbar-icon' %>
         <% else %>
           <%= image_tag 'resources.png', class: 'pwa-navbar-icon' %>
         <% end %>
-        <p class="pwa-navbar-text <%= params[:controller] == 'pages' && params[:action] == 'resources' ? 'pwa-active' : '' %>">Resources</p>
+        <p class="pwa-navbar-text <%= params[:controller] == 'resources' ? 'pwa-active' : '' %>">Resources</p>
       </div>
     <% end %>
     <%= link_to resources_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>

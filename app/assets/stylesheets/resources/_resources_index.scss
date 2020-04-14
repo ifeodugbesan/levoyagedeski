@@ -1,0 +1,108 @@
+.resources-container {
+  max-width: 1000px;
+  margin: 0 auto 40px auto;
+  @include for-large-devices-down {
+    margin: 0 80px 40px 80px;
+  }
+  @include for-small-devices-down {
+    margin: 0 40px 40px 40px;
+  }
+  @include for-phone-only {
+    margin: 0 0 40px 0;
+  }
+}
+
+.resource-card {
+  // width: 300px;
+  position: relative;
+  margin-bottom: 20px;
+  @include for-small-devices-down {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.resource-image {
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  width: 100%;
+}
+
+.resource-links {
+  position: absolute;
+  background: rgba(0,0,0,0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  top: 5px;
+  right: 5px;
+  a {
+    color: #FFF;
+    font-size: 20px;
+    margin: 3px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.resource-category {
+  @include for-phone-only {
+    text-align: center;
+    margin: 20px 0 50px 0 !important;
+  }
+}
+
+.resource-tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+}
+
+.resource-tab {
+  padding: 16px 20px;
+  width: 50%;
+  @media only screen and (min-width: 1440px) {
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+.resources-content {
+  position: relative;
+}
+
+.front-end-tab, .front-end-container {
+  background: #87BABD;
+}
+
+.back-end-tab, .back-end-container {
+  background: #FFE19C;
+}
+
+.front-end-container {
+  opacity: 0;
+}
+
+.back-end-container {
+  display: none;
+  opacity: 0;
+}
+
+.front-end-container, .back-end-container {
+  width: 100%;
+  padding: 40px 20px;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.6s ease;
+}
+
+.resource-active {
+  opacity: 1;
+}
+
+.pwa-resource-tabs {
+  position: sticky;
+  top: 60px;
+  z-index: 300;
+}
+
