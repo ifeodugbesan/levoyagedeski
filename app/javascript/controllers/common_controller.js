@@ -7,11 +7,14 @@ export default class extends Controller {
                     "pwaHomeNavbar",
                     "loader",
                     "loaderUnderlay",
+                    "resourceTabs",
+                    "tabsHolder"
                    ]
 
   connect() {
     console.log('Common connect. Who dis?')
     if (navigator.standalone) {
+      // this.tabsHolderTarget.classList.add('pwa-resource-tabs')
       this.pwaHomeNavbarTarget.classList.remove('d-none');
     }
     if (this.hasPwaPopupTarget) {
@@ -48,5 +51,21 @@ export default class extends Controller {
     console.log('showloader who dis?')
     this.loaderTarget.style.display = 'inline-block';
     this.loaderUnderlayTarget.style.display = 'block';
+  }
+
+  switchTabs() {
+    this.resourceTabsTargets.forEach((tab) => {
+      if (event.currentTarget.dataset.type == tab.dataset.type) {
+        tab.style.display = 'block'
+        setTimeout(function() {
+          tab.classList.add('resource-active')
+        }, 1)
+      } else {
+        tab.classList.remove('resource-active')
+        setTimeout(function() {
+          tab.style.display = 'none'
+        }, 200)
+      }
+    })
   }
 }

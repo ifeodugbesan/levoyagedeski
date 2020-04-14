@@ -1,0 +1,11 @@
+<div class="container">
+  <h1 class="boldest text-center">Edit resource</h1>
+  <%= simple_form_for @resource do |f| %>
+    <%= f.input :category, collection: ["Colors", "Fonts", "Icons", "Royalty Free Images", "Illustrations", "Inspiration" ], label: false, prompt: 'Category' %>
+    <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
+    <%= f.input :description, label: false, placeholder: 'Description', input_html: { class: 'devise-input' } %>
+    <%= f.input :link, label: false, placeholder: 'link', input_html: { class: 'devise-input' } %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit 'Update resource', class: 'primary button' %>
+  <% end %>
+</div>
