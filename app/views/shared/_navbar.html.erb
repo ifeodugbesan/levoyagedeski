@@ -77,16 +77,6 @@
   </div>
   <div class="pwa-top-bar-spacer" data-target="navbar.pwaTopBarSpacer"></div>
 <% end %>
-<% if user_signed_in? %>
-  <% unless params[:controller] == 'batches' %>
-    <div class="batch-bar">
-      <%= link_to batch_path(current_user.batch), class: 'no-decoration' do %>
-        <h6 class="boldest m-b2 text-center"><%= current_user.batch.number %></h6>
-      <% end %>
-    </div>
-  <% end %>
-<% end %>
-
 <script>
   navbarToggler = document.querySelector('.navbar-toggler');
 

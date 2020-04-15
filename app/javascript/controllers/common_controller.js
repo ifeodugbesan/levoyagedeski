@@ -8,13 +8,17 @@ export default class extends Controller {
                     "loader",
                     "loaderUnderlay",
                     "resourceTabs",
-                    "tabsHolder"
+                    "tabsHolder",
+                    "resourcesHeader",
+                    "resourcesContent"
                    ]
 
   connect() {
     console.log('Common connect. Who dis?')
     if (navigator.standalone) {
-      // this.tabsHolderTarget.classList.add('pwa-resource-tabs')
+      this.resourcesHeaderTargets.forEach((header) => { header.style.display = 'none' });
+      this.tabsHolderTarget.classList.add('pwa-resource-tabs');
+      this.resourcesContentTarget.style.marginTop = '51px'
       this.pwaHomeNavbarTarget.classList.remove('d-none');
     }
     if (this.hasPwaPopupTarget) {
@@ -67,5 +71,7 @@ export default class extends Controller {
         }, 200)
       }
     })
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }
 }
