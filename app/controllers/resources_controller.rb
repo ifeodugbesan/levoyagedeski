@@ -32,6 +32,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     redirect_to resources_path
+    authorize @resource
   end
 
   private
