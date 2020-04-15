@@ -13,7 +13,6 @@
 }
 
 .resource-card {
-  // width: 300px;
   position: relative;
   margin-bottom: 20px;
   @include for-small-devices-down {
@@ -55,8 +54,6 @@
 .resource-tabs {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-
 }
 
 .resource-tab {
@@ -101,8 +98,9 @@
 }
 
 .pwa-resource-tabs {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 60px;
-  z-index: 300;
+  z-index: 10;
 }
 
