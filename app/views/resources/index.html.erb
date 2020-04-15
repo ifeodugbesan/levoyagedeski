@@ -18,39 +18,51 @@
     <div class="resources-container">
       <h2 class="resource-category boldest mb-3">Colors</h2>
       <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Colors') %>
+        <%= render 'resource_cards', resources: @resources.where(category: 'Colors').order(created_at: :asc) %>
       </div>
     </div>
     <div class="resources-container">
       <h2 class="resource-category boldest mb-3">Fonts</h2>
       <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Fonts') %>
+        <%= render 'resource_cards', resources: @resources.where(category: 'Fonts').order(created_at: :asc) %>
       </div>
     </div>
     <div class="resources-container">
       <h2 class="resource-category boldest mb-3">Icons</h2>
       <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Icons') %>
+        <%= render 'resource_cards', resources: @resources.where(category: 'Icons').order(created_at: :asc) %>
       </div>
     </div>
-  </div>
-  <div class="back-end-container" data-target="common.resourceTabs" data-type="back-end">
     <div class="resources-container">
       <h2 class="resource-category boldest mb-3">Royalty Free Images</h2>
       <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Royalty Free Images') %>
+        <%= render 'resource_cards', resources: @resources.where(category: 'Royalty Free Images').order(created_at: :asc) %>
       </div>
     </div>
     <div class="resources-container">
       <h2 class="resource-category boldest mb-3">Illustrations</h2>
       <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Illustrations') %>
+        <%= render 'resource_cards', resources: @resources.where(category: 'Illustrations').order(created_at: :asc) %>
       </div>
     </div>
     <div class="resources-container">
       <h2 class="resource-category boldest mb-3">Inspiration</h2>
       <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Inspiration') %>
+        <%= render 'resource_cards', resources: @resources.where(category: 'Inspiration').order(created_at: :asc) %>
+      </div>
+    </div>
+  </div>
+  <div class="back-end-container" data-target="common.resourceTabs" data-type="back-end">
+    <div class="resources-container">
+      <h2 class="resource-category boldest mb-3">Rails</h2>
+      <div class="row">
+        <%= render 'resource_cards', resources: @resources.where(category: 'Rails').order(created_at: :asc) %>
+      </div>
+    </div>
+    <div class="resources-container">
+      <h2 class="resource-category boldest mb-3">Javascript</h2>
+      <div class="row">
+        <%= render 'resource_cards', resources: @resources.where(category: 'Javascript').order(created_at: :asc) %>
       </div>
     </div>
   </div>
