@@ -7,10 +7,10 @@
 <h6 class="boldest text-center mb-4" data-target="common.resourcesHeader">Here is a list of many different useful resources.</h6>
 <div class="resource-tabs" data-target="common.tabsHolder">
   <div class="front-end-tab resource-tab" data-action="click->common#switchTabs" data-type="front-end">
-    <h6 class="boldest text-center m-0">Front End/Design</h6>
+    <h6 class="boldest text-center m-0">Front End | Design</h6>
   </div>
   <div class="back-end-tab resource-tab" data-action="click->common#switchTabs" data-type="back-end">
-    <h6 class="boldest text-center m-0">Rails/Javascript</h6>
+    <h6 class="boldest text-center m-0">Ruby - Rails | JS</h6>
   </div>
 </div>
 <div class="resources-content" data-target="common.resourcesContent">
@@ -54,9 +54,9 @@
   </div>
   <div class="back-end-container" data-target="common.resourceTabs" data-type="back-end">
     <div class="resources-container">
-      <h2 class="resource-category boldest mb-3">Rails</h2>
+      <h2 class="resource-category boldest mb-3">Ruby - Rails</h2>
       <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Rails').order(created_at: :asc) %>
+        <%= render 'resource_cards', resources: @resources.where(category: 'Ruby - Rails').order(created_at: :asc) %>
       </div>
     </div>
     <div class="resources-container">
