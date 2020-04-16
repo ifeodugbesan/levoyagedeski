@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'pundit'
 gem 'cloudinary', '~> 1.12.0'
+gem 'sprockets-rails', '2.3.3'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

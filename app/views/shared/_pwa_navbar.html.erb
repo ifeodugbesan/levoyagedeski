@@ -12,7 +12,7 @@
         <p class="pwa-navbar-text <%= (params[:controller] == 'pages' && params[:action] == 'home' || params[:controller] == 'users' && params[:action] == 'show') ? 'pwa-active' : '' %>">Home</p>
       </div>
     <% end %>
-    <%= link_to posts_path, class: "pwa-navbar-section no-decoration #{ user_signed_in? ? '' : 'pwa-opacity' }", data: { action: 'click->common#showLoader' } do %>
+    <%= link_to posts_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
         <% if params[:controller] == 'posts' %>
           <%= image_tag 'posts-blue.png', class: 'pwa-navbar-icon' %>
@@ -22,7 +22,7 @@
         <p class="pwa-navbar-text <%= params[:controller] == 'posts' ? 'pwa-active' : '' %>">Posts</p>
       </div>
     <% end %>
-    <%= link_to '#', class: "pwa-navbar-section no-decoration #{ user_signed_in? ? '' : 'pwa-opacity' }" do %>
+    <%= link_to '#', class: "pwa-navbar-section no-decoration" do %>
       <div class="pwa-navbar-section">
         <%= image_tag 'careers.png', class: 'pwa-navbar-icon' %>
         <p class="pwa-navbar-text">Career</p>
@@ -38,10 +38,14 @@
         <p class="pwa-navbar-text <%= params[:controller] == 'resources' ? 'pwa-active' : '' %>">Resources</p>
       </div>
     <% end %>
-    <%= link_to resources_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
+    <%= link_to articles_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
-        <%= image_tag 'articles.png', class: 'pwa-navbar-icon' %>
-        <p class="pwa-navbar-text">Articles</p>
+        <% if params[:controller] == 'articles' %>
+          <%= image_tag 'articles-blue.png', class: 'pwa-navbar-icon' %>
+        <% else %>
+          <%= image_tag 'articles.png', class: 'pwa-navbar-icon' %>
+        <% end %>
+        <p class="pwa-navbar-text <%= params[:controller] == 'articles' ? 'pwa-active' : '' %>">Articles</p>
       </div>
     <% end %>
   </div>
