@@ -6,6 +6,14 @@
         <h6 class="bold m-0"><%= @article.user.full_name %></h6>
         <p class="s-medium-text bold grey m-0"><%= @article.created_at.strftime('%b %d %Y') %></p>
       </div>
+      <div class="crud-links">
+        <%= link_to edit_article_path(@article) do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <%= link_to article_path(@article), method: :delete, data: { confirm: 'Are you sure you want to delete this article?' } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
     </div>
     <h2 class="bold mb-2"><%= @article.title %></h2>
     <h4 class="mb-4 grey"><%= @article.preview_text %></h4>
