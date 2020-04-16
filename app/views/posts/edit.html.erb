@@ -1,2 +1,7 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="container">
+  <h1 class="boldest text-center mt-5 mb-4">Edit Post</h1>
+  <%= simple_form_for @post do |f| %>
+    <%= f.input :caption %>
+    <%= f.submit 'Update Post', class: 'primary-button', data: { action: 'click->common#showLoader' } %>
+  <% end %>
+</div>

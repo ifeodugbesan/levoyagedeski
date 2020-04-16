@@ -1,5 +1,5 @@
-<div class="container">
-  <h1 class="boldest text-center">Edit Resource</h1>
+<div class="container my-5">
+  <h1 class="boldest text-center mb-4">Edit Resource</h1>
   <%= simple_form_for @resource do |f| %>
     <%= f.input :category, collection: ["Colors", "Fonts", "Icons", "Illustrations", "Inspiration", "Javascript", "Ruby - Rails", "Royalty Free Images"], label: false, prompt: 'Category' %>
     <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>

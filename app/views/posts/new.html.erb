@@ -1,7 +1,8 @@
 <div class="container">
+  <h1 class="boldest text-center mt-5 mb-4">Add new Post</h1>
   <%= simple_form_for @post do |f| %>
     <%= f.input :photo, as: :file %>
     <%= f.input :caption %>
-    <%= f.submit 'Post', class: 'primary-button', data: { action: 'click->common#showLoader' } %>
+    <%= f.submit 'Create Post', class: 'primary-button', data: { action: 'click->common#showLoader' } %>
   <% end %>
 </div>

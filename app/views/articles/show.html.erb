@@ -1,0 +1,14 @@
+<div class="article-container">
+  <div class="article-top">
+    <div class="article-user">
+      <%= cl_image_tag @article.user.avatar.key %>
+      <div class="article-user-info">
+        <h6 class="bold m-0"><%= @article.user.full_name %></h6>
+        <p class="s-medium-text bold grey m-0"><%= @article.created_at.strftime('%b %d %Y') %></p>
+      </div>
+    </div>
+    <h2 class="bold mb-2"><%= @article.title %></h2>
+    <h4 class="mb-4 grey"><%= @article.preview_text %></h4>
+  </div>
+  <%= @article.content %>
+</div>

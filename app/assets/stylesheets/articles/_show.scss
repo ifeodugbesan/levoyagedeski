@@ -1,0 +1,44 @@
+.article-container {
+  max-width: 700px;
+  margin: 50px auto;
+  // @include for-phone-only {
+  //   padding: 0 16px;
+  // }
+  // @include for-xsmall-phone-only {
+  //   padding: 0 10px;
+  // }
+}
+
+.trix-content > * {
+  @include for-small-devices-down {
+    padding: 0 20px;
+  }
+}
+
+.article-top {
+  @include for-small-devices-down {
+    padding: 0 20px;
+  }
+}
+
+.article-user {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+  img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover
+  }
+}
+
+.article-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
