@@ -6,7 +6,7 @@
         <h6 class="bold m-0"><%= @article.user.full_name %></h6>
         <p class="s-medium-text bold grey m-0"><%= @article.created_at.strftime('%b %d %Y') %></p>
       </div>
-      <% if policy(article).edit? %>
+      <% if policy(@article).edit? %>
         <div class="crud-links">
           <%= link_to edit_article_path(@article) do %>
             <i class="fas fa-edit"></i>
