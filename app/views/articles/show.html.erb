@@ -1,4 +1,4 @@
-<div class="article-container">
+<div class="article-container" data-controller="article">
   <div class="article-top">
     <div class="article-user">
       <%= cl_image_tag @article.user.avatar.key %>
@@ -15,8 +15,10 @@
         <% end %>
       </div>
     </div>
-    <h2 class="bold mb-2"><%= @article.title %></h2>
-    <h4 class="mb-4 grey"><%= @article.preview_text %></h4>
+    <h3 class="bold mb-2"><%= @article.title %></h3>
+    <h6 class="mb-4 grey"><%= @article.preview_text %></h6>
   </div>
-  <%= @article.content %>
+  <div class="article-show-content">
+    <%= @article.content %>
+  </div>
 </div>
