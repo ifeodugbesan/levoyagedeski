@@ -3,7 +3,7 @@
   <%= simple_form_for @article do |f| %>
     <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
     <%= f.input :preview_text, label: false, placeholder: 'Preview text', input_html: { class: 'devise-input' } %>
-    <%= f.rich_text_area :content, placeholder: 'Add article content here (use style buttons above to customise your article)' %>
+    <%= f.rich_text_area :content, placeholder: 'Add article content here (use style buttons above to customise your article)', data: { "direct-upload-url" => "/rails/active_storage/direct_uploads", "blob-url-template" => "/rails/active_storage/blobs/:signed_id/:filename" } %>
     <%= f.submit 'Update Article', class: 'primary-button' %>
   <% end %>
 </div>
