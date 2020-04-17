@@ -11,7 +11,11 @@
     <div class="post-card-content">
       <div class="post-card-user">
         <div class="post-card-user-info boldest">
-          <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
+          <% if post.user.avatar.attached?  %>
+            <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
+          <% else %>
+            <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
+          <% end %>
           <%= post.user.username ? post.user.username : post.user.full_name %>
         </div>
         <% if post.likes&.map(&:user).include?(current_user) %>
