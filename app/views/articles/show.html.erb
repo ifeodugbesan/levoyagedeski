@@ -1,7 +1,11 @@
 <div class="article-container" data-controller="article">
   <div class="article-top">
     <div class="article-user">
-      <%= cl_image_tag @article.user.avatar.key %>
+      <% if @article.user.avatar.attached?  %>
+        <%= cl_image_tag @article.user.avatar.key %>
+      <% else %>
+        <%= image_tag 'default-user.png' %>
+      <% end %>
       <div class="article-user-info">
         <h6 class="bold m-0"><%= @article.user.full_name %></h6>
         <p class="s-medium-text bold grey m-0"><%= @article.created_at.strftime('%b %d %Y') %></p>
