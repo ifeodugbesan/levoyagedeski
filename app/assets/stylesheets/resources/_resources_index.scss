@@ -47,7 +47,7 @@
 .resource-category {
   @include for-phone-only {
     text-align: center;
-    margin: 20px 0 50px 0 !important;
+    margin: 0 0 20px 0 !important;
   }
 }
 
@@ -68,14 +68,6 @@
   position: relative;
 }
 
-.front-end-tab, .front-end-container {
-  background: #87BABD;
-}
-
-.back-end-tab, .back-end-container {
-  background: #FFE19C;
-}
-
 .front-end-container {
   opacity: 0;
 }
@@ -91,6 +83,9 @@
   position: absolute;
   top: 0;
   transition: opacity 0.6s ease;
+  @include for-phone-only {
+    padding: 20px;
+  }
 }
 
 .resource-active {

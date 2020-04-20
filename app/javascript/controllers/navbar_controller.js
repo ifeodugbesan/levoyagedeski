@@ -6,7 +6,8 @@ export default class extends Controller {
                     "pwaNavbar",
                     "pwaNavbarSpacer",
                     "pwaTopBar",
-                    "pwaTopBarSpacer"
+                    "pwaTopBarSpacer",
+
                    ]
 
   connect() {
@@ -21,6 +22,10 @@ export default class extends Controller {
       this.pwaTopBarTarget.style.display = 'flex';
       this.pwaTopBarSpacerTarget.style.display = 'block';
     }
+  }
+
+  navbarToggler() {
+    event.currentTarget.classList.toggle('hamburger-cross');
   }
 
   scrollTop() {

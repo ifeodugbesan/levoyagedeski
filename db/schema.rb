@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_110523) do
+ActiveRecord::Schema.define(version: 2020_04_20_172617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,23 @@ ActiveRecord::Schema.define(version: 2020_04_16_110523) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "careers", force: :cascade do |t|
+    t.string "career_type"
+    t.string "title"
+    t.text "description"
+    t.string "salary"
+    t.string "location"
+    t.string "contract"
+    t.string "link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "closed", default: false
+    t.bigint "user_id"
+    t.string "email"
+    t.string "company_name"
+    t.index ["user_id"], name: "index_careers_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id", null: false
@@ -100,6 +117,15 @@ ActiveRecord::Schema.define(version: 2020_04_16_110523) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "project_members", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "career_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["career_id"], name: "index_project_members_on_career_id"
+    t.index ["user_id"], name: "index_project_members_on_user_id"
+  end
+
   create_table "resources", force: :cascade do |t|
     t.string "category"
     t.string "title"
@@ -130,11 +156,14 @@ ActiveRecord::Schema.define(version: 2020_04_16_110523) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "careers", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "events", "batches"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "project_members", "careers"
+  add_foreign_key "project_members", "users"
   add_foreign_key "users", "batches"
 end
