@@ -1,7 +1,7 @@
-<div class="container my-5">
-  <h1 class="boldest text-center mb-4">Edit Career</h1>
+<div class="container my-5" data-controller="career">
+  <h1 class="boldest text-center mb-4">Edit <span data-target="career.title">Career</span> </h1>
   <%= simple_form_for @career do |f| %>
-    <%= f.input :career_type, collection: ["Job", "Project"], label: false, prompt: 'Type' %>
+    <%= f.input :career_type, collection: ["Job", "Project"], label: false, prompt: 'Type', input_html: { data: { target: "career.input", action: "change->career#changeType"} } %>
     <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
     <%= f.input :description, label: false, placeholder: 'Description', input_html: { class: 'devise-input' } %>
     <%= f.input :company_name, label: false, placeholder: 'Company name', input_html: { class: 'devise-input' } %>
@@ -11,6 +11,6 @@
     <%= f.input :link, label: false, placeholder: 'Link', input_html: { class: 'devise-input' } %>
     <%= f.input :email, label: false, placeholder: 'Email', input_html: { class: 'devise-input' } %>
     <%= f.input :image, as: :file %>
-    <%= f.submit 'Update Career', class: 'primary-button' %>
+    <%= f.submit 'Update', class: 'primary-button' %>
   <% end %>
 </div>
