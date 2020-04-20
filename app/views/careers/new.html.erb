@@ -1,0 +1,16 @@
+<div class="container my-5">
+  <h1 class="boldest text-center mb-4">Add new Career</h1>
+  <%= simple_form_for @career do |f| %>
+    <%= f.input :career_type, collection: ["Job", "Project"], label: false, prompt: 'Type' %>
+    <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
+    <%= f.input :description, label: false, placeholder: 'Description', input_html: { class: 'devise-input' } %>
+    <%= f.input :company_name, label: false, placeholder: 'Company name', input_html: { class: 'devise-input' } %>
+    <%= f.input :salary, label: false, placeholder: 'Salary (optional)', input_html: { class: 'devise-input' } %>
+    <%= f.input :location, label: false, placeholder: 'Location (optional)', input_html: { class: 'devise-input' } %>
+    <%= f.input :contract, collection: ["Full Time", "Part Time", "Contract", "Freelance", "Experience"], label: false, prompt: 'Contract' %>
+    <%= f.input :link, label: false, placeholder: 'Link', input_html: { class: 'devise-input' } %>
+    <%= f.input :email, label: false, placeholder: 'Email', input_html: { class: 'devise-input' } %>
+    <%= f.input :image, as: :file %>
+    <%= f.submit 'Create Career', class: 'primary-button' %>
+  <% end %>
+</div>

@@ -1,0 +1,37 @@
+<% careers.each do |career| %>
+  <div class="col-12">
+    <%#= link_to career_path(career), class: 'no-decoration' do %>
+      <div class="careers-card">
+        <div class="careers-card-image mb-4">
+          <% if career.image.attached? %>
+            <%= cl_image_tag career.image.key, height: 70 %>
+          <% end %>
+        </div>
+        <h4 class="boldest m-0"><%= career.title %> <%= career.company_name.present? ? "@ #{ career.company_name }" : "" %></h4>
+        <p class="text-12 bold grey"><%= time_ago_in_words(career.created_at) %> ago</p>
+        <p class="lighter"><%= career.description %></p>
+        <% if career.career_type == 'Project' %>
+          <div class="project-members">
+            <div class="project-owner">
+              <%= cl_image_tag career.user.avatar.key, class: 'avatar' %>
+              <span class="ml-2 text-14 bold"><%= career.user.full_name %> - Project owner</span>
+            </div>
+          </div>
+        <% end %>
+        <div class="careers-tags-holder">
+          <% if career.salary.present? %>
+            <div class="text-14 careers-tag background-peach bold"><%= career.salary %></div>
+          <% end %>
+          <div class="text-14 careers-tag background-yellow bold"><%= career.contract %></div>
+          <% if career.location.present? %>
+            <div class="text-14 careers-tag background-light-blue bold"><%= career.location %></div>
+          <% end %>
+        </div>
+        </p>
+        <div class="career-status">
+          <div class="text-14 careers-tag bold m-0 <%= career.closed? ? "career-closed" : "career-open" %>"><%= career.closed? ? "CLOSED" : "OPEN" %></div>
+        </div>
+      </div>
+    <%# end %>
+  </div>
+<% end %>
