@@ -1,4 +1,5 @@
 .primary-button {
+  display: inline-block;
   padding: 12px 24px;
   background: -webkit-linear-gradient(#699DEB, #2172EB);
   background: -o-linear-gradient(#699DEB, #2172EB);
@@ -16,6 +17,7 @@
 }
 
 .secondary-button {
+  display: inline-block;
   padding: 12px 24px;
   background: -webkit-linear-gradient(#FF551F, #F98A66);
   background: -o-linear-gradient(#FF551F, #F98A66);

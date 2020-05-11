@@ -7,6 +7,7 @@ class CareersController < ApplicationController
   end
 
   def show
+    @project_member = ProjectMember.new
     @career = Career.find(params[:id])
     authorize @career
   end
@@ -20,6 +21,7 @@ class CareersController < ApplicationController
     @career = Career.new(career_params)
     @career.user = current_user
     if @career.save
+      update_project_members
       redirect_to career_path(@career)
     else
       render :new
@@ -33,6 +35,8 @@ class CareersController < ApplicationController
 
   def update
     @career.update(career_params)
+    ProjectMember.where(career: @career).destroy_all
+    update_project_members
     redirect_to career_path(@career)
     authorize @career
   end
@@ -41,6 +45,12 @@ class CareersController < ApplicationController
     @career.destroy
     redirect_to careers_path
     authorize @career
+  end
+
+  private
+
+  def update_project_members
+    params[:career][:user_ids].reject(&:blank?).each { |id| ProjectMember.create(career: @career, user: User.find(id)) }
   end
 
   def set_career

@@ -1,6 +1,6 @@
 <% careers.each do |career| %>
   <div class="col-12">
-    <%#= link_to career_path(career), class: 'no-decoration' do %>
+    <%= link_to career_path(career), class: 'no-decoration' do %>
       <div class="careers-card">
         <div class="careers-card-image mb-4">
           <% if career.image.attached? %>
@@ -32,6 +32,6 @@
           <div class="text-14 careers-tag bold m-0 <%= career.closed? ? "career-closed" : "career-open" %>"><%= career.closed? ? "CLOSED" : "OPEN" %></div>
         </div>
       </div>
-    <%# end %>
+    <% end %>
   </div>
 <% end %>
