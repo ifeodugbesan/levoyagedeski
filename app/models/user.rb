@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def full_name
     first_name + " " + last_name
   end
+
+  def avatar_key
+    avatar.attached? ? avatar.key : 'default-user_rt3abl'
+  end
 end

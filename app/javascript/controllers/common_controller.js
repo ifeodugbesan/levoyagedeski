@@ -14,7 +14,6 @@ export default class extends Controller {
                    ]
 
   connect() {
-    console.log('Common connect. Who dis?')
     if (navigator.standalone) {
       this.resourcesHeaderTargets.forEach((header) => { header.style.display = 'none' });
       // this.tabsHolderTarget.classList.add('pwa-resource-tabs');
@@ -52,7 +51,6 @@ export default class extends Controller {
   }
 
   showLoader() {
-    console.log('showloader who dis?')
     this.loaderTarget.style.display = 'inline-block';
     this.loaderUnderlayTarget.style.display = 'block';
   }

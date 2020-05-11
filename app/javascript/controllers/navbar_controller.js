@@ -11,8 +11,6 @@ export default class extends Controller {
                    ]
 
   connect() {
-    console.log('Navbar connect. Who dis?')
-
     if (navigator.standalone) {
       if (this.hasNavbarTarget) {
         this.navbarTarget.style.display = 'none'

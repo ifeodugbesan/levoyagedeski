@@ -1,0 +1,67 @@
+.career-container {
+  max-width: 952px;
+  margin: 50px auto;
+  @include for-medium-devices-down {
+    margin: 50px 20px;
+  }
+}
+
+.career-sidebar, .career-content {
+  border-radius: 10px;
+  // border: 1px solid rgba(0,0,0,0.1);
+  padding: 10px;
+}
+
+.avatar-overlap {
+  position: relative;
+  margin-left: -20px;
+}
+
+.project-members {
+  .avatar {
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+}
+
+.each-member {
+  position: relative;
+  &:hover {
+    .each-member-name {
+      opacity: 1;
+    }
+  }
+}
+
+.each-member-name {
+  position: absolute;
+  z-index: 20;
+  padding: 2px 6px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  left: -18px;
+  top: -25px;
+  width: max-content;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
+
+.project_member_reason {
+  margin: 0;
+  textarea {
+    height: 250px;
+  }
+}

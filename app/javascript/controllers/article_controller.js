@@ -5,7 +5,6 @@ export default class extends Controller {
                    ]
 
   connect() {
-    console.log("Article connect. Who dis?")
     const quotes = document.querySelectorAll('blockquote')
     if (quotes) {
       quotes.forEach((quote) => {

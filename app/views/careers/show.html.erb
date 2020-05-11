@@ -1,0 +1,37 @@
+<div class="career-container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="career-sidebar" style="height: 500px;">
+        <div class="careers-card-image mb-2">
+          <% if @career.image.attached? %>
+            <%= cl_image_tag @career.image.key, height: 70 %>
+          <% end %>
+        </div>
+        <% if @career.company_name.present? %>
+          <h5 class="boldest mb-2"><%= @career.company_name %></h5>
+        <% end %>
+        <div class="careers-tags-holder">
+          <% if @career.salary.present? %>
+            <div class="text-14 careers-tag background-peach bold"><%= @career.salary %></div>
+          <% end %>
+          <div class="text-14 careers-tag background-yellow bold"><%= @career.contract %></div>
+          <% if @career.location.present? %>
+            <div class="text-14 careers-tag background-light-blue bold"><%= @career.location %></div>
+          <% end %>
+        </div>
+        <% if @career.career_type == 'Project' %>
+          <%= render 'project', project: @career %>
+        <% else %>
+          <%= link_to 'Apply here', @career.link, target: '_blank', class: 'primary-button no-decoration' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="career-content" style="height: 500px;">
+        <h4 class="boldest m-0"><%= @career.title %> <%= @career.company_name.present? ? "@ #{ @career.company_name }" : "" %></h4>
+        <p class="text-12 bold grey mb-1"><%= time_ago_in_words(@career.created_at) %> ago</p>
+        <p class="lighter"><%= @career.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
