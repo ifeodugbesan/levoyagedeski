@@ -1,7 +1,5 @@
 <div class="" data-controller="messages">
-  <div class="conversations-container" data-target="messages.container" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>">
-    <div class="all-chats pl-0 pb-0">
-    </div>
+  <div class="mobile-chat conversations-container" data-target="messages.container messages.mobile" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>">
     <div class="messages-container">
       <div class="recipient-info">
         <div class="d-flex align-items-center justify-content-start">
@@ -23,7 +21,7 @@
                     <div class="message-body mr-2 speech-right">
                       <%= message.body %>
                     </div>
-                    <p class="tiny-text lighter ml-3 mb-0"><%= message.message_time %></p>
+                    <p class="time-right tiny-text lighter ml-3 mb-0"><%= message.message_time %></p>
                   </div>
                   <%= cl_image_tag user.avatar_key, class: 'avatar-large' %>
                 </div>
@@ -34,7 +32,7 @@
                     <div class="message-body ml-2 speech-left">
                       <%= message.body %>
                     </div>
-                    <p class="tiny-text lighter mr-3 mb-0 text-right"><%= message.message_time %></p>
+                    <p class="time-left tiny-text lighter mr-3 mb-0 text-right"><%= message.message_time %></p>
                   </div>
                 </div>
               <% end %>
@@ -43,8 +41,8 @@
       </div>
       <div class="message-form">
         <%= form_for [@conversation, @message], remote: true, html: { data: { type: "html", action: "ajax:success->messages#newMessage", target: 'messages.form' } } do |f| %>
-          <div class="message-box d-flex align-items-center p-3">
-            <%= f.text_area :body, placeholder: 'Enter message here...', class: "form-control" %>
+          <div class="message-box d-flex align-items-end p-3">
+            <%= f.text_area :body, placeholder: 'Enter message here...', class: "form-control", data: { action: "keyup->messages#updateMessageBox" } %>
             <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
             <%= button_tag class: "message-button" do %>
               <i class="fas fa-paper-plane mr-1"></i>

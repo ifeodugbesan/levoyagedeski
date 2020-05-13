@@ -22,7 +22,7 @@
         <p class="pwa-navbar-text <%= params[:controller] == 'posts' ? 'pwa-active' : '' %>">Posts</p>
       </div>
     <% end %>
-    <%= link_to careers_path, class: "pwa-navbar-section no-decoration" do %>
+    <%= link_to careers_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
         <% if params[:controller] == 'careers' %>
           <%= image_tag 'careers-blue.png', class: 'pwa-navbar-icon' %>

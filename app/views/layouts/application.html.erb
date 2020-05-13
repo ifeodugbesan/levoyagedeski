@@ -31,7 +31,7 @@
   <body data-controller="navbar common">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="min-height">
+    <div class="min-height" data-target="common.minHeightDiv">
       <div class="loader-underlay" data-target="common.loaderUnderlay"></div>
       <div class="loader" data-target="common.loader">
         <%= image_tag "logo.png", class: "loader-logo" %>

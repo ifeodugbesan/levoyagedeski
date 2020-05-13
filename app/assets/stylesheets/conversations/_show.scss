@@ -1,0 +1,67 @@
+.mobile-chat {
+  background: transparent !important;
+  padding: 0;
+  border-radius: 0 !important;
+  hr {
+    margin: 0;
+  }
+  .messages {
+    padding: 5px 10px 0 10px !important;
+    .avatar-large {
+      height: 36px !important;
+      width: 36px !important;
+    }
+  }
+  .messages-container {
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+  .recipient-info {
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  }
+  .message-box {
+    border-radius: 2px !important;
+    padding: 5px !important;
+  }
+  .message-button {
+    border-radius: 2px !important;
+    height: 38px !important;
+    width: 38px !important;
+    i {
+      font-size: 16px;
+      margin-right: 2px !important;
+    }
+  }
+  .message-body {
+    font-size: 12px;
+    padding: 7px 12px !important;
+  }
+  .speech-right {
+    border-radius: 13px 0 13px 13px !important;
+  }
+  .speech-left {
+    border-radius: 0 13px 13px 13px !important;
+  }
+  .time-left {
+    margin-right: 12px !important;
+  }
+  .time-right {
+    margin-left: 12px !important;
+  }
+  #message_body {
+    height: 25px;
+    padding: 0 5px !important;
+    margin: 6px 0 !important;
+  }
+  .message-form {
+    padding: 0 10px 10px !important;
+  }
+  .tiny-text {
+    font-size: 6px !important;
+  }
+  @include for-medium-devices-up {
+    display: none !important;
+  }
+}
