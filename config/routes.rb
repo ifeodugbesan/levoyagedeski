@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       get :reject_membership
     end
   end
+  resources :conversations do
+    resources :messages
+  end
   get 'seen_pwa', to: 'pages#seen_pwa'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

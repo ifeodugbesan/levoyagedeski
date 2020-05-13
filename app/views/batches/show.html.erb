@@ -37,7 +37,7 @@
         <h6 class="boldest mb-2"><%= event.time.strftime('%A %e %B %Y') %></h6>
         <h6 class="bold m-0"><%= event.title %></h6>
         <p class="m-0"><%= event.description %></p>
-        <p class="bold m-0"><%= event.time.strftime('%l:%M %p') %></p>
+        <p class="bold m-0"><%= event.time.strftime('%H:%M %p') %></p>
       </div>
     <% end %>
     <% if @events.count > 4 %>

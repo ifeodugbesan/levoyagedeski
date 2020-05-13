@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :project_members, dependent: :destroy
   has_many :careers, through: :project_members
+  has_many :messages, dependent: :destroy
+  has_many :conversations, through: :messages
   has_one_attached :avatar
 
   def full_name
@@ -18,5 +20,9 @@ class User < ApplicationRecord
 
   def avatar_key
     avatar.attached? ? avatar.key : 'default-user_rt3abl'
+  end
+
+  def chats
+    (Conversation.where(sender: self) + Conversation.where(recipient: self)).sort_by(&:updated_at)
   end
 end
