@@ -10,10 +10,18 @@ export default class extends Controller {
                     "resourceTabs",
                     "tabsHolder",
                     "resourcesHeader",
-                    "resourcesContent"
+                    "resourcesContent",
+                    "minHeightDiv"
                    ]
 
   connect() {
+    if (window.innerWidth < 577) {
+      if (navigator.standalone) {
+        this.minHeightDivTarget.style.minHeight = `${window.innerHeight - 140}px`;
+      } else {
+        this.minHeightDivTarget.style.minHeight = `${window.innerHeight - 66}px`;
+      }
+    }
     if (navigator.standalone) {
       this.resourcesHeaderTargets.forEach((header) => { header.style.display = 'none' });
       // this.tabsHolderTarget.classList.add('pwa-resource-tabs');

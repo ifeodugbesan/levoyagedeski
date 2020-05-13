@@ -39,6 +39,9 @@
               <%= link_to "Resources", resources_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
+              <%= link_to "Inbox", conversations_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
           </ul>
@@ -70,10 +73,14 @@
 </div>
 <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
   <div class="pwa-top-bar" data-target="navbar.pwaTopBar">
+    <i class="far fa-bell"></i>
     <div class="navbar-brand" data-action="click->navbar#scrollTop">
       <%= image_tag "logo.png", class: "pwa-logo" %>
       <%= image_tag "logo-text.png", class: "pwa-logo-text" %>
     </div>
+    <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
+      <i class="far fa-comments"></i>
+    <% end %>
   </div>
   <div class="pwa-top-bar-spacer" data-target="navbar.pwaTopBarSpacer"></div>
 <% end %>

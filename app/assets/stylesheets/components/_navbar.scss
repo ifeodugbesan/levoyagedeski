@@ -121,20 +121,24 @@
 
 .pwa-top-bar {
   display: none;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 60px;
   width: 100%;
+  padding: 0 20px;
   position: fixed;
   z-index: 2500;
   top: 0;
   background: #FFF;
+  i {
+    font-size: 26px;
+    color: #4E77B7;
+  }
 }
 
 .pwa-top-bar-spacer {
   height: 60px;
   display: none;
-
 }
 
 .pwa-navbar-section {
