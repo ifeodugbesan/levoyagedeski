@@ -13,7 +13,7 @@ export default class extends Controller {
         this.mobileTarget.style.height = `${window.innerHeight - 66}px`
       }
     }
-    if (this.hasContainerTarget) {
+    if (this.hasContainerTarget && this.hasMessagesTarget) {
       const container = this.containerTarget
       const messages = this.messagesTarget
       messages.scrollTop = messages.scrollHeight;
