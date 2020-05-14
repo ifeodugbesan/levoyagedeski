@@ -3,7 +3,7 @@ import Pusher from 'pusher-js';
 import $ from 'jquery'
 
 export default class extends Controller {
-  static targets = ["container", "messages", "form", "mobile", "input"]
+  static targets = ["container", "messages", "form", "mobile", "input", "chatContainer", "suggestions"]
 
   connect() {
     if (this.hasMobileTarget) {
@@ -20,11 +20,12 @@ export default class extends Controller {
       const key = this.containerTarget.dataset.key
       const currentUser = this.containerTarget.dataset.currentUser
       const cluster = this.containerTarget.dataset.cluster
+      const chatChannel = this.containerTarget.dataset.channel
       let pusher = new Pusher(key, {
         cluster: cluster,
         forceTLS: true
       });
-      let channel = pusher.subscribe('my-channel');
+      let channel = pusher.subscribe(chatChannel);
       channel.bind('my-event', function(data) {
         if (data.user_id == currentUser) {
           return;
@@ -61,8 +62,19 @@ export default class extends Controller {
     event.target.style.height = `1px`;
     event.target.style.height = `${event.target.scrollHeight}px`;
   }
+
+  switchConversation() {
+    let [data, status, xhr] = event.detail;
+    let chatContainer = this.chatContainerTarget
+    chatContainer.innerHTML = xhr.response
+    const messages = this.messagesTarget
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  searchResults() {
+
+  }
 }
 
 // 1. SET HEIGHT OF MESSAGE BOX WHEN ITS PWA AND EXTRA BOTTOM BIT PWA
-// 2. CONVERSATIONS PAGE FOR WEB, AJAX FOR MESSAGES ON SAME PAGE
 // 3. NOTIFICATIONS FOR NEW MESSAGE

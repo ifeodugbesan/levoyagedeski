@@ -9,7 +9,7 @@ class Message < ApplicationRecord
   end
 
   def notify_pusher
-    Pusher.trigger('my-channel', 'my-event', message_info)
+    Pusher.trigger("le-voyage-chat_#{self.conversation.id}", 'my-event', message_info)
   end
 
   def message_info

@@ -1,62 +1,38 @@
-<div class="" data-controller="messages">
-  <div class="ui segment">
-    <h3>All Users</h3>
-    <div class="ui list">
-      <% @users.each do |user| %>
-        <% if user.id != current_user.id %>
-          <div class="item">
-            <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-          </div>
+<div class="conversations-container" data-controller="messages">
+  <div class="all-chats">
+    <div class="chats-header">
+      <%= form_tag conversations_path, method: :get do |f| %>
+        <%= text_field_tag :query, params[:query], class: 'navbar-search-input didot devise-input', placeholder: 'Search for a user..', autocomplete: 'off', data: { action: "keyup->message#searchResults"} %>
+        <div id="suggestions" data-target="suggestions"></div>
+      <% end %>
+      <% if @query %>
+        <h4 class="all-chats-title m-0 bold">Users (<%= @users.count %>)</h4>
+        <div class="w-100 px-3">
+          <hr>
+        </div>
+        <div class="user-search-results px-3">
+          <% @users.each do |user| %>
+            <%= render 'users', user: user %>
+          <% end %>
+        </div>
+      <% end %>
+      <h4 class="all-chats-title m-0 bold">All chats (<%= @conversations.count %>)</h4>
+    </div>
+    <div class="w-100 px-3">
+      <hr>
+    </div>
+    <div class="recipient-container px-3">
+      <% @conversations.each_with_index do |conversation, index| %>
+        <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
         <% end %>
+        <%= render 'open_chats', index: index, recipient: recipient, conversation: conversation, last_message: @last_message %>
       <% end %>
     </div>
   </div>
-
-  <div class="conversations-container">
-    <div class="all-chats pl-0 pb-0">
-      <div class="chats-header">
-        <h4 class="m-0 bold">All chats</h4>
-      </div>
-      <hr>
-      <div class="recipient-container">
-        <% @conversations.each do |conversation| %>
-          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-            <% if conversation.sender_id == current_user.id %>
-              <% recipient = User.find(conversation.recipient_id) %>
-            <% else %>
-              <% recipient = User.find(conversation.sender_id) %>
-            <% end %>
-            <div class="each-recipient d-flex p-2">
-              <%= cl_image_tag recipient.avatar_key, class: 'avatar-large mr-2' %>
-              <div class="text-left truncate-text">
-                <h6 class="mb-0 boldest white"><%= recipient.full_name %></h6>
-                <p class="small-text lighter white truncate-text"><%= conversation.messages.last.body %></p>
-                <%#= link_to recipient.first_name, conversation_messages_path(conversation)%>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    <div class="messages-container">
-      <div class="recipient-info">
-        <div class="d-flex align-items-center justify-content-start">
-          <%= cl_image_tag current_user.avatar_key, class: 'avatar-large' %>
-          <h6 class="mb-0 ml-3 boldest"><%= current_user.full_name %></h6>
-        </div>
-        <hr>
-      </div>
-      <div class="message-form">
-        <%= form_for [@conversation, @conversations.first.messages.new], url: 'conversation_messages_path', html: {class: "ui reply form"} do |f| %>
-          <div class="message-box d-flex align-items-center p-3">
-            <%= f.text_area :body, placeholder: 'Enter message here...', class: "form-control" %>
-            <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-            <%= button_tag class: "message-button" do %>
-              <i class="fas fa-paper-plane"></i>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+  <div class="chat-container" data-target="messages.chatContainer">
+    <%= render 'messages/index_web', conversation: @conversation, messages: @messages, message: @message %>
   </div>
 </div>

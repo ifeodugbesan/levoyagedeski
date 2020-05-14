@@ -62,6 +62,7 @@
     font-size: 6px !important;
   }
   @include for-medium-devices-up {
-    display: none !important;
+    max-width: 700px;
+    max-height: 700px;
   }
 }

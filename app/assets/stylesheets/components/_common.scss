@@ -5,10 +5,16 @@ body {
 }
 
 .min-height {
-  min-height: calc(100vh - 81px);
+  min-height: calc(100vh - 92px);
   @include for-phone-only {
     min-height: calc(100vh - 66px);
   }
+}
+
+.full-page-center {
+  height: 100%;
+  width: 100%;
+  @include absCenter;
 }
 
 @media only screen
