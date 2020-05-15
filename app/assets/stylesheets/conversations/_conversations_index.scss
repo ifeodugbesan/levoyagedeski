@@ -106,8 +106,19 @@
   }
 }
 
+.message-date {
+  color: #8C8C8C;
+  border: 1px solid #ebebeb;
+  padding: 0 10px;
+  border-radius: 50px;
+  font-size: 10px;
+}
+
 .recipient-container {
   overflow: scroll;
+  .avatar-large {
+    border: 2px solid rgba(255, 255, 255, 0)
+  }
 }
 
 .each-recipient {
@@ -152,9 +163,14 @@
   }
 }
 
+.border-red {
+  border: 2px solid #fd1015 !important;
+}
+
 .messages {
   flex: 1;
   overflow: scroll;
+  position: relative;
 }
 
 .each-message {
@@ -163,17 +179,18 @@
 }
 
 .message-body {
-  padding: 8px 20px;
+  padding: 6px 12px;
+  font-size: 14px;
 }
 
 .speech-right {
-  border-radius: 15px 0 15px 15px;
+  border-radius: 12px 0 12px 12px;
   background: #BBD4D7;
 
 }
 
 .speech-left {
-  border-radius: 0 15px 15px 15px;
+  border-radius: 0 12px 12px 12px;
   background: #A2B8D9;
 }
 

@@ -1,7 +1,8 @@
 <!-- SHOW ON WEB -->
+<%  notification = conversation.messages.where.not(user: current_user, read: true).any? %>
 <%= link_to conversations_path(sender_id: current_user.id, recipient_id: recipient.id), remote: true, data: { action: "ajax:success->messages#switchConversation" }, method: 'post', class: 'open-chats-web no-decoration' do %>
   <div class="each-recipient d-flex p-2">
-    <%= cl_image_tag recipient.avatar_key, class: 'avatar-large mr-2' %>
+    <%= cl_image_tag recipient.avatar_key, class: "avatar-large mr-2 #{ 'border-red' if notification }" %>
     <div class="text-left truncate-text">
       <h6 class="mb-0 boldest white"><%= recipient.full_name %></h6>
       <% if index == 0 %>
@@ -15,7 +16,7 @@
 <!-- SHOW ON MOBILE -->
 <%= link_to conversations_path(sender_id: current_user.id, recipient_id: recipient.id), method: 'post', class: 'open-chats-mobile no-decoration' do %>
   <div class="each-recipient d-flex p-2">
-    <%= cl_image_tag recipient.avatar_key, class: 'avatar-large mr-2' %>
+    <%= cl_image_tag recipient.avatar_key, class: "avatar-large mr-2 #{ 'border-red' if notification }" %>
     <div class="text-left truncate-text">
       <h6 class="mb-0 boldest white"><%= recipient.full_name %></h6>
       <% if index == 0 %>

@@ -1,18 +1,33 @@
 <div class="" data-controller="messages">
-  <div class="mobile-chat conversations-container" data-target="messages.container messages.mobile" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>">
+  <div class="mobile-chat conversations-container" data-target="messages.container messages.mobile" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>" data-channel="le-voyage-chat_<%= @conversation.id if @conversation %>">
     <div class="messages-container">
       <div class="recipient-info">
+        <% if @conversation.sender_id == current_user.id %>
+          <% recipient = User.find(@conversation.recipient_id) %>
+        <% else %>
+          <% recipient = User.find(@conversation.sender_id) %>
+        <% end %>
         <div class="d-flex align-items-center justify-content-start">
-          <%= cl_image_tag current_user.avatar_key, class: 'avatar-large' %>
-          <h6 class="mb-0 ml-3 boldest"><%= current_user.full_name %></h6>
+          <%= cl_image_tag recipient.avatar_key, class: 'avatar-large' %>
+          <h6 class="mb-0 ml-3 boldest"><%= recipient.full_name %></h6>
         </div>
       </div>
       <hr>
-      <% if @over_ten %>
-        <p class="small-text text-center"><%= link_to 'Show Previous', '?m=all' %></p>
-      <% end %>
       <div class="messages pb-3" data-target="messages.messages">
+        <% if @over_ten %>
+          <p class="small-text text-center m-0"><%= link_to 'Show Previous', '?m=all' %></p>
+        <% end %>
+        <% @message_date = @messages.first.created_at.strftime("%A, %b %d") %>
+        <div class="d-flex justify-content-center">
+          <p class="message-date text-center m-0 bold"><%= @message_date %></p>
+        </div>
         <% @messages.each do |message| %>
+          <% unless message.created_at.strftime("%A, %b %d") == @message_date %>
+            <% @message_date = message.created_at.strftime("%A, %b %d") %>
+            <div class="d-flex justify-content-center">
+              <p class="message-date text-center m-0 bold"><%= @message_date %></p>
+            </div>
+          <% end %>
           <% if message.body %>
             <% user = User.find(message.user_id) %>
               <% if user == current_user %>
@@ -23,11 +38,11 @@
                     </div>
                     <p class="time-right tiny-text lighter ml-3 mb-0"><%= message.message_time %></p>
                   </div>
-                  <%= cl_image_tag user.avatar_key, class: 'avatar-large' %>
+                  <%= cl_image_tag user.avatar_key, class: 'user-avatar' %>
                 </div>
               <% else %>
                 <div class="each-message py-1 justify-content-start">
-                  <%= cl_image_tag user.avatar_key, class: 'avatar-large' %>
+                  <%= cl_image_tag user.avatar_key, class: 'user-avatar' %>
                   <div class="" style="max-width: 77%;">
                     <div class="message-body ml-2 speech-left">
                       <%= message.body %>

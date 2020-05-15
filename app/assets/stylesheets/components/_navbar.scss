@@ -102,6 +102,19 @@
   // height: 30px;
 }
 
+.notification-icon {
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fd1015;
+  color: #FFF;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  @include absCenter;
+}
+
 ////////////////////////////////// PWA NAVBAR //////////////////////////////
 
 .pwa-navbar-spacer {
