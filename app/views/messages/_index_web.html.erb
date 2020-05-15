@@ -12,11 +12,21 @@
       </div>
     </div>
     <hr>
-    <% if @over_ten %>
-      <p class="small-text text-center"><%= link_to 'Show Previous', '?m=all' %></p>
-    <% end %>
-    <div class="messages pb-3" data-target="messages.messages">
+    <div class="messages py-3" data-target="messages.messages">
+      <% if @over_ten %>
+        <p class="small-text text-center m-0"><%= link_to 'Show Previous', '?m=all' %></p>
+      <% end %>
+      <% @message_date = messages.first.created_at.strftime("%A, %b %d") %>
+      <div class="d-flex justify-content-center">
+        <p class="message-date text-center m-0 bold"><%= @message_date %></p>
+      </div>
       <% messages.each do |message| %>
+        <% unless message.created_at.strftime("%A, %b %d") == @message_date %>
+          <% @message_date = message.created_at.strftime("%A, %b %d") %>
+          <div class="d-flex justify-content-center">
+            <p class="message-date text-center m-0 bold"><%= @message_date %></p>
+          </div>
+        <% end %>
         <% if message.body %>
           <% user = User.find(message.user_id) %>
             <% if user == current_user %>
@@ -27,11 +37,11 @@
                   </div>
                   <p class="time-right tiny-text lighter ml-3 mb-0"><%= message.message_time %></p>
                 </div>
-                <%= cl_image_tag user.avatar_key, class: 'avatar-large' %>
+                <%= cl_image_tag user.avatar_key, class: 'user-avatar' %>
               </div>
             <% else %>
               <div class="each-message py-1 justify-content-start">
-                <%= cl_image_tag user.avatar_key, class: 'avatar-large' %>
+                <%= cl_image_tag user.avatar_key, class: 'user-avatar' %>
                 <div class="" style="max-width: 77%;">
                   <div class="message-body ml-2 speech-left">
                     <%= message.body %>

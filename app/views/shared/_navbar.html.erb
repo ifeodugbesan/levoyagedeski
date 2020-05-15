@@ -1,18 +1,29 @@
 <div class="navbar-container">
   <% if user_signed_in? %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-target="navbar.navbar">
-      <div class="show-web w-100 d-flex justify-content-center align-items-center">
-        <i class="far fa-bell"></i>
-        <%= link_to "Posts", posts_path, class: "nav-link", style: 'margin-left: 20px' %>
-        <%= link_to "Careers", careers_path, class: "nav-link" %>
+      <div class="show-web w-100 d-flex justify-content-between align-items-center">
         <%= link_to root_path, class: "#{ user_signed_in? ? 'nav-link' : 'navbar-brand'}" do %>
           <%= image_tag "logo.png", class: "logo-signed-in" %>
         <% end %>
-        <%= link_to "Articles", articles_path, class: "nav-link" %>
-        <%= link_to "Resources", resources_path, class: "nav-link" %>
-        <%= link_to conversations_path do %>
-          <i class="far fa-comments"></i>
-        <% end %>
+        <span class="d-flex align-items-center">
+          <%= link_to "Posts", posts_path, class: "nav-link", style: 'margin-left: 20px' %>
+          <%= link_to "Careers", careers_path, class: "nav-link" %>
+          <%= link_to "Articles", articles_path, class: "nav-link" %>
+          <%= link_to "Resources", resources_path, class: "nav-link" %>
+          <i class="far fa-bell ml-1 mr-3"></i>
+          <%= link_to conversations_path do %>
+            <% if current_user.new_messages.any? %>
+              <div class="nav-chat position-relative">
+                <i class="fas fa-comments"></i>
+                <span class="notification-icon">
+                  <%= current_user.new_messages.count %>
+                </span>
+              </div>
+            <% else %>
+              <i class="far fa-comments"></i>
+            <% end %>
+          <% end %>
+        </span>
       </div>
       <div class="show-mobile">
         <%= link_to root_path, class: "navbar-brand" do %>

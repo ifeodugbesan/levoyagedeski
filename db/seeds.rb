@@ -25,3 +25,16 @@ count = 1
   puts "creating the user '#{user.first_name} #{user.last_name}'"
   user.save!
 end
+
+
+# count = 0
+# num = 1
+# Conversation.between(User.find(4), User.find(1)).first.messages.each do |message|
+#   message_time = Time.new(2020,05, num, 11, 25, 00)
+#   message.update(created_at: message_time, updated_at: message_time)
+#   count += 2
+#   if count == 10
+#     num += 1
+#     count = 0
+#   end
+# end

@@ -2,14 +2,14 @@ class MessagesController < ApplicationController
   before_action :set_coversation
 
   def index
-    @messages = policy_scope(Message).where(conversation: @conversation)
+    @messages = policy_scope(Message).where(conversation: @conversation).order(created_at: :asc)
     if @messages.length > 10
       @over_ten = true
       @messages = @messages[-10..-1]
     end
     if params[:m]
       @over_ten = false
-      @messages = policy_scope(Message).where(conversation: @conversation)
+      @messages = policy_scope(Message).where(conversation: @conversation).order(created_at: :asc)
     end
     if @messages.last
       if @messages.last.user_id != current_user.id

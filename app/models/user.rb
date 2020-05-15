@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def chats
     (Conversation.where(sender: self) + Conversation.where(recipient: self)).sort_by(&:updated_at)
   end
+
+  def new_messages
+    self.chats.map { |c| c.messages.where.not(user: self, read: true) }.flatten.reject(&:blank?)
+  end
 end
