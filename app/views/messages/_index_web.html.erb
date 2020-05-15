@@ -16,7 +16,7 @@
       <% if @over_ten %>
         <p class="small-text text-center m-0"><%= link_to 'Show Previous', '?m=all' %></p>
       <% end %>
-      <% @message_date = messages.first.created_at.strftime("%A, %b %d") %>
+      <% @message_date = messages.first.created_at.strftime("%A, %b %d") if messages.any? %>
       <div class="d-flex justify-content-center">
         <p class="message-date text-center m-0 bold"><%= @message_date %></p>
       </div>
