@@ -1,6 +1,6 @@
 <!-- SHOW ON WEB -->
 <%  notification = conversation.messages.where.not(user: current_user, read: true).any? %>
-<%= link_to conversations_path(sender_id: current_user.id, recipient_id: recipient.id), remote: true, data: { action: "ajax:success->messages#switchConversation" }, method: 'post', class: 'open-chats-web no-decoration' do %>
+<%= link_to conversations_path(sender_id: current_user.id, recipient_id: recipient.id), remote: true, data: { action: "ajax:success->chats#switchConversation" }, method: 'post', class: 'open-chats-web no-decoration' do %>
   <div class="each-recipient d-flex p-2">
     <%= cl_image_tag recipient.avatar_key, class: "avatar-large mr-2 #{ 'border-red' if notification }" %>
     <div class="text-left truncate-text">

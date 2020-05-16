@@ -1,4 +1,4 @@
-<div class="messages-container web-chat-box" data-target="messages.container" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>" data-channel="le-voyage-chat_<%= conversation.id if conversation %>">
+<div class="messages-container web-chat-box" data-controller="messages" data-target="messages.container" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>" data-channel="le-voyage-chat_<%= conversation.id if conversation %>">
   <% if conversation %>
     <div class="recipient-info">
       <div class="d-flex align-items-center justify-content-start">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <hr>
-    <div class="messages py-3" data-target="messages.messages">
+    <div class="messages py-3" data-target="messages.messages chats.messages">
       <% if @over_ten %>
         <p class="small-text text-center m-0"><%= link_to 'Show Previous', '?m=all' %></p>
       <% end %>

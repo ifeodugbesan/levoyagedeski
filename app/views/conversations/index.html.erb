@@ -1,8 +1,8 @@
-<div class="conversations-container" data-controller="messages">
+<div class="conversations-container" data-controller="chats">
   <div class="all-chats">
     <div class="chats-header">
       <%= form_tag conversations_path, method: :get do |f| %>
-        <%= text_field_tag :query, params[:query], class: 'navbar-search-input didot devise-input', placeholder: 'Search for a user..', autocomplete: 'off', data: { action: "keyup->message#searchResults"} %>
+        <%= text_field_tag :query, params[:query], class: 'navbar-search-input didot devise-input', placeholder: 'Search for a user..', autocomplete: 'off' %>
         <div id="suggestions" data-target="suggestions"></div>
       <% end %>
       <% if @query %>
@@ -32,7 +32,7 @@
       <% end %>
     </div>
   </div>
-  <div class="chat-container" data-target="messages.chatContainer">
+  <div class="chat-container" data-target="chats.chatContainer">
     <%= render 'messages/index_web', conversation: @conversation, messages: @messages, message: @message %>
   </div>
 </div>
