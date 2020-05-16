@@ -28,7 +28,7 @@
 .post-card-user {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 2px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .post-card-heart {
-  height: 35px;
+  height: 25px;
 }
 
 #new_comment {
