@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @like = Like.new(post: @post, user: current_user)
     if @like.save
-      redirect_to posts_path
+      render partial: 'posts/post_user', locals: { post: @post }
     else
       redirect_to posts_path, alert: 'Something went wrong'
     end
@@ -14,6 +14,6 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     @like.destroy
     authorize @like
-    redirect_to posts_path
+    render partial: 'posts/post_user', locals: { post: @like.post }
   end
 end
