@@ -1,5 +1,5 @@
 <div class="" data-controller="messages">
-  <div class="mobile-chat conversations-container" data-target="messages.container chats.mobile" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>" data-channel="le-voyage-chat_<%= @conversation.id if @conversation %>">
+  <div class="mobile-chat conversations-container" data-target="messages.container messages.mobile" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>" data-channel="le-voyage-chat_<%= @conversation.id if @conversation %>">
     <div class="messages-container">
       <div class="recipient-info">
         <% if @conversation.sender_id == current_user.id %>
