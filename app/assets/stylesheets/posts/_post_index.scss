@@ -52,8 +52,13 @@
   }
 }
 
-.post-comment-form {
+.comments-modal {
+  border-radius: 5px !important;
+}
 
+.post-comments {
+  max-height: 75vh;
+  overflow: scroll;
 }
 
 .post-card-form-input {

@@ -5,9 +5,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
-      redirect_to posts_path
-    else
-      redirect_to posts_path, alert: 'Something went wrong'
+      render partial: 'posts/comment', locals: { comment: @comment }
     end
     authorize @comment
   end
