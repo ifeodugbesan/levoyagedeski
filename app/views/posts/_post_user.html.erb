@@ -8,11 +8,11 @@
     <%= post.user.username ? post.user.username : post.user.full_name %>
   </div>
   <% if post.likes&.map(&:user).include?(current_user) %>
-    <%= link_to like_path(Like.where(user: current_user, post: post).first), remote: true, data: { action: "ajax:success->posts#toggleLike" }, method: :delete do %>
+    <%= link_to like_path(Like.where(user: current_user, post: post).first), remote: true, id: "like-toggle_#{post.id}", data: { action: "ajax:success->posts#toggleLike" }, method: :delete do %>
       <%= image_tag 'post-card-heart-green.png', class: 'post-card-heart' %>
     <% end %>
   <% else %>
-    <%= link_to post_likes_path(post), remote: true, data: { action: "ajax:success->posts#toggleLike" }, method: :post do %>
+    <%= link_to post_likes_path(post), remote: true, id: "like-toggle_#{post.id}", data: { action: "ajax:success->posts#toggleLike" }, method: :post do %>
       <%= image_tag 'post-card-heart.png', class: 'post-card-heart' %>
     <% end %>
   <% end %>
