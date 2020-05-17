@@ -5,6 +5,9 @@ export default class extends Controller {
   static targets = ["postCard", "heart", "modal"]
 
   connect() {
+    if (navigator.standalone) {
+      this.modalTargets.forEach((modal) => modal.style.top = `65px`);
+    }
   }
 
   toggleLike() {
