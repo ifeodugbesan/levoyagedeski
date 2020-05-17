@@ -14,16 +14,18 @@
           <%= render 'post_user', post: post %>
         </div>
         <p class="boldest m-0"><%= post.user.username ? post.user.username : post.user.full_name %> <span style="font-weight: 200;"><%= post.caption %></span></p>
-        <% if post.comments.count > 5 %>
-          <p class="text-12 bold m-0 grey">view all <%= post.comments.count %> comments</span></p>
-        <% else %>
-          <% post.comments.each do |comment| %>
-            <p class="boldest m-0"><%= comment.user.username ? comment.user.username : comment.user.full_name %> <span style="font-weight: 200;"><%= comment.content %></span></p>
+        <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
+          <% if post.comments.count > 5 %>
+            <p class="text-12 bold m-0 grey cursor-pointer post-modal_<%= post.id %>" data-toggle="modal" data-target="#post-modal_<%= post.id %>" data-count="<%= post.comments.count %>">view all <%= post.comments.count %> comments</span></p>
+          <% else %>
+            <% post.comments.each do |comment| %>
+              <%= render 'comment', comment: comment %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
       <% unless post.user == current_user %>
-        <%= simple_form_for [post, @comment] do |f| %>
+        <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newComment", id: "#{post.id}" } do |f| %>
           <%= f.input :content,
                       required: true,
                       label: false,
@@ -32,6 +34,40 @@
           <%= f.submit 'Post', class: 'post-card-form-button' %>
         <% end %>
       <% end %>
+    </div>
+
+    <!-- COMMENTS MODAL -->
+    <div class="modal fade " id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content comments-modal">
+          <div class="modal-header">
+            <p class="boldest m-0"><%= post.user.username ? post.user.username : post.user.full_name %> <span class="pr-4" style="font-weight: 200;"><%= post.caption %></span></p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <hr class="mt-0 w-100">
+          <div class="modal-body py-0 post-comments-body">
+            <div class="post-comments post-modal-comments-box_<%= post.id %>" data-target="posts.commentsBox">
+              <% post.comments.each do |comment| %>
+                <%= render 'comment', comment: comment %>
+              <% end %>
+            </div>
+          </div>
+          <div class="modal-footer pb-0 px-0">
+            <% unless post.user == current_user %>
+              <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newCommentModal", id: "#{post.id}" }, html: { class: "w-100 mx-0 mb-0" } do |f| %>
+                <%= f.input :content,
+                            required: true,
+                            label: false,
+                            placeholder: 'Add a comment...',
+                            input_html: { class: 'post-card-form-input' } %>
+                <%= f.submit 'Post', class: 'post-card-form-button' %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

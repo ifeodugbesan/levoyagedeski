@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'project_members/destroy'
   devise_for :users
   root to: 'pages#home'
-  resources :posts do
+  resources :posts, except: [:show] do
     resources :comments, only: [:new, :create]
     resources :likes, only: [:new, :create]
   end
