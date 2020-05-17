@@ -87,22 +87,26 @@
   <% end %>
 </div>
 <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
-  <div class="pwa-top-bar" data-target="navbar.pwaTopBar">
-    <i class="far fa-bell"></i>
+  <div class="pwa-top-bar" data-target="navbar.pwaTopBar" style="justify-content: <%= user_signed_in? ? 'space-between' : 'center' %>">
+    <% if user_signed_in? %>
+      <i class="far fa-bell"></i>
+    <% end %>
     <div class="navbar-brand" data-action="click->navbar#scrollTop">
       <%= image_tag "logo.png", class: "pwa-logo" %>
       <%= image_tag "logo-text.png", class: "pwa-logo-text" %>
     </div>
-    <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
-      <% if current_user.new_messages.any? %>
-        <div class="nav-chat position-relative">
-          <i class="fas fa-comments"></i>
-          <span class="notification-icon">
-            <%= current_user.new_messages.count %>
-          </span>
-        </div>
-      <% else %>
-        <i class="far fa-comments"></i>
+    <% if user_signed_in? %>
+      <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
+        <% if current_user.new_messages.any? %>
+          <div class="nav-chat position-relative">
+            <i class="fas fa-comments"></i>
+            <span class="notification-icon">
+              <%= current_user.new_messages.count %>
+            </span>
+          </div>
+        <% else %>
+          <i class="far fa-comments"></i>
+        <% end %>
       <% end %>
     <% end %>
   </div>
