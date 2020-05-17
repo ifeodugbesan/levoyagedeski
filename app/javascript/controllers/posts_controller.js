@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import $ from 'jquery'
 
 export default class extends Controller {
-  static targets = ["postCard"]
+  static targets = ["postCard", "heart", "modal"]
 
   connect() {
   }
@@ -12,17 +12,37 @@ export default class extends Controller {
     event.target.parentElement.parentElement.innerHTML = xhr.response;
   }
 
+  showLikeToggle() {
+    const like = event.target.nextElementSibling
+    const overlay = event.target
+    like.style.zIndex = '50';
+    overlay.style.zIndex = '0';
+
+    setTimeout(function() {
+      like.style.zIndex = '0';
+      overlay.style.zIndex = '50';
+    }, 300)
+  }
+
+  doubleClickToggleLike() {
+    let likeToggle = document.getElementById(`like-toggle_${event.target.dataset.id}`)
+    let heart = event.target.parentElement.lastElementChild
+    likeToggle.click();
+    heart.style.animation = 'likeheart 0.7s ease'
+    setTimeout(function() {
+      heart.style.animation = ''
+    }, 700)
+
+  }
+
   newComment() {
     let [data, status, xhr] = event.detail;
-    console.log(event.target.previousElementSibling.lastElementChild)
     event.target.previousElementSibling.lastElementChild.insertAdjacentHTML('beforeend', xhr.response);
     let moreComments = document.querySelector(`.post-modal_${event.target.dataset.id}`)
     let modalComments = document.querySelector(`.post-modal-comments-box_${event.target.dataset.id}`)
     modalComments.insertAdjacentHTML('beforeend', xhr.response);
-    console.log(moreComments)
     let numId = parseInt(moreComments.dataset.count, 10)
     if (moreComments) {
-      console.log(moreComments.innerText)
       moreComments.innerText = `view all ${numId + 1} comments`
       moreComments.dataset.count = (numId + 1).toString();
     }
@@ -39,7 +59,6 @@ export default class extends Controller {
     let moreComments = document.querySelector(`.post-modal_${event.target.dataset.id}`)
     let numId = parseInt(moreComments.dataset.count, 10)
     if (moreComments) {
-      console.log(moreComments.innerText)
       moreComments.innerText = `view all ${numId + 1} comments`;
       moreComments.dataset.count = (numId + 1).toString();
     }

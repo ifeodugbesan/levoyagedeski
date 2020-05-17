@@ -6,7 +6,12 @@
     <div class="post-card">
       <% if post.photo.attached? %>
         <div class="post-card-image">
-          <%= cl_image_tag post.photo.key, width: 500, quality: :auto %>
+          <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
+          <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
+          <%= cl_image_tag post.photo.key, width: 500, quality: :auto, data: { target: "posts.image" }, class: 'post-image' %>
+          <div class="white-heart">
+            <%= image_tag 'white-heart.png', data: { target: 'heart'} %>
+          </div>
         </div>
       <% end %>
       <div class="post-card-content">
@@ -38,7 +43,7 @@
 
     <!-- COMMENTS MODAL -->
     <div class="modal fade " id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog" role="document">
         <div class="modal-content comments-modal">
           <div class="modal-header">
             <p class="boldest m-0"><%= post.user.username ? post.user.username : post.user.full_name %> <span class="pr-4" style="font-weight: 200;"><%= post.caption %></span></p>

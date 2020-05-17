@@ -94,7 +94,16 @@
       <%= image_tag "logo-text.png", class: "pwa-logo-text" %>
     </div>
     <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
-      <i class="far fa-comments"></i>
+      <% if current_user.new_messages.any? %>
+        <div class="nav-chat position-relative">
+          <i class="fas fa-comments"></i>
+          <span class="notification-icon">
+            <%= current_user.new_messages.count %>
+          </span>
+        </div>
+      <% else %>
+        <i class="far fa-comments"></i>
+      <% end %>
     <% end %>
   </div>
   <div class="pwa-top-bar-spacer" data-target="navbar.pwaTopBarSpacer"></div>
