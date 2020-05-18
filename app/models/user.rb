@@ -33,6 +33,6 @@ class User < ApplicationRecord
   end
 
   def new_messages
-    self.chats.map { |c| c.messages.where.not(user: self, read: true) }.flatten.reject(&:blank?)
+    self.chats.map { |c| c.messages.where.not(user: self).where.not(read: true) }.flatten.reject(&:blank?)
   end
 end

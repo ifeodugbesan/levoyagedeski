@@ -1,0 +1,12 @@
+.upvote-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.tip-card {
+  margin: 0 auto 30px auto !important;
+  @include for-small-devices-down {
+    margin: 0 auto 20px auto !important;
+  }
+}
