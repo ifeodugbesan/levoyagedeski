@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_batch, only[:destroy]
+  before_action :set_batch, only: [:destroy]
   def create
     @batch = Batch.find(params[:batch_id])
     @event = Event.new(event_params)
