@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :first_time_visit, unless: -> { cookies[:not_first_visit] }
+  add_flash_types :success, :danger
   include Pundit
 
   # Pundit: white-list approach.

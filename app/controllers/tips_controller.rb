@@ -19,6 +19,7 @@ class TipsController < ApplicationController
     @tip = Tip.new(tip_params)
     @tip.user = current_user
     if @tip.save
+      flash[:success] = "Tip created!"
       redirect_to tip_path(@tip)
     else
       render :new
@@ -38,6 +39,7 @@ class TipsController < ApplicationController
 
   def destroy
     @tip.destroy
+    flash[:danger] = "Tip deleted!"
     redirect_to tips_path
     authorize @tip
   end

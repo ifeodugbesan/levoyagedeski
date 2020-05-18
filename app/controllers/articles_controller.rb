@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
+      flash[:success] = "Article created!"
       redirect_to article_path(@article)
     else
       render :new
@@ -36,6 +37,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
+    flash[:danger] = "Article deleted!"
     redirect_to articles_path
     authorize @article
   end

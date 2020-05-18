@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      # redirect_to post_path(@post)
+      flash[:success] = "Post created!"
       redirect_to posts_path
     else
       render :new
@@ -38,6 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:danger] = "Post deleted!"
     redirect_to posts_path
     authorize @post
   end

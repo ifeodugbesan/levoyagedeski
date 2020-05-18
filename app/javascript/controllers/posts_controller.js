@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import $ from 'jquery'
 
 export default class extends Controller {
-  static targets = ["postCard", "heart", "modal"]
+  static targets = ["postCard", "heart", "modal", "flash"]
 
   connect() {
     if (navigator.standalone) {
@@ -50,6 +50,16 @@ export default class extends Controller {
       moreComments.dataset.count = (numId + 1).toString();
     }
     event.target.reset();
+    // SHOW CUSTOM FLASH
+    if (this.hasFlashTarget) {
+      const flash = this.flashTarget;
+      flash.style.display = `flex`;
+      $(flash).animate({ height: '45px' }, 400);
+      setTimeout(function() {
+      $(flash).animate({ height: '0' }, 400);
+      }, 2100)
+    }
+
   }
 
   newCommentModal() {
@@ -66,5 +76,14 @@ export default class extends Controller {
       moreComments.dataset.count = (numId + 1).toString();
     }
     event.target.reset();
+    // SHOW CUSTOM FLASH
+    if (this.hasFlashTarget) {
+      const flash = this.flashTarget;
+      flash.style.display = `flex`;
+      $(flash).animate({ height: '45px' }, 400);
+      setTimeout(function() {
+      $(flash).animate({ height: '0' }, 400);
+      }, 2100)
+    }
   }
 }
