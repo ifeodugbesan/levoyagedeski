@@ -22,14 +22,14 @@
         <p class="pwa-navbar-text <%= params[:controller] == 'posts' ? 'pwa-active' : '' %>">Posts</p>
       </div>
     <% end %>
-    <%= link_to careers_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
+    <%= link_to tips_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
-        <% if params[:controller] == 'careers' %>
+        <% if params[:controller] == 'tips' %>
           <%= image_tag 'careers-blue.png', class: 'pwa-navbar-icon' %>
         <% else %>
           <%= image_tag 'careers.png', class: 'pwa-navbar-icon' %>
         <% end %>
-        <p class="pwa-navbar-text <%= params[:controller] == 'careers' ? 'pwa-active' : '' %>">Careers</p>
+        <p class="pwa-navbar-text <%= params[:controller] == 'tips' ? 'pwa-active' : '' %>">Tips</p>
       </div>
     <% end %>
     <%= link_to resources_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>

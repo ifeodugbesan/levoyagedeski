@@ -1,0 +1,29 @@
+<% tips.each do |tip| %>
+  <div class="col-md-6">
+    <%= link_to tip_path(tip), class: 'no-decoration' do %>
+      <div class="article-card tip-card bg-white">
+        <h3 class="boldest"><%= tip.title %></h3>
+        <div class="article-user-index">
+          <%= cl_image_tag tip.user.avatar_key %>
+          <div class="article-user-info">
+            <h6 class="bold m-0"><%= tip.user.full_name %></h6>
+            <p class="s-medium-text bold grey m-0"><%= tip.created_at.strftime('%b %d, %Y') %></p>
+          </div>
+        </div>
+        <% if policy(tip).edit? %>
+          <div class="crud-links">
+            <%= link_to edit_tip_path(tip) do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to tip_path(tip), method: :delete, data: { confirm: 'Are you sure you want to delete this tip?' } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="upvote-container">
+          <%= render 'upvote', tip: tip %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

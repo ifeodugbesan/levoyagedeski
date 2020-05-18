@@ -1,13 +1,13 @@
 <div class="container my-5" data-controller="career">
   <h1 class="boldest text-center mb-4">Edit <span data-target="career.title">Career</span> </h1>
   <%= simple_form_for @career do |f| %>
-    <%= f.input :career_type, collection: ["Job", "Project"], label: false, prompt: 'Type', input_html: { data: { target: "career.input", action: "change->career#changeType" } } %>
+    <%= f.input :career_type, collection: ["Job", "Project"], label: false, prompt: 'Type', input_html: { class: 'input-dropdown', data: { target: "career.input", action: "change->career#changeType" } } %>
     <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
     <%= f.input :description, label: false, placeholder: 'Description', input_html: { class: 'devise-input' } %>
     <%= f.input :company_name, label: false, placeholder: 'Company name', input_html: { class: 'devise-input' } %>
     <%= f.input :salary, label: false, placeholder: 'Salary (optional)', input_html: { class: 'devise-input d-none', data: { target: "career.salary" } } %>
     <%= f.input :location, label: false, placeholder: 'Location (optional)', input_html: { class: 'devise-input' } %>
-    <%= f.input :contract, collection: ["Full Time", "Part Time", "Contract", "Freelance", "Experience"], label: false, prompt: 'Contract' %>
+    <%= f.input :contract, collection: ["Full Time", "Part Time", "Contract", "Freelance", "Experience"], label: false, prompt: 'Contract', input_html: { class: 'input-dropdown' } %>
     <%= f.input :link, label: false, placeholder: 'Link to application', input_html: { class: 'devise-input' } %>
     <%= f.input :email, label: false, placeholder: 'Email', input_html: { class: 'devise-input' } %>
     <%= f.association :users, label_method: :full_name, input_html: { class: 'devise-input d-none', data: { target: "career.members" } } %>
