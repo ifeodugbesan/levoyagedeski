@@ -1,10 +1,28 @@
 .navbar-lewagon {
   background: white;
-  max-width: 1140px;
+  max-width: 1440px;
   margin: 0 auto;
   i {
     font-size: 26px;
     color: #4E77B7;
+  }
+}
+
+.navbar-container {
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+}
+
+.navbar-spacer {
+  height: 92px;
+  @include for-phone-only {
+    height: 66px;
   }
 }
 

@@ -1,8 +1,18 @@
 .alert {
   position: fixed;
-  bottom: 70px;
-  right: 16px;
+  width: 100%;
   z-index: 1000;
+  height: 0;
+  top: 92px;
+  left: 0;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 0 !important;
+  display: none;
+  @include absCenter;
+  @include for-phone-only {
+    top: 66px;
+  }
 }
 
 @media only screen
@@ -10,9 +20,9 @@
   and (device-height: 812px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-    .alert {
-      bottom: 90px;
-    }
+    // .alert {
+    //   bottom: 90px;
+    // }
 }
 
 @media only screen
@@ -20,9 +30,9 @@
   and (device-height: 896px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-    .alert {
-      bottom: 90px;
-    }
+    // .alert {
+    //   bottom: 90px;
+    // }
 }
 
 @media only screen
@@ -30,7 +40,7 @@
   and (device-height: 896px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-    .alert {
-      bottom: 90px;
-    }
+    // .alert {
+    //   bottom: 90px;
+    // }
 }

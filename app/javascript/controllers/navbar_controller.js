@@ -7,11 +7,12 @@ export default class extends Controller {
                     "pwaNavbarSpacer",
                     "pwaTopBar",
                     "pwaTopBarSpacer",
-
+                    "spacer"
                    ]
 
   connect() {
     if (navigator.standalone) {
+      this.spacerTarget.remove();
       if (this.hasNavbarTarget) {
         this.navbarTarget.style.display = 'none'
       }

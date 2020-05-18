@@ -12,6 +12,7 @@ class ResourcesController < ApplicationController
   def create
     @resource = Resource.new(resource_params)
     if @resource.save
+      flash[:success] = "Resource created!"
       redirect_to resources_path
     else
       render :new
@@ -31,6 +32,7 @@ class ResourcesController < ApplicationController
 
   def destroy
     @resource.destroy
+    flash[:danger] = "Resource deleted!"
     redirect_to resources_path
     authorize @resource
   end

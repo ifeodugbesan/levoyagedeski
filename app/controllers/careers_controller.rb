@@ -21,6 +21,7 @@ class CareersController < ApplicationController
     @career = Career.new(career_params)
     @career.user = current_user
     if @career.save
+      flash[:success] = "#{@career.career_type} created!"
       update_project_members
       redirect_to career_path(@career)
     else
@@ -43,6 +44,7 @@ class CareersController < ApplicationController
 
   def destroy
     @career.destroy
+    flash[:danger] = "#{@career.career_type} deleted!"
     redirect_to careers_path
     authorize @career
   end

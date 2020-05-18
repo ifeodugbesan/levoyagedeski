@@ -3,5 +3,5 @@ class Tip < ApplicationRecord
   has_rich_text :content
   validates :content, presence: true
   validates :tip_type, presence: true
-  has_many :upvotes
+  has_many :upvotes, dependent: :destroy
 end
