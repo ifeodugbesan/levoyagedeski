@@ -1,4 +1,4 @@
-<div class="messages-container web-chat-box" data-controller="messages" data-target="messages.container" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>" data-channel="le-voyage-chat_<%= conversation.id if conversation %>">
+<div class="messages-container web-chat-box <%= 'dark-chat-background' if @dark_mode %>" data-controller="messages" data-target="messages.container" data-key="<%= ENV['PUSHER_KEY'] %>" data-cluster="<%= ENV['PUSHER_CLUSTER'] %>" data-current-user="<%= current_user.id %>" data-channel="le-voyage-chat_<%= conversation.id if conversation %>">
   <% if conversation %>
     <div class="recipient-info">
       <div class="d-flex align-items-center justify-content-start">
@@ -8,10 +8,10 @@
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
         <%= cl_image_tag recipient.avatar_key, class: 'avatar-large' %>
-        <h6 class="mb-0 ml-3 boldest"><%= recipient.full_name %></h6>
+        <h6 class="mb-0 ml-3 boldest <%= @dark_mode ? 'white' : 'black' %>"><%= recipient.full_name %></h6>
       </div>
     </div>
-    <hr>
+    <hr class="<%= 'border-grey' if @dark_mode %>">
     <div class="messages py-3" data-target="messages.messages chats.messages">
       <% if @over_ten %>
         <p class="small-text text-center m-0"><%= link_to 'Show Previous', '?m=all' %></p>
@@ -35,7 +35,7 @@
                   <div class="message-body mr-2 speech-right">
                     <%= message.body %>
                   </div>
-                  <p class="time-right tiny-text lighter ml-3 mb-0"><%= message.message_time %></p>
+                  <p class="time-right tiny-text lighter ml-3 mb-0 <%= @dark_mode ? 'white' : 'black' %>"><%= message.message_time %></p>
                 </div>
                 <%= cl_image_tag user.avatar_key, class: 'user-avatar' %>
               </div>
@@ -46,7 +46,7 @@
                   <div class="message-body ml-2 speech-left">
                     <%= message.body %>
                   </div>
-                  <p class="time-left tiny-text lighter mr-3 mb-0 text-right"><%= message.message_time %></p>
+                  <p class="time-left tiny-text lighter mr-3 mb-0 text-right <%= @dark_mode ? 'white' : 'black' %>"><%= message.message_time %></p>
                 </div>
               </div>
             <% end %>

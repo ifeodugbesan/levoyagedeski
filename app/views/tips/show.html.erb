@@ -3,7 +3,7 @@
     <div class="article-user">
       <%= cl_image_tag @tip.user.avatar_key %>
       <div class="article-user-info">
-        <h6 class="bold m-0"><%= @tip.user.full_name %></h6>
+        <h6 class="bold m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @tip.user.full_name %></h6>
         <p class="s-medium-text bold grey m-0"><%= @tip.created_at.strftime('%b %d, %Y') %></p>
       </div>
       <% if policy(@tip).edit? %>
@@ -17,9 +17,9 @@
         </div>
       <% end %>
     </div>
-    <h3 class="bold mb-2"><%= @tip.title %></h3>
+    <h3 class="bold mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= @tip.title %></h3>
   </div>
-  <div class="article-show-content">
+  <div class="article-show-content <%= @dark_mode ? 'white' : 'black' %>">
     <%= @tip.content %>
   </div>
 </div>

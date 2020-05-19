@@ -1,0 +1,9 @@
+<% if @dark_mode %>
+  <%= link_to toggle_dark_mode_path(dark_mode: false) do %>
+    <i class="fas fa-toggle-on grey"></i>
+  <% end %>
+<% else %>
+  <%= link_to toggle_dark_mode_path(dark_mode: true) do %>
+    <i class="fas fa-toggle-off"></i>
+  <% end %>
+<% end %>

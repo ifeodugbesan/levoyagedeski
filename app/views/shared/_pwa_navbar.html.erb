@@ -1,6 +1,6 @@
 <div class="pwa-navbar-container">
   <div class="pwa-navbar-spacer" data-target="navbar.pwaNavbarSpacer"></div>
-  <div class="pwa-navbar" data-target="navbar.pwaNavbar">
+  <div class="pwa-navbar <%= 'grey-background' if @dark_mode %>" data-target="navbar.pwaNavbar">
     <%= link_to root_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
         <!-- CONDITION BELOW - OR HOME PAGE FOR LOGGED IN USERS -->

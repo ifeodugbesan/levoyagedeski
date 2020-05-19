@@ -1,10 +1,10 @@
 <div class="batch-bar">
   <%= link_to batch_path(current_user.batch), class: 'no-decoration' do %>
-    <h6 class="boldest m-b2 text-center"><%= current_user.batch.number %></h6>
+    <h6 class="boldest m-b2 text-center <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch.number %></h6>
   <% end %>
 </div>
 <div class="container mt-5" style="display: flex; flex-direction: column;align-items: center;">
-  <h1><%= @user.username ? @user.username : @user.full_name %></h1>
+  <h1 class="<%= @dark_mode ? 'white' : 'black' %>"><%= @user.username ? @user.username : @user.full_name %></h1>
   <% if @user.avatar.attached?  %>
     <%= cl_image_tag @user.avatar.key, class: 'user-avatar' %>
   <% else %>

@@ -1,9 +1,9 @@
 <div class="container mb-5" data-controller="article">
-  <h1 class="boldest text-center mt-5 mb-4">Add new Article</h1>
+  <h1 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Add new Article</h1>
   <%= simple_form_for @article do |f| %>
-    <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
-    <%= f.input :preview_text, label: false, placeholder: 'Preview text', input_html: { class: 'devise-input' } %>
-    <%= f.rich_text_area :content, placeholder: 'Add article content here (use style buttons above to customise your article)' %>
+    <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
+    <%= f.input :preview_text, label: false, placeholder: 'Preview text', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
+    <%= f.rich_text_area :content, placeholder: 'Add article content here (use style buttons above to customise your article)', class: "normal-mode" %>
     <%= f.submit 'Create Article', class: 'primary-button' %>
   <% end %>
 </div>

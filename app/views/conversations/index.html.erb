@@ -1,4 +1,4 @@
-<div class="conversations-container" data-controller="chats">
+<div class="conversations-container <%= 'dark-inbox-background' if @dark_mode %>" data-controller="chats">
   <div class="all-chats">
     <div class="chats-header">
       <%= form_tag conversations_path, method: :get do |f| %>

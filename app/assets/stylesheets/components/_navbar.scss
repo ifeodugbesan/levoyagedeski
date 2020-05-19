@@ -1,5 +1,4 @@
 .navbar-lewagon {
-  background: white;
   max-width: 1440px;
   margin: 0 auto;
   i {
@@ -9,6 +8,7 @@
 }
 
 .navbar-container {
+  // @include absCenter;
 }
 
 .navbar {
@@ -17,6 +17,7 @@
   z-index: 1000;
   left: 0;
   right: 0;
+  background: #FFF;
 }
 
 .navbar-spacer {
@@ -35,7 +36,7 @@
 }
 
 .logo {
-  height: 55px;
+  height: 60px;
   margin-right: 8px;
   @include for-phone-only {
     height: 40px;
@@ -56,15 +57,13 @@
   }
 }
 
-.navbar-light .navbar-nav .nav-link {
-  color: #0E0000;
-}
+
 
 .nav-link {
   display: inline-block;
   font-weight: 900;
   font-family: 'Cera', sans-serif;
-  color: #0E0000;
+
 }
 
 .hamburger {
@@ -163,7 +162,6 @@
   position: fixed;
   z-index: 2500;
   top: 0;
-  background: #FFF;
   i {
     font-size: 26px;
     color: #4E77B7;

@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   end
   resources :upvotes, only: [:destroy]
   get 'seen_pwa', to: 'pages#seen_pwa'
+  get 'toggle_dark_mode', to: 'pages#toggle_dark_mode'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
