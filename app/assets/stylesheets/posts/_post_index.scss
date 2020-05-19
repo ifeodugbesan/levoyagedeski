@@ -60,6 +60,10 @@
   border-radius: 5px !important;
 }
 
+.modal-content {
+  background-color: unset;
+}
+
 .post-comments {
   max-height: 50vh;
   overflow: scroll;

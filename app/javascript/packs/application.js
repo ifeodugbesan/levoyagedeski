@@ -11,3 +11,18 @@ import "bootstrap";
 
 require("trix")
 require("@rails/actiontext")
+
+import hljs from 'highlight.js';
+import 'highlight.js/styles/monokai-sublime.css';
+
+hljs.configure({
+  languages: ['ruby', 'javascript', 'CSS', 'HTTP', 'SCSS', 'JSON', 'YAML', 'HTML/XML', 'ERB', 'shell-session']
+});
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('pre').forEach((block) => {
+    hljs.highlightBlock(block);
+    block.classList.remove('angelscript')
+  });
+});

@@ -5,7 +5,7 @@
     <% else %>
       <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
     <% end %>
-    <%= post.user.username ? post.user.username : post.user.full_name %>
+    <span class="m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span>
   </div>
   <% if post.likes&.map(&:user).include?(current_user) %>
     <%= link_to like_path(Like.where(user: current_user, post: post).first), remote: true, id: "like-toggle_#{post.id}", data: { action: "ajax:success->posts#toggleLike" }, method: :delete do %>
@@ -13,9 +13,9 @@
     <% end %>
   <% else %>
     <%= link_to post_likes_path(post), remote: true, id: "like-toggle_#{post.id}", data: { action: "ajax:success->posts#toggleLike" }, method: :post do %>
-      <%= image_tag 'post-card-heart.png', class: 'post-card-heart' %>
+      <%= image_tag "#{ @dark_mode ? 'post-card-heart-white.png' : 'post-card-heart.png' }", class: 'post-card-heart' %>
     <% end %>
   <% end %>
 </div>
 <p class="text-12 bold grey m-0"><%= time_ago_in_words(post.created_at) %> ago</p>
-<p class="boldest m-0"><%= pluralize(post.likes.count, 'like') %></p>
+<p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= pluralize(post.likes.count, 'like') %></p>

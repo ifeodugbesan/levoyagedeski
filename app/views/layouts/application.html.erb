@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,10 +28,10 @@
     <%= render 'shared/pwa' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body data-controller="navbar common">
+  <body class="<%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-controller="navbar common">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="min-height" data-target="common.minHeightDiv">
+    <div class="min-height <%= @dark_mode == true ? 'dark-mode' : 'normal-mode' %>" data-target="common.minHeightDiv">
       <div class="loader-underlay" data-target="common.loaderUnderlay"></div>
       <div class="loader" data-target="common.loader">
         <%= image_tag "logo.png", class: "loader-logo" %>

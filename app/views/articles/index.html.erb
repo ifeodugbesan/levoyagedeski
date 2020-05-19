@@ -1,17 +1,17 @@
 <% if policy(Article).create? %>
   <%= link_to new_article_path, class: 'add-new-button' do %>
-    <%= image_tag 'add-new.png' %>
+    <%= image_tag "#{ @dark_mode ? 'add-new-white.png' : 'add-new.png' }" %>
   <% end %>
 <% end %>
-<h1 class="boldest text-center" data-target="common.resourcesHeader">Articles</h1>
-<h6 class="boldest text-center mb-5" data-target="common.resourcesHeader">Here is a list of many different useful articles.</h6>
+<h1 class="boldest text-center <%= @dark_mode ? 'grey' : 'black' %>" data-target="common.resourcesHeader">Articles</h1>
+<h6 class="boldest text-center mb-5 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.resourcesHeader">Here is a list of many different useful articles.</h6>
 <div class="articles-wrapper my-5">
   <div class="container">
     <% @articles.each do |article| %>
       <%= link_to article_path(article), class: 'no-decoration' do %>
-      <div class="article-card">
-        <h3 class="boldest"><%= article.title %></h3>
-        <h6 class="bold grey"><%= article.preview_text %></h6>
+      <div class="article-card <%= 'grey-background' if @dark_mode %>">
+        <h3 class="boldest <%= @dark_mode ? 'grey' : 'black' %>"><%= article.title %></h3>
+        <h6 class="bold <%= @dark_mode ? 'white' : 'grey' %>"><%= article.preview_text %></h6>
         <div class="article-user-index">
           <% if article.user.avatar.attached?  %>
             <%= cl_image_tag article.user.avatar.key %>
@@ -19,8 +19,8 @@
             <%= image_tag 'default-user.png', class: 'user-avatar' %>
           <% end %>
           <div class="article-user-info">
-            <h6 class="bold m-0"><%= article.user.full_name %></h6>
-            <p class="s-medium-text bold grey m-0"><%= article.created_at.strftime('%b %d, %Y') %></p>
+            <h6 class="bold m-0 <%= @dark_mode ? 'grey' : 'black' %>"><%= article.user.full_name %></h6>
+            <p class="s-medium-text bold m-0 <%= @dark_mode ? 'white' : 'grey' %>"><%= article.created_at.strftime('%b %d, %Y') %></p>
           </div>
         </div>
         <% if policy(article).edit? %>

@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  // background-color: #fff;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -145,25 +145,60 @@ body {
 }
 
 // Colors
-.light-grey {
-  color: #8E8E8E;
+.dark-mode {
+  background-color: #151515 !important;
 }
-.maroon {
-  color: #6B2022;
+
+.normal-mode {
+  background-color: #FFFFFF !important;
 }
+
 .grey-background {
-  background-color: #F7F7F7;
+  background-color: #3E3E3E !important;
 }
+
+.dark-inbox-background {
+  background-color: #2B2B2B !important;
+}
+
+.dark-chat-background {
+  background-color: #101010 !important;
+}
+
+.grey {
+  color: #9A9A9A !important;
+}
+
+.light-grey {
+  color: #CCCCCC !important;
+}
+
 .white {
-  color: #fff;
+  color: #FFF !important;
 }
 
 .black {
-  color: #000;
+  color: #0E0000 !important;
+}
+
+.lv-blue {
+  color: #4E77B7;
 }
 
 .lv-green {
   color: #87BABD;
+}
+
+.border-green {
+  border-color: #87BABD !important;
+}
+
+// .border-grey {
+//   border-color: #9A9A9A !important;
+// }
+
+.border-grey {
+  border-color: #424242 !important;
 }
 
 // Spacing

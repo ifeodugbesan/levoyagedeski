@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :first_time_visit, unless: -> { cookies[:not_first_visit] }
+  before_action :dark_mode
   add_flash_types :success, :danger
   include Pundit
 
@@ -30,6 +31,10 @@ class ApplicationController < ActionController::Base
 
   def first_time_visit
     @first_visit = true
+  end
+
+  def dark_mode
+    cookies[:dark_mode] == "true" ? @dark_mode = true : @dark_mode = false
   end
 
   private

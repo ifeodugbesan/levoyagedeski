@@ -65,3 +65,17 @@ trix-toolbar .trix-button-group {
 .trix-button-group-spacer {
   flex-grow: inherit !important;
 }
+
+trix-editor pre {
+  background: #EEEEEE !important;
+
+}
+
+.trix-content pre {
+  background: #23241f;
+  padding: 1em;
+}
+
+.trix-button {
+  background: #FFF !important;
+}

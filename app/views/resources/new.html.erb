@@ -1,11 +1,12 @@
 <div class="container my-5">
-  <h1 class="boldest text-center mb-4">Add new Resource</h1>
+  <h1 class="boldest text-center mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Add new Resource</h1>
   <%= simple_form_for @resource do |f| %>
-    <%= f.input :category, collection: ["Colors", "Fonts", "Icons", "Illustrations", "Inspiration", "Javascript", "Ruby - Rails", "Royalty Free Images"], label: false, prompt: 'Category', input_html: { class: 'input-dropdown' } %>
-    <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'devise-input' } %>
-    <%= f.input :description, label: false, placeholder: 'Description', input_html: { class: 'devise-input' } %>
-    <%= f.input :link, label: false, placeholder: 'link', input_html: { class: 'devise-input' } %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :category, collection: ["Colors", "Fonts", "Icons", "Illustrations", "Inspiration", "Javascript", "Ruby - Rails", "Royalty Free Images"], label: false, prompt: 'Category', input_html: { class: "input-dropdown #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
+    <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode white' : 'normal-mode' }" } %>
+    <%= f.input :description, label: false, placeholder: 'Description', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode white' : 'normal-mode' }" } %>
+    <%= f.input :link, label: false, placeholder: 'link', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode white' : 'normal-mode' }" } %>
+    <p class="mb-2 <%= @dark_mode ? 'white' : 'black' %>">Photo</p>
+    <%= f.input :photo, as: :file, label: false, placeholder: 'Caption', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode white' : 'normal-mode' }" } %>
     <%= f.submit 'Create Resource', class: 'primary-button' %>
   <% end %>
 </div>

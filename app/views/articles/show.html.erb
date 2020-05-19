@@ -3,8 +3,8 @@
     <div class="article-user">
       <%= cl_image_tag @article.user.avatar_key %>
       <div class="article-user-info">
-        <h6 class="bold m-0"><%= @article.user.full_name %></h6>
-        <p class="s-medium-text bold grey m-0"><%= @article.created_at.strftime('%b %d, %Y') %></p>
+        <h6 class="bold m-0 <%= @dark_mode ? 'grey' : 'black' %>"><%= @article.user.full_name %></h6>
+        <p class="s-medium-text bold m-0 <%= @dark_mode ? 'white' : 'grey' %>"><%= @article.created_at.strftime('%b %d, %Y') %></p>
       </div>
       <% if policy(@article).edit? %>
         <div class="crud-links">
@@ -17,10 +17,10 @@
         </div>
       <% end %>
     </div>
-    <h3 class="bold mb-2"><%= @article.title %></h3>
-    <h6 class="mb-4 grey"><%= @article.preview_text %></h6>
+    <h3 class="bold mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= @article.title %></h3>
+    <h6 class="mb-4  <%= @dark_mode ? 'white' : 'grey' %>"><%= @article.preview_text %></h6>
   </div>
-  <div class="article-show-content">
+  <div class="article-show-content <%= @dark_mode ? 'white' : 'black' %>">
     <%= @article.content %>
   </div>
 </div>

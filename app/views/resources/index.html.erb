@@ -1,10 +1,10 @@
 <% if policy(Resource).create? %>
   <%= link_to new_resource_path, class: 'add-new-button' do %>
-    <%= image_tag 'add-new.png' %>
+    <%= image_tag "#{ @dark_mode ? 'add-new-white.png' : 'add-new.png' }" %>
   <% end %>
 <% end %>
-<h1 class="boldest text-center" data-target="common.resourcesHeader">Resources</h1>
-<h6 class="boldest text-center mb-4" data-target="common.resourcesHeader">Here is a list of many different useful resources.</h6>
+<h1 class="boldest text-center <%= @dark_mode ? 'grey' : 'black' %>" data-target="common.resourcesHeader">Resources</h1>
+<h6 class="boldest text-center mb-4 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.resourcesHeader">Here is a list of many different useful resources.</h6>
 <div class="resource-tabs" data-target="common.tabsHolder">
   <div class="background-green front-end-tab resource-tab" data-action="click->common#switchTabs" data-type="front-end">
     <h6 class="boldest text-center m-0">Front End | Design</h6>
