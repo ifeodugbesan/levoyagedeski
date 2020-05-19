@@ -92,10 +92,10 @@
 </div>
 <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
   <div class="pwa-top-bar <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.pwaTopBar" style="justify-content: <%= user_signed_in? ? 'space-between' : 'center' %>">
-    <%# if user_signed_in? %>
+    <% if user_signed_in? %>
       <!-- <i class="far fa-bell"></i> -->
-    <%# end %>
-    <%= render 'shared/dark_mode_link' %>
+      <%= render 'shared/dark_mode_link_pwa' %>
+    <% end %>
     <div class="navbar-brand" data-action="click->navbar#scrollTop">
       <%= image_tag "logo.png", class: "pwa-logo" %>
       <%= image_tag "#{ @dark_mode ? 'logo-text-white.png' : 'logo-text.png' }", class: "pwa-logo-text" %>
