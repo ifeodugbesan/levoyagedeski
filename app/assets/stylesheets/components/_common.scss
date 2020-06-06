@@ -145,6 +145,16 @@ body {
 }
 
 // Colors
+
+.switch-dark {
+  background-color: #9A9A9A !important;
+  border: 3px solid #9A9A9A !important;
+  .toggle {
+    background-color: #151515 !important;
+    right: 0;
+  }
+}
+
 .dark-mode {
   background-color: #151515 !important;
 }
