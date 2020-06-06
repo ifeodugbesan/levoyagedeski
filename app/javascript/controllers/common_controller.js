@@ -13,6 +13,7 @@ export default class extends Controller {
                     "resourcesHeader",
                     "resourcesContent",
                     "minHeightDiv",
+                    "switch"
                    ]
 
   connect() {
@@ -80,5 +81,12 @@ export default class extends Controller {
     })
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
+  }
+
+  toggleDarkMode() {
+    this.switchTarget.classList.toggle('switch-dark')
+    setTimeout(function() {
+      window.location.reload(true)
+    }, 100)
   }
 }
