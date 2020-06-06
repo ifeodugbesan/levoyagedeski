@@ -20,7 +20,7 @@
     <h3 class="bold mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= @article.title %></h3>
     <h6 class="mb-4  <%= @dark_mode ? 'white' : 'grey' %>"><%= @article.preview_text %></h6>
   </div>
-  <div class="article-show-content <%= @dark_mode ? 'white' : 'black' %>">
+  <div class="article-show-content <%= @dark_mode ? 'white dark-article' : 'black' %>">
     <%= @article.content %>
   </div>
 </div>
