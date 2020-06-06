@@ -3,17 +3,8 @@ import $ from 'jquery'
 
 export default class extends Controller {
   static targets = [
-                    "pwaPopup",
-                    "pwaUnderlay",
-                    "pwaHomeNavbar",
-                    "loader",
-                    "loaderUnderlay",
-                    "resourceTabs",
-                    "tabsHolder",
-                    "resourcesHeader",
-                    "resourcesContent",
-                    "minHeightDiv",
-                    "switch"
+                    "pwaPopup", "pwaUnderlay", "pwaHomeNavbar", "loader", "loaderUnderlay", "resourceTabs",
+                    "tabsHolder", "resourcesHeader", "resourcesContent", "minHeightDiv", "switch", "switchPwa"
                    ]
 
   connect() {
@@ -88,5 +79,14 @@ export default class extends Controller {
     setTimeout(function() {
       window.location.reload(true)
     }, 100)
+  }
+
+  toggleDarkModePwa() {
+    this.switchPwaTarget.classList.toggle('switch-dark')
+    this.loaderTarget.style.display = 'inline-block';
+    this.loaderUnderlayTarget.style.display = 'block';
+    setTimeout(function() {
+      window.location.reload(true)
+    }, 300)
   }
 }
