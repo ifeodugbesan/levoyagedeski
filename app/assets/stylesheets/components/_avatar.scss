@@ -10,6 +10,14 @@
   height: 56px;
   border-radius: 50%;
 }
+
+.avatar-xlarge {
+  object-fit: cover;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
 .avatar-bordered {
   object-fit: cover;
   height: 40px;

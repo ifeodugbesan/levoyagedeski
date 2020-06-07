@@ -1,0 +1,23 @@
+.user-show-avatar {
+  width: 25%;
+  @include absCenter;
+  img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.user-show-profile-info {
+  width: 50%;
+}
+
+.user-show-posts {
+  width: 100%;
+  padding-top: 100%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}

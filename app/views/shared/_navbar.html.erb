@@ -11,7 +11,7 @@
           <%= link_to "Tips", tips_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           <%= link_to "Resources", resources_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           <%= link_to "Articles", articles_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
+          <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           <i class="far fa-bell ml-1 mr-3"></i>
           <%= link_to conversations_path do %>
             <% if current_user.new_messages.any? %>
@@ -59,7 +59,7 @@
               <%= link_to "Inbox", conversations_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
+              <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
             </li>
           </ul>
         </div>

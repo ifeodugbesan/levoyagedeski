@@ -22,7 +22,7 @@
 }
 
 .resource-image {
-  border-radius: 10px;
+  border-radius: 2px;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   width: 100%;
 }
@@ -54,14 +54,17 @@
 .resource-tabs {
   display: flex;
   justify-content: center;
+  border-top: 1px solid #E5E5E5;
 }
 
 .resource-tab {
   padding: 16px 20px;
   width: 50%;
   cursor: pointer;
-  @media only screen and (min-width: 1440px) {
-    border-radius: 5px 5px 0 0;
+  @include for-phone-only {
+    h6 {
+      font-size: 12px;
+    }
   }
 }
 
@@ -87,6 +90,10 @@
   @include for-phone-only {
     padding: 20px;
   }
+}
+
+.tab-active {
+  background: #6084BE;
 }
 
 .resource-active {
