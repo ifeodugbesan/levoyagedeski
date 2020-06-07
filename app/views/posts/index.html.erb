@@ -1,78 +1,93 @@
-<div data-controller="posts">
-  <%= link_to new_post_path, class: 'add-new-button' do %>
-    <%= image_tag "#{ @dark_mode ? 'add-new-white.png' : 'add-new.png' }" %>
-  <% end %>
-  <% @posts.each do |post| %>
-    <div class="post-card <%= @dark_mode ? 'border-grey' : 'border-green' %>">
-      <% if post.photo.attached? %>
-        <div class="post-card-image">
-          <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
-          <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
-          <%= cl_image_tag post.photo.key, width: 500, quality: :auto, data: { target: "posts.image" }, class: 'post-image' %>
-          <div class="white-heart">
-            <%= image_tag 'white-heart.png', data: { target: 'heart'} %>
-          </div>
-        </div>
-      <% end %>
-      <div class="post-card-content">
-        <div class="post-user" data-target="posts.postCard">
-          <%= render 'post_user', post: post %>
-        </div>
-        <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %> <span style="font-weight: 200;"><%= post.caption %></span></p>
-        <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
-          <% if post.comments.count > 5 %>
-            <p class="text-12 bold m-0 grey cursor-pointer post-modal_<%= post.id %>" data-toggle="modal" data-target="#post-modal_<%= post.id %>" data-count="<%= post.comments.count %>">view all <%= post.comments.count %> comments</span></p>
-          <% else %>
-            <% post.comments.each do |comment| %>
-              <%= render 'comment', comment: comment %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <% unless post.user == current_user %>
-        <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newComment", id: "#{post.id}" } do |f| %>
-          <%= f.input :content,
-                      required: true,
-                      label: false,
-                      placeholder: 'Add a comment...',
-                      input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
-          <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }" %>
+<div class="posts-container d-flex justify-content-center" data-controller="posts">
+  <div class="post-index-left mr-3">
+    <div class="post-index-user p-3 <%= @dark_mode ? 'border-grey' : 'border-green' %>">
+      <div class="post-card-user-info boldest mb-2">
+        <% if current_user.avatar.attached?  %>
+          <%= cl_image_tag current_user.avatar.key, width: 40, class: 'post-card-avatar' %>
+        <% else %>
+          <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
         <% end %>
+        <span class="m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
+      </div>
+      <%= link_to batch_path(current_user.batch), class: 'no-decoration' do %>
+        <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch.number %></h6>
       <% end %>
+      <%= link_to "Add a new Post", new_post_path, class: '' %>
     </div>
-
-    <!-- COMMENTS MODAL -->
-    <div class="modal fade " id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-target="posts.modal">
-      <div class="modal-dialog modal-dialog" role="document">
-        <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode border-grey' : 'normal-mode border-green' %>">
-          <div class="modal-header">
-            <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %> <span class="pr-4" style="font-weight: 200;"><%= post.caption %></span></p>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span class="<%= @dark_mode ? 'white' : 'black' %>" aria-hidden="true">&times;</span>
-            </button>
+  </div>
+  <div class="post-index-posts">
+    <% @posts.each do |post| %>
+      <div class="post-card <%= @dark_mode ? 'border-grey' : 'border-green' %>">
+        <% if post.photo.attached? %>
+          <div class="post-card-image">
+            <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
+            <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
+            <%= cl_image_tag post.photo.key, width: 500, quality: :auto, data: { target: "posts.image" }, class: 'post-image' %>
+            <div class="white-heart">
+              <%= image_tag 'white-heart.png', data: { target: 'heart'} %>
+            </div>
           </div>
-          <hr class="mt-0 w-100 <%= 'border-grey' if @dark_mode %>">
-          <div class="modal-body py-0 post-comments-body">
-            <div class="post-comments post-modal-comments-box_<%= post.id %>" data-target="posts.commentsBox">
+        <% end %>
+        <div class="post-card-content">
+          <div class="post-user" data-target="posts.postCard">
+            <%= render 'post_user', post: post %>
+          </div>
+          <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %> <span style="font-weight: 200;"><%= post.caption %></span></p>
+          <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
+            <% if post.comments.count > 5 %>
+              <p class="text-12 bold m-0 grey cursor-pointer post-modal_<%= post.id %>" data-toggle="modal" data-target="#post-modal_<%= post.id %>" data-count="<%= post.comments.count %>">view all <%= post.comments.count %> comments</span></p>
+            <% else %>
               <% post.comments.each do |comment| %>
                 <%= render 'comment', comment: comment %>
               <% end %>
-            </div>
-          </div>
-          <div class="modal-footer pb-0 px-0">
-            <% unless post.user == current_user %>
-              <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newCommentModal", id: "#{post.id}" }, html: { class: "w-100 mx-0 mb-0" } do |f| %>
-                <%= f.input :content,
-                            required: true,
-                            label: false,
-                            placeholder: 'Add a comment...',
-                            input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
-                <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }" %>
-              <% end %>
             <% end %>
           </div>
         </div>
+        <% unless post.user == current_user %>
+          <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newComment", id: "#{post.id}" } do |f| %>
+            <%= f.input :content,
+                        required: true,
+                        label: false,
+                        placeholder: 'Add a comment...',
+                        input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
+            <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }" %>
+          <% end %>
+        <% end %>
       </div>
-    </div>
-  <% end %>
+
+      <!-- COMMENTS MODAL -->
+      <div class="modal fade " id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-target="posts.modal">
+        <div class="modal-dialog modal-dialog" role="document">
+          <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode border-grey' : 'normal-mode border-green' %>">
+            <div class="modal-header">
+              <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %> <span class="pr-4" style="font-weight: 200;"><%= post.caption %></span></p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span class="<%= @dark_mode ? 'white' : 'black' %>" aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <hr class="mt-0 w-100 <%= 'border-grey' if @dark_mode %>">
+            <div class="modal-body py-0 post-comments-body">
+              <div class="post-comments post-modal-comments-box_<%= post.id %>" data-target="posts.commentsBox">
+                <% post.comments.each do |comment| %>
+                  <%= render 'comment', comment: comment %>
+                <% end %>
+              </div>
+            </div>
+            <div class="modal-footer pb-0 px-0">
+              <% unless post.user == current_user %>
+                <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newCommentModal", id: "#{post.id}" }, html: { class: "w-100 mx-0 mb-0" } do |f| %>
+                  <%= f.input :content,
+                              required: true,
+                              label: false,
+                              placeholder: 'Add a comment...',
+                              input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
+                  <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

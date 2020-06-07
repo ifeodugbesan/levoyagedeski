@@ -4,7 +4,8 @@ import $ from 'jquery'
 export default class extends Controller {
   static targets = [
                     "pwaPopup", "pwaUnderlay", "pwaHomeNavbar", "loader", "loaderUnderlay", "resourceTabs",
-                    "tabsHolder", "resourcesHeader", "resourcesContent", "minHeightDiv", "switch", "switchPwa"
+                    "tabsHolder", "resourcesHeader", "resourcesContent", "minHeightDiv", "switch", "switchPwa",
+                    "tab"
                    ]
 
   connect() {
@@ -57,6 +58,10 @@ export default class extends Controller {
   }
 
   switchTabs() {
+    this.tabTargets.forEach((tab) => {
+      tab.classList.remove('tab-active')
+    })
+    event.target.classList.add('tab-active')
     this.resourceTabsTargets.forEach((tab) => {
       if (event.currentTarget.dataset.type == tab.dataset.type) {
         tab.style.display = 'block'
