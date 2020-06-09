@@ -54,7 +54,6 @@
 .resource-tabs {
   display: flex;
   justify-content: center;
-  border-top: 1px solid #E5E5E5;
 }
 
 .resource-tab {
@@ -62,9 +61,8 @@
   width: 50%;
   cursor: pointer;
   @include for-phone-only {
-    h6 {
-      font-size: 12px;
-    }
+    font-size: 12px;
+    padding: 16px 10px;
   }
 }
 
@@ -94,6 +92,7 @@
 
 .tab-active {
   background: #6084BE;
+  color: #FFFFFF !important;
 }
 
 .resource-active {

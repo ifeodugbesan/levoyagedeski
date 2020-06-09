@@ -1,5 +1,5 @@
 .user-show-avatar {
-  width: 25%;
+  width: 30%;
   @include absCenter;
   img {
     height: 200px;
@@ -7,11 +7,22 @@
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    @include for-medium-devices-down {
+      height: 150px;
+      width: 150px;
+    }
+    @include for-phone-only {
+      height: 100px;
+      width: 100px;
+    }
   }
 }
 
 .user-show-profile-info {
   width: 50%;
+  @include for-small-devices-down {
+    margin-left: 24px;
+  }
 }
 
 .user-show-posts {
@@ -20,4 +31,24 @@
   object-fit: cover;
   background-size: cover;
   background-position: center;
+}
+
+.user-show {
+  @include for-medium-devices-down {
+    .user-show-posts-container-two {
+      margin: 0;
+    }
+
+  }
+  @include for-small-devices-down {
+    .user-show-posts-container {
+      padding: 0;
+    }
+    .post-grid {
+      padding: 0 !important;
+    }
+    .row {
+      margin: 0 !important;
+    }
+  }
 }

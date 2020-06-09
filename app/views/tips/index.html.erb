@@ -6,26 +6,26 @@
   <% end %>
   <h1 class="boldest text-center <%= @dark_mode ? 'grey' : 'black' %>" data-target="common.resourcesHeader">Tips</h1>
   <h6 class="boldest text-center mb-4 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.resourcesHeader">Here is a list of many different tips.</h6>
-  <div class="resource-tabs" data-target="common.tabsHolder">
-    <div class="background-light-blue front-end-tab resource-tab" data-action="click->common#switchTabs" data-type="how_tos">
-      <h6 class="boldest text-center m-0">How To's</h6>
+  <div class="resource-tabs <%= @dark_mode ? 'tab-border-dark' : 'tab-border-normal' %>" data-target="common.tabsHolder">
+    <div class="front-end-tab resource-tab tab-active boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="how_tos">
+      How To's
     </div>
-    <div class="background-yellow back-end-tab resource-tab" data-action="click->common#switchTabs" data-type="solutions">
-      <h6 class="boldest text-center m-0">Solutions</h6>
+    <div class="back-end-tab resource-tab boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="solutions">
+      Solutions
     </div>
   </div>
   <div class="resources-content" data-target="common.resourcesContent">
-    <div class="background-light-blue front-end-container resource-active" data-target="common.resourceTabs" data-type="how_tos">
+    <div class="<%= @dark_mode ? 'background-dark-one' : 'background-alice-blue' %> front-end-container resource-active" data-target="common.resourceTabs" data-type="how_tos">
       <div class="resources-container">
-        <h2 class="resource-category boldest mb-3">How To's</h2>
+        <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">How To's</h2>
         <div class="row">
           <%= render 'tips_cards', tips: @how_tos %>
         </div>
       </div>
     </div>
-    <div class="background-yellow back-end-container" data-target="common.resourceTabs" data-type="solutions">
+    <div class="<%= @dark_mode ? 'background-dark-two' : 'background-beau-blue' %> back-end-container" data-target="common.resourceTabs" data-type="solutions">
       <div class="resources-container">
-        <h2 class="resource-category boldest mb-3">Solutions</h2>
+        <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Solutions</h2>
         <div class="row">
           <%= render 'tips_cards', tips: @solutions %>
         </div>
