@@ -211,6 +211,38 @@ body {
   border-color: #424242 !important;
 }
 
+.tab-border-normal {
+  border-top: 1px solid #E5E5E5;
+}
+
+.tab-border-dark {
+  border-top: 1px solid #484848;
+}
+
+.tab-border-normal {
+  border-top: 1px solid #E5E5E5;
+}
+
+.tab-border-dark {
+  border-top: 1px solid #484848;
+}
+
+.post-border-normal {
+  border: 1px solid #E5E5E5;
+}
+
+.post-border-dark {
+  border: 1px solid #484848;
+}
+
+.user-show-post-border-normal {
+  border: 1px solid #FFFFFF;
+}
+
+.user-show-post-border-dark {
+  border: 1px solid #151515;
+}
+
 // Spacing
 
 .no-padding {

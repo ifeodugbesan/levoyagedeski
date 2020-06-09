@@ -1,6 +1,6 @@
 <div class="posts-container d-flex justify-content-center" data-controller="posts">
   <div class="post-index-left mr-3">
-    <div class="post-index-user p-3 <%= @dark_mode ? 'border-grey' : 'border-green' %>">
+    <div class="post-index-user p-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
       <div class="post-card-user-info boldest mb-2">
         <% if current_user.avatar.attached?  %>
           <%= cl_image_tag current_user.avatar.key, width: 40, class: 'post-card-avatar' %>
@@ -17,7 +17,7 @@
   </div>
   <div class="post-index-posts">
     <% @posts.each do |post| %>
-      <div class="post-card <%= @dark_mode ? 'border-grey' : 'border-green' %>">
+      <div class="post-card <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
         <% if post.photo.attached? %>
           <div class="post-card-image">
             <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
@@ -58,7 +58,7 @@
       <!-- COMMENTS MODAL -->
       <div class="modal fade " id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-target="posts.modal">
         <div class="modal-dialog modal-dialog" role="document">
-          <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode border-grey' : 'normal-mode border-green' %>">
+          <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode post-border-dark' : 'normal-mode post-border-normal' %>">
             <div class="modal-header">
               <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %> <span class="pr-4" style="font-weight: 200;"><%= post.caption %></span></p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">

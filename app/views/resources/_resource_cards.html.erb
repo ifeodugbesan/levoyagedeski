@@ -4,8 +4,8 @@
       <%= link_to resource.link, target: '_blank' do %>
         <%= cl_image_tag resource.photo.key, class: 'resource-image' %>
       <% end %>
-      <p class="boldest mt-2 mb-0"><%= resource.title %></p>
-      <p class="lighter"><%= resource.description %></p>
+      <p class="boldest mt-2 mb-0 <%= @dark_mode ? 'grey' : 'black' %>"><%= resource.title %></p>
+      <p class="lighter <%= @dark_mode ? 'white' : 'black' %>"><%= resource.description %></p>
       <% if policy(resource).edit? %>
         <div class="crud-links">
           <%= link_to edit_resource_path(resource) do %>

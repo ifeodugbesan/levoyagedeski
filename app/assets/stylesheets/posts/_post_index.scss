@@ -1,6 +1,5 @@
 .post-card {
   width: 580px;
-  border: 1px solid #87BABD;
   border-radius: 2px;
   margin: 0 auto 20px auto;
   @include for-phone-only {
@@ -185,7 +184,6 @@
   width: 300px;
   border-radius: 2px;
   position: sticky;
-  border: 1px solid #87BABD;
   top: 92px;
   .post-card-avatar {
     height: 64px !important;

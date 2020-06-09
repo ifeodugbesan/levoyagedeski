@@ -1,82 +1,82 @@
-<div class="resource-container">
-  <div class="container">
-    <div class="user-show-profile d-flex justify-content-center mb-4">
-      <div class="user-show-avatar">
-        <%= cl_image_tag @user.avatar_key %>
-      </div>
-      <div class="user-show-profile-info">
-        <h1 class="boldest <%= @dark_mode ? 'white' : 'black' %>"><%= @user.username ? @user.username : @user.full_name %></h1>
-        <h6 class="mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch.number %></h6>
-        <%= link_to "Edit Profile", edit_user_registration_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "outline-button small-text #{ @dark_mode ? 'white border-grey' : 'black' }" %>
-      </div>
-      <div class="user-show-avatar">
-      </div>
-    </div>
-  </div>
-</div>
-<div class="resource-tabs" data-target="common.tabsHolder">
-  <div class="front-end-tab resource-tab" data-target="common.tab" data-action="click->common#switchTabs" data-type="posts">
-    <h6 class="boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>">My Posts</h6>
-  </div>
-  <div class="back-end-tab resource-tab" data-target="common.tab" data-action="click->common#switchTabs" data-type="tips">
-    <h6 class="boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>">My Tips</h6>
-  </div>
-  <div class="back-end-tab resource-tab" data-target="common.tab" data-action="click->common#switchTabs" data-type="articles">
-    <h6 class="boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>">My Articles</h6>
-  </div>
-</div>
-<div class="resources-content" data-target="common.resourcesContent">
-  <div class="front-end-container resource-active" data-target="common.resourceTabs" data-type="posts">
-    <div class="resources-container">
-      <div class="row">
-        <% @my_posts.each do |post| %>
-          <div class="col-4">
-            <div class="user-show-posts" style="background-image: url('<%= cl_image_path post.photo.key, width: 500, quality: :auto %>')">
-            </div>
-          </div>
-        <% end %>
+<div class="user-show">
+  <div class="resource-container mt-4">
+    <div class="container">
+      <div class="user-show-profile d-flex justify-content-center mb-4">
+        <div class="user-show-avatar">
+          <%= cl_image_tag @user.avatar_key %>
+        </div>
+        <div class="user-show-profile-info flex-grow-1">
+          <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.username ? @user.username : @user.full_name %></h1>
+          <h6 class="mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch.number %></h6>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "outline-button small-text #{ @dark_mode ? 'white border-grey' : 'black' }" %>
+        </div>
       </div>
     </div>
   </div>
-  <div class="back-end-container" data-target="common.resourceTabs" data-type="tips">
-    <div class="resources-container">
-      <div class="row">
-        <%= render './tips/tips_cards', tips: @my_tips %>
-      </div>
+  <div class="resource-tabs <%= @dark_mode ? 'tab-border-dark' : 'tab-border-normal' %>" data-target="common.tabsHolder">
+    <div class="front-end-tab resource-tab tab-active boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="posts">
+      My Posts
+    </div>
+    <div class="back-end-tab resource-tab boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="tips">
+      My Tips
+    </div>
+    <div class="back-end-tab resource-tab boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="articles">
+      My Articles
     </div>
   </div>
-  <div class="front-end-container" data-target="common.resourceTabs" data-type="articles">
-    <div class="resources-container">
-      <% @my_articles.each do |article| %>
-        <%= link_to article_path(article), class: 'no-decoration' do %>
-        <div class="article-card bg-white">
-          <h3 class="boldest black"><%= article.title %></h3>
-          <h6 class="bold grey"><%= article.preview_text %></h6>
-          <div class="article-user-index">
-            <% if article.user.avatar.attached?  %>
-              <%= cl_image_tag article.user.avatar.key %>
-            <% else %>
-              <%= image_tag 'default-user.png', class: 'user-avatar' %>
-            <% end %>
-            <div class="article-user-info">
-              <h6 class="bold m-0 black"><%= article.user.full_name %></h6>
-              <p class="s-medium-text bold m-0 grey"><%= article.created_at.strftime('%b %d, %Y') %></p>
-            </div>
-          </div>
-          <% if policy(article).edit? %>
-            <div class="crud-links">
-              <%= link_to edit_article_path(article) do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
-              <%= link_to article_path(article), method: :delete, data: { confirm: 'Are you sure you want to delete this article?' } do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
+  <div class="resources-content" data-target="common.resourcesContent">
+    <div class="user-show-posts-container front-end-container resource-active <%= @dark_mode ? 'user-show-post-border-dark' : 'user-show-post-border-normal' %>" data-target="common.resourceTabs" data-type="posts">
+      <div class="user-show-posts-container-two resources-container">
+        <div class="row">
+          <% @my_posts.each do |post| %>
+            <div class="col-4 post-grid <%= @dark_mode ? 'user-show-post-border-dark' : 'user-show-post-border-normal' %>">
+              <div class="user-show-posts" style="background-image: url('<%= cl_image_path post.photo.key, width: 500, quality: :auto %>')">
+              </div>
             </div>
           <% end %>
         </div>
+      </div>
+    </div>
+    <div class="back-end-container" data-target="common.resourceTabs" data-type="tips">
+      <div class="resources-container">
+        <div class="row">
+          <%= render './tips/tips_cards', tips: @my_tips %>
+        </div>
+      </div>
+    </div>
+    <div class="front-end-container" data-target="common.resourceTabs" data-type="articles">
+      <div class="resources-container">
+        <% @my_articles.each do |article| %>
+          <%= link_to article_path(article), class: 'no-decoration' do %>
+          <div class="article-card bg-white">
+            <h3 class="boldest black"><%= article.title %></h3>
+            <h6 class="bold grey"><%= article.preview_text %></h6>
+            <div class="article-user-index">
+              <% if article.user.avatar.attached?  %>
+                <%= cl_image_tag article.user.avatar.key %>
+              <% else %>
+                <%= image_tag 'default-user.png', class: 'user-avatar' %>
+              <% end %>
+              <div class="article-user-info">
+                <h6 class="bold m-0 black"><%= article.user.full_name %></h6>
+                <p class="s-medium-text bold m-0 grey"><%= article.created_at.strftime('%b %d, %Y') %></p>
+              </div>
+            </div>
+            <% if policy(article).edit? %>
+              <div class="crud-links">
+                <%= link_to edit_article_path(article) do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+                <%= link_to article_path(article), method: :delete, data: { confirm: 'Are you sure you want to delete this article?' } do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
