@@ -31,6 +31,9 @@
   object-fit: cover;
   background-size: cover;
   background-position: center;
+  @include for-medium-devices-up {
+    margin-bottom: 30px;
+  }
 }
 
 .user-show {
