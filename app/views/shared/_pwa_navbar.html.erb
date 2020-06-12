@@ -1,17 +1,6 @@
 <div class="pwa-navbar-container">
   <div class="pwa-navbar-spacer" data-target="navbar.pwaNavbarSpacer"></div>
   <div class="pwa-navbar <%= 'grey-background' if @dark_mode %>" data-target="navbar.pwaNavbar">
-    <%= link_to root_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
-      <div class="pwa-navbar-section">
-        <!-- CONDITION BELOW - OR HOME PAGE FOR LOGGED IN USERS -->
-        <% if params[:controller] == 'pages' && params[:action] == 'home' || params[:controller] == 'users' && params[:action] == 'show' %>
-          <%= image_tag 'home-blue.png', class: 'pwa-navbar-icon' %>
-        <% else %>
-          <%= image_tag 'home.png', class: 'pwa-navbar-icon' %>
-        <% end %>
-        <p class="pwa-navbar-text <%= (params[:controller] == 'pages' && params[:action] == 'home' || params[:controller] == 'users' && params[:action] == 'show') ? 'pwa-active' : '' %>">Home</p>
-      </div>
-    <% end %>
     <%= link_to posts_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
         <% if params[:controller] == 'posts' %>
@@ -50,6 +39,17 @@
           <%= image_tag 'articles.png', class: 'pwa-navbar-icon' %>
         <% end %>
         <p class="pwa-navbar-text <%= params[:controller] == 'articles' ? 'pwa-active' : '' %>">Articles</p>
+      </div>
+    <% end %>
+    <%= link_to no_user_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
+      <div class="pwa-navbar-section">
+        <!-- CONDITION BELOW - OR HOME PAGE FOR LOGGED IN USERS -->
+        <% if params[:controller] == 'pages' && params[:action] == 'home' || params[:controller] == 'users' && params[:action] == 'show' %>
+          <%= image_tag 'profile-blue.png', class: 'pwa-navbar-icon' %>
+        <% else %>
+          <%= image_tag 'profile.png', class: 'pwa-navbar-icon' %>
+        <% end %>
+        <p class="pwa-navbar-text <%= (params[:controller] == 'pages' && params[:action] == 'home' || params[:controller] == 'users' && params[:action] == 'show') ? 'pwa-active' : '' %>">Profile</p>
       </div>
     <% end %>
   </div>
