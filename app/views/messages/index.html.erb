@@ -8,7 +8,7 @@
           <% recipient = User.find(@conversation.sender_id) %>
         <% end %>
         <div class="d-flex align-items-center justify-content-start">
-          <%= cl_image_tag recipient.avatar_key, class: 'avatar-large' %>
+          <%= render 'users/user_avatar', user: recipient, classes: "avatar-large" %>
           <h6 class="mb-0 ml-3 boldest <%= @dark_mode ? 'white' : 'black' %>"><%= recipient.full_name %></h6>
         </div>
       </div>
@@ -38,11 +38,11 @@
                     </div>
                     <p class="time-right tiny-text lighter ml-3 mb-0 <%= @dark_mode ? 'white' : 'black' %>"><%= message.message_time %></p>
                   </div>
-                  <%= cl_image_tag user.avatar_key, class: 'user-avatar' %>
+                  <%= render 'users/user_avatar', user: user, classes: "user-avatar" %>
                 </div>
               <% else %>
                 <div class="each-message py-1 justify-content-start">
-                  <%= cl_image_tag user.avatar_key, class: 'user-avatar' %>
+                  <%= render 'users/user_avatar', user: user, classes: "user-avatar" %>
                   <div class="" style="max-width: 77%;">
                     <div class="message-body ml-2 speech-left">
                       <%= message.body %>

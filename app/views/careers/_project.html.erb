@@ -8,7 +8,7 @@
   <% if project.project_members.where(status: 'approved').any? %>
     <% project.project_members.where(status: 'approved').each_with_index do |member, index| %>
     <span class="each-member <%= 'avatar-overlap' unless index == 0 %>">
-      <%= cl_image_tag member.user.avatar_key, class: "avatar" %>
+      <%= render 'users/user_avatar', user: member.user, classes: 'avatar' %>
       <span class="ml-2 text-14 lighter each-member-name"><%= member.user.full_name %></span>
     </span>
     <% end %>

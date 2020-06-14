@@ -111,9 +111,16 @@
 }
 
 .devise-form-title {
-  margin-top: 48px;
+  margin-bottom: 48px;
   @include for-small-devices-down {
     margin-top: 0;
     margin-bottom: 48px;
+  }
+}
+
+.github-link {
+  @include absCenter;
+  i {
+    font-size: 34px;
   }
 }

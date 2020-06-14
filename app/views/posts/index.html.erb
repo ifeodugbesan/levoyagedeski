@@ -2,16 +2,10 @@
   <div class="post-index-left mr-3">
     <div class="post-index-user p-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
       <div class="post-card-user-info boldest mb-2">
-        <% if current_user.avatar.attached?  %>
-          <%= cl_image_tag current_user.avatar.key, width: 40, class: 'post-card-avatar' %>
-        <% else %>
-          <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
-        <% end %>
+        <%= render 'users/user_avatar', user: current_user, classes: 'post-card-avatar' %>
         <span class="m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
       </div>
-      <%= link_to batch_path(current_user.batch), class: 'no-decoration' do %>
-        <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch.number %></h6>
-      <% end %>
+      <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%#= current_user.batch.number %></h6>
       <%= link_to "Add a new Post", new_post_path, class: '' %>
     </div>
   </div>
@@ -49,8 +43,8 @@
                         required: true,
                         label: false,
                         placeholder: 'Add a comment...',
-                        input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
-            <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }" %>
+                        input_html: { class: "post-card-form-input  #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }", data: { action: "keyup->posts#postButton" } } %>
+            <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }", data: { target: 'posts.button' } %>
           <% end %>
         <% end %>
       </div>
@@ -80,8 +74,8 @@
                               required: true,
                               label: false,
                               placeholder: 'Add a comment...',
-                              input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
-                  <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }" %>
+                              input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }", data: { action: "keyup->posts#postButton" } } %>
+                  <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }", data: { target: 'posts.button' } %>
                 <% end %>
               <% end %>
             </div>

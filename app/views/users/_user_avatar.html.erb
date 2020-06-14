@@ -1,0 +1,7 @@
+<% if user.avatar.attached? %>
+  <%= cl_image_tag user.avatar.key, class: classes %>
+<% elsif user.image_url %>
+  <%= image_tag user.image_url, class: classes %>
+<% else %>
+  <%= cl_image_tag 'default-user_rt3abl', class: classes %>
+<% end %>
