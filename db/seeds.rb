@@ -1,20 +1,55 @@
-require 'nokogiri'
-require 'openuri'
 
-url = "https://www.bbcgoodfood.com/search/recipes?query=#{ingredient}"
+# City.destroy_all
 
-html_file = open(url).read
-html_doc = Nokogiri::HTML(html_file)
+# cities = ["Buenos Aires 🇦🇷",
+#           "Milan 🇮🇹",
+#           "Rome 🇮🇹",
+#           "Lisbon 🇵🇹",
+#           "Munich 🇩🇪",
+#           "Shanghai 🇨🇳",
+#           "Marseille 🇫🇷",
+#           "Tokyo 🇯🇵",
+#           "Mexico 🇲🇽",
+#           "Belo Horizonte 🇧🇷",
+#           "Bordeaux 🇫🇷",
+#           "Brussels 🇧🇪",
+#           "Lausanne 🇨🇭",
+#           "Lille 🇫🇷",
+#           "London 🇬🇧",
+#           "Lyon 🇫🇷",
+#           "Montreal 🇨🇦",
+#           "Nantes 🇫🇷",
+#           "Paris 🇫🇷",
+#           "Seoul 🇰🇷",
+#           "Barcelona 🇪🇸",
+#           "Rio de Janeiro 🇧🇷",
+#           "São Paulo 🇧🇷",
+#           "Amsterdam 🇳🇱",
+#           "Singapore 🇸🇬",
+#           "Melbourne 🇦🇺",
+#           "Bali 🇮🇩",
+#           "Madrid 🇪🇸",
+#           "Oslo 🇳🇴",
+#           "Istanbul 🇹🇷",
+#           "Rennes 🇫🇷",
+#           "Berlin 🇩🇪",
+#           "Dubai 🇦🇪",
+#           "Stockholm 🇸🇪",
+#           "Shenzhen 🇨🇳",
+#           "Chengdu 🇨🇳",
+#           "Copenhagen 🇩🇰",
+#           "Kyoto 🇯🇵",
+#           "Tel Aviv 🇮🇱"
+#         ]
 
-html_doc.search('.teaser-item__title a').each do |element|
-  puts element.text.strip
-  puts element.attribute('href').value
-end
+# cities.each do |city|
+#   City.create!(name: city)
+# end
 
 # count = 1
 
-# 400.times do
-#   Batch.create(number: "Batch ##{count}")
+# 425.times do
+#   Batch.create(batch_number: count)
 #   count += 1
 # end
 

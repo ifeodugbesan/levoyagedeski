@@ -120,6 +120,11 @@ body {
   text-decoration: underline;
 }
 
+.link-hover:hover {
+  text-decoration: none !important;
+  color: #167FFB !important
+}
+
 .no-decoration {
   color: inherit;
   text-decoration: none !important;

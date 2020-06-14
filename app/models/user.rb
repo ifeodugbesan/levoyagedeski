@@ -5,6 +5,7 @@ class User < ApplicationRecord
   # validates :username, uniqueness: true
   # validates :email, uniqueness: true
   belongs_to :batch, optional: true
+  belongs_to :city, optional: true
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy

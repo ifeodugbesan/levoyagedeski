@@ -198,7 +198,75 @@
   }
 }
 
+.city-form-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000000;
+  padding: 16px;
+  @include absCenter;
+}
 
+.city-form-container {
+  width: 70%;
+  height: 70%;
+  background: #FFFFFF;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 2px;
+  padding: 16px;
+  position: relative;
+  @include absCenterColumn;
+  .primary-button {
+    margin-left: 16px;
+    padding: 8px 24px;
+  }
+  @include for-medium-devices-down {
+    width: 80%;
+  }
+  @include for-small-devices-down {
+    .devise-form-title {
+      margin-bottom: 24px;
+    }
+    .primary-button {
+      margin-left: 0;
+      padding: 12px 24px;
+    }
+  }
+  @include for-phone-only {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+.city-form-logo {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 80px;
+  @include for-small-devices-down {
+    position: initial;
+    margin-bottom: 32px;
+  }
+}
+
+.city-form {
+  @include absCenter;
+  .form-group {
+    margin: 0;
+  }
+  @include for-small-devices-down {
+    flex-direction: column;
+    .form-group {
+      margin: 1rem 0;
+    }
+    .select {
+      width: 100%;
+    }
+  }
+}
 
 
 

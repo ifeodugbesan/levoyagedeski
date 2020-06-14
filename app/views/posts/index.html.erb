@@ -3,9 +3,11 @@
     <div class="post-index-user p-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
       <div class="post-card-user-info boldest mb-2">
         <%= render 'users/user_avatar', user: current_user, classes: 'post-card-avatar' %>
-        <span class="m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
+        <%= link_to user_path(current_user), class: 'no-decoration' do %>
+          <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
+        <% end %>
       </div>
-      <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%#= current_user.batch.number %></h6>
+      <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch ? "Batch ##{current_user.batch.batch_number} - #{current_user.city.name}" : current_user.city.name %></h6>
       <%= link_to "Add a new Post", new_post_path, class: '' %>
     </div>
   </div>
@@ -26,7 +28,12 @@
           <div class="post-user" data-target="posts.postCard">
             <%= render 'post_user', post: post %>
           </div>
-          <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %> <span style="font-weight: 200;"><%= post.caption %></span></p>
+          <p class="boldest m-0  <%= @dark_mode ? 'white' : 'black' %>">
+            <%= link_to user_path(post.user), class: 'no-decoration link-hover' do %>
+              <%= post.user.username ? post.user.username : post.user.full_name %>
+            <% end %>
+            <span style="font-weight: 200;"><%= post.caption %></span>
+          </p>
           <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
             <% if post.comments.count > 5 %>
               <p class="text-12 bold m-0 grey cursor-pointer post-modal_<%= post.id %>" data-toggle="modal" data-target="#post-modal_<%= post.id %>" data-count="<%= post.comments.count %>">view all <%= post.comments.count %> comments</span></p>
@@ -54,7 +61,12 @@
         <div class="modal-dialog modal-dialog" role="document">
           <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode post-border-dark' : 'normal-mode post-border-normal' %>">
             <div class="modal-header">
-              <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %> <span class="pr-4" style="font-weight: 200;"><%= post.caption %></span></p>
+              <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>">
+                <%= link_to user_path(post.user), class: 'no-decoration link-hover' do %>
+                  <%= post.user.username ? post.user.username : post.user.full_name %>
+                <% end %>
+                <span class="pr-4" style="font-weight: 200;"><%= post.caption %></span>
+              </p>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span class="<%= @dark_mode ? 'white' : 'black' %>" aria-hidden="true">&times;</span>
               </button>
@@ -85,3 +97,17 @@
     <% end %>
   </div>
 </div>
+<% unless current_user.batch %>
+  <div class="city-form-wrapper">
+    <div class="city-form-container">
+      <%= image_tag 'le-wagon-logo.png', class: 'city-form-logo' %>
+      <h1 class="boldest text-center devise-form-title">Which batch did you attend?</h1>
+      <%= simple_form_for current_user, url: update_batch_user_path(current_user), html: { class: "w-75 city-form" } do |f| %>
+        <%= f.association :batch, collection: Batch.order(batch_number: :asc), label: false, :label_method => lambda { |batch| "Batch ##{batch.batch_number}" }, prompt: "Select Batch" %>
+        <h5 class="boldest text-center my-0 mx-3">in</h5>
+        <%= f.association :city, collection: City.order(name: :asc), label: false, prompt: 'Select City' %>
+        <%= f.submit 'Go', class: 'primary-button' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

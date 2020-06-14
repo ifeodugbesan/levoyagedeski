@@ -5,7 +5,9 @@
     <% else %>
       <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
     <% end %>
-    <span class="m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span>
+    <%= link_to user_path(current_user), class: 'no-decoration' do %>
+      <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span>
+    <% end %>
   </div>
   <% if post.likes&.map(&:user).include?(current_user) %>
     <%= link_to like_path(Like.where(user: current_user, post: post).first), remote: true, id: "like-toggle_#{post.id}", data: { action: "ajax:success->posts#toggleLike" }, method: :delete do %>

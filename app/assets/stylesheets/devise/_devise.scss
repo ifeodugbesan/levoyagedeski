@@ -124,3 +124,10 @@
     font-size: 34px;
   }
 }
+
+.devise-padding {
+  margin: 0;
+  @include for-small-devices-down {
+    margin: 12px 0;
+  }
+}
