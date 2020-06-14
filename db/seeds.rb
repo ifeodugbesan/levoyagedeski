@@ -1,50 +1,50 @@
 
 # City.destroy_all
 
-# cities = ["Buenos Aires 🇦🇷",
-#           "Milan 🇮🇹",
-#           "Rome 🇮🇹",
-#           "Lisbon 🇵🇹",
-#           "Munich 🇩🇪",
-#           "Shanghai 🇨🇳",
-#           "Marseille 🇫🇷",
-#           "Tokyo 🇯🇵",
-#           "Mexico 🇲🇽",
-#           "Belo Horizonte 🇧🇷",
-#           "Bordeaux 🇫🇷",
-#           "Brussels 🇧🇪",
-#           "Lausanne 🇨🇭",
-#           "Lille 🇫🇷",
-#           "London 🇬🇧",
-#           "Lyon 🇫🇷",
-#           "Montreal 🇨🇦",
-#           "Nantes 🇫🇷",
-#           "Paris 🇫🇷",
-#           "Seoul 🇰🇷",
-#           "Barcelona 🇪🇸",
-#           "Rio de Janeiro 🇧🇷",
-#           "São Paulo 🇧🇷",
-#           "Amsterdam 🇳🇱",
-#           "Singapore 🇸🇬",
-#           "Melbourne 🇦🇺",
-#           "Bali 🇮🇩",
-#           "Madrid 🇪🇸",
-#           "Oslo 🇳🇴",
-#           "Istanbul 🇹🇷",
-#           "Rennes 🇫🇷",
-#           "Berlin 🇩🇪",
-#           "Dubai 🇦🇪",
-#           "Stockholm 🇸🇪",
-#           "Shenzhen 🇨🇳",
-#           "Chengdu 🇨🇳",
-#           "Copenhagen 🇩🇰",
-#           "Kyoto 🇯🇵",
-#           "Tel Aviv 🇮🇱"
-#         ]
+cities = ["Buenos Aires 🇦🇷",
+          "Milan 🇮🇹",
+          "Rome 🇮🇹",
+          "Lisbon 🇵🇹",
+          "Munich 🇩🇪",
+          "Shanghai 🇨🇳",
+          "Marseille 🇫🇷",
+          "Tokyo 🇯🇵",
+          "Mexico 🇲🇽",
+          "Belo Horizonte 🇧🇷",
+          "Bordeaux 🇫🇷",
+          "Brussels 🇧🇪",
+          "Lausanne 🇨🇭",
+          "Lille 🇫🇷",
+          "London 🇬🇧",
+          "Lyon 🇫🇷",
+          "Montreal 🇨🇦",
+          "Nantes 🇫🇷",
+          "Paris 🇫🇷",
+          "Seoul 🇰🇷",
+          "Barcelona 🇪🇸",
+          "Rio de Janeiro 🇧🇷",
+          "São Paulo 🇧🇷",
+          "Amsterdam 🇳🇱",
+          "Singapore 🇸🇬",
+          "Melbourne 🇦🇺",
+          "Bali 🇮🇩",
+          "Madrid 🇪🇸",
+          "Oslo 🇳🇴",
+          "Istanbul 🇹🇷",
+          "Rennes 🇫🇷",
+          "Berlin 🇩🇪",
+          "Dubai 🇦🇪",
+          "Stockholm 🇸🇪",
+          "Shenzhen 🇨🇳",
+          "Chengdu 🇨🇳",
+          "Copenhagen 🇩🇰",
+          "Kyoto 🇯🇵",
+          "Tel Aviv 🇮🇱"
+        ]
 
-# cities.each do |city|
-#   City.create!(name: city)
-# end
+cities.each do |city|
+  City.create!(name: city)
+end
 
 # count = 1
 
