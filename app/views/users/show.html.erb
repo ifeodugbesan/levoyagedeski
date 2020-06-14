@@ -3,11 +3,11 @@
     <div class="container">
       <div class="user-show-profile d-flex justify-content-center mb-4">
         <div class="user-show-avatar">
-          <%= cl_image_tag @user.avatar_key %>
+          <%= render 'users/user_avatar', user: @user, classes: '' %>
         </div>
         <div class="user-show-profile-info flex-grow-1">
           <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.username ? @user.username : @user.full_name %></h1>
-          <h6 class="mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch.number %></h6>
+          <h6 class="mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%#= current_user.batch.number %></h6>
           <%= link_to "Edit Profile", edit_user_registration_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "outline-button small-text #{ @dark_mode ? 'white border-grey' : 'black' }" %>
         </div>

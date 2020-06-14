@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import $ from 'jquery'
 
 export default class extends Controller {
-  static targets = ["postCard", "heart", "modal", "flash"]
+  static targets = ["postCard", "heart", "modal", "flash", "button"]
 
   connect() {
     if (navigator.standalone) {
@@ -35,7 +35,6 @@ export default class extends Controller {
     setTimeout(function() {
       heart.style.animation = ''
     }, 700)
-
   }
 
   newComment() {
@@ -44,12 +43,13 @@ export default class extends Controller {
     let moreComments = document.querySelector(`.post-modal_${event.target.dataset.id}`)
     let modalComments = document.querySelector(`.post-modal-comments-box_${event.target.dataset.id}`)
     modalComments.insertAdjacentHTML('beforeend', xhr.response);
-    let numId = parseInt(moreComments.dataset.count, 10)
     if (moreComments) {
+      let numId = parseInt(moreComments.dataset.count, 10)
       moreComments.innerText = `view all ${numId + 1} comments`
       moreComments.dataset.count = (numId + 1).toString();
     }
     event.target.reset();
+    event.target.lastElementChild.classList.remove('post-submit')
     // SHOW CUSTOM FLASH
     if (this.hasFlashTarget) {
       const flash = this.flashTarget;
@@ -62,7 +62,6 @@ export default class extends Controller {
       $(flash).animate({ height: '0' }, 400);
       }, 2100)
     }
-
   }
 
   newCommentModal() {
@@ -79,6 +78,7 @@ export default class extends Controller {
       moreComments.dataset.count = (numId + 1).toString();
     }
     event.target.reset();
+    event.target.lastElementChild.classList.remove('post-submit')
     // SHOW CUSTOM FLASH
     if (this.hasFlashTarget) {
       const flash = this.flashTarget;
@@ -90,6 +90,14 @@ export default class extends Controller {
       setTimeout(function() {
       $(flash).animate({ height: '0' }, 400);
       }, 2100)
+    }
+  }
+
+  postButton() {
+    if (!event.target.value == "") {
+      event.target.parentElement.nextElementSibling.classList.add('post-submit')
+    } else {
+      event.target.parentElement.nextElementSibling.classList.remove('post-submit')
     }
   }
 }

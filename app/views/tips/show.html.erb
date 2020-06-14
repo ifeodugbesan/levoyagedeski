@@ -1,7 +1,7 @@
 <div class="article-container" data-controller="article">
   <div class="article-top">
     <div class="article-user">
-      <%= cl_image_tag @tip.user.avatar_key %>
+      <%= render 'users/user_avatar', user: @tip.user, classes: "" %>
       <div class="article-user-info">
         <h6 class="bold m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @tip.user.full_name %></h6>
         <p class="s-medium-text bold grey m-0"><%= @tip.created_at.strftime('%b %d, %Y') %></p>

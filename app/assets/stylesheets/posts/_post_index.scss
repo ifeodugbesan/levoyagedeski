@@ -70,13 +70,13 @@
 
 .post-card-form-input {
   border: none;
-  border-top: 1px solid #87BABD;
+  border-top: 1px solid #E5E5E5;
   border-radius: 0 0 4px 4px;
   height: 50px;
   padding-right: 72px;
   &:focus {
     outline: none;
-    border-color: #87BABD;
+    border-color: #E5E5E5;
     box-shadow: none;
   }
   @include for-phone-only {
@@ -97,13 +97,20 @@
   background: #FFF;
   border: none;
   border-radius: 0 0 4px 0;
-  border-top: 1px solid #87BABD;
-  color: #87BABD;
+  border-top: 1px solid #E5E5E5;
+  color: #E5E5E5;
   font-weight: bolder;
   font-size: 14px;
+  transition: color 0.3s ease;
+  pointer-events: none;
   @include for-phone-only {
     border: none;
   }
+}
+
+.post-submit {
+  color: #167FFB !important;
+  pointer-events: auto !important;
 }
 
 .add-new-button {

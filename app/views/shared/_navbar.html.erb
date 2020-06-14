@@ -12,7 +12,10 @@
           <%= link_to "Resources", resources_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           <%= link_to "Articles", articles_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
-          <i class="far fa-bell ml-1 mr-3"></i>
+          <%= link_to user_path(current_user) do %>
+            <%= image_tag 'nav-profile.png', width: 27 %>
+          <% end %>
+          <i class="far fa-bell ml-1 mx-3"></i>
           <%= link_to conversations_path do %>
             <% if current_user.new_messages.any? %>
               <div class="nav-chat position-relative">
