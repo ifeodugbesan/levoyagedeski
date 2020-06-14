@@ -2,11 +2,11 @@
   <div class="devise-container">
     <div class="devise-form">
       <h1 class="boldest text-center devise-form-title">Log in</h1>
-      <h5 class="boldest text-center"><span class="code-red">if</span> (Student <span class="code-red">||</span> Teacher)</h5>
+      <h5 class="boldest text-center devise-padding"><span class="code-red">if</span> (Student <span class="code-red">||</span> Teacher)</h5>
       <%= link_to user_github_omniauth_authorize_path, class: 'secondary-button white no-decoration github-link' do %>
-        Sign in with GitHub <i class="fab fa-github ml-2"></i>
+        Log in<i class="fab fa-github ml-2"></i>
       <% end %>
-      <h5 class="boldest text-center m-0 code-red">else</h5>
+      <h5 class="boldest text-center code-red devise-padding">else</h5>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <div class="form-inputs">

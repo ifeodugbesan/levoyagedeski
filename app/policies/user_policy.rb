@@ -6,10 +6,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    record == user
+    user
   end
 
   def no_user?
     user
+  end
+
+  def update_batch?
+    no_user?
   end
 end

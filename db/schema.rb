@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_120600) do
+ActiveRecord::Schema.define(version: 2020_06_14_121025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_120600) do
   end
 
   create_table "batches", force: :cascade do |t|
-    t.string "number"
+    t.integer "batch_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 2020_05_18_120600) do
     t.string "email"
     t.string "company_name"
     t.index ["user_id"], name: "index_careers_on_user_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -101,9 +107,9 @@ ActiveRecord::Schema.define(version: 2020_05_18_120600) do
     t.string "title"
     t.text "description"
     t.datetime "time"
-    t.bigint "batch_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "batch_id", null: false
     t.index ["batch_id"], name: "index_events_on_batch_id"
   end
 
@@ -184,10 +190,14 @@ ActiveRecord::Schema.define(version: 2020_05_18_120600) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "github"
     t.boolean "admin", default: false
-    t.bigint "batch_id", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "image_url"
+    t.bigint "city_id", null: false
+    t.bigint "batch_id"
     t.index ["batch_id"], name: "index_users_on_batch_id"
+    t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -207,4 +217,5 @@ ActiveRecord::Schema.define(version: 2020_05_18_120600) do
   add_foreign_key "upvotes", "tips"
   add_foreign_key "upvotes", "users"
   add_foreign_key "users", "batches"
+  add_foreign_key "users", "cities"
 end

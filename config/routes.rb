@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create, :edit, :update]
   end
   resources :events, only: [:destroy]
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      patch :update_batch
+    end
+  end
   resources :resources, except: [:show]
   resources :articles
   # resources :careers do

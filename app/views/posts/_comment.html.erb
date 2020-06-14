@@ -1,4 +1,9 @@
-<p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= comment.user.username ? comment.user.username : comment.user.full_name %> <span style="font-weight: 200;"><%= comment.content %></span></p>
+<p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>">
+  <%= link_to user_path(comment.user), class: 'no-decoration link-hover' do %>
+    <%= comment.user.username ? comment.user.username : comment.user.full_name %>
+  <% end %>
+  <span style="font-weight: 200;"><%= comment.content %></span>
+</p>
 <div class="alert bg-success alert-dismissible fade show m-0 p-0" role="alert" data-target="posts.flash">
   <p class="text-center m-0 boldest small-text white">Comment Created!</p>
 </div>
