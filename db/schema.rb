@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_121025) do
     t.string "provider"
     t.string "uid"
     t.string "image_url"
-    t.bigint "city_id", null: false
+    t.bigint "city_id"
     t.bigint "batch_id"
     t.index ["batch_id"], name: "index_users_on_batch_id"
     t.index ["city_id"], name: "index_users_on_city_id"
