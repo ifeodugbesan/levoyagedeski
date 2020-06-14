@@ -7,7 +7,7 @@
           <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
         <% end %>
       </div>
-      <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch ? "Batch ##{current_user.batch.batch_number} - #{current_user.city.name}" : current_user.city.name %></h6>
+      <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch ? "Batch ##{current_user.batch.number} - #{current_user.city.name}" : current_user.city.name %></h6>
       <%= link_to "Add a new Post", new_post_path, class: '' %>
     </div>
   </div>
@@ -103,7 +103,7 @@
       <%= image_tag 'le-wagon-logo.png', class: 'city-form-logo' %>
       <h1 class="boldest text-center devise-form-title">Which batch did you attend?</h1>
       <%= simple_form_for current_user, url: update_batch_user_path(current_user), html: { class: "w-75 city-form" } do |f| %>
-        <%= f.association :batch, collection: Batch.order(batch_number: :asc), label: false, :label_method => lambda { |batch| "Batch ##{batch.batch_number}" }, prompt: "Select Batch" %>
+        <%= f.association :batch, collection: Batch.order(number: :asc), label: false, :label_method => lambda { |batch| "Batch ##{batch.number}" }, prompt: "Select Batch" %>
         <h5 class="boldest text-center my-0 mx-3">in</h5>
         <%= f.association :city, collection: City.order(name: :asc), label: false, prompt: 'Select City' %>
         <%= f.submit 'Go', class: 'primary-button' %>

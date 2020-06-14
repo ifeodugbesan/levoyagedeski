@@ -49,7 +49,7 @@ end
 # count = 1
 
 # 425.times do
-#   Batch.create(batch_number: count)
+#   Batch.create(number: count)
 #   count += 1
 # end
 
