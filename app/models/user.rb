@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :project_members, dependent: :destroy
   has_many :careers, through: :project_members
   has_many :messages, dependent: :destroy
-  has_many :conversations, through: :messages
+  has_many :conversations, through: :messages, dependent: :destroy
   has_one_attached :avatar
   include PgSearch
   pg_search_scope :search_by_name,
