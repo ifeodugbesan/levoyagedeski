@@ -32,18 +32,11 @@
                       label: false,
                       placeholder: 'Username (optional)',
                       input_html: { autocomplete: "username", class: 'devise-input' } %>
-          <%= f.input :github,
-                      required: false,
-                      autofocus: true,
+          <%= f.association :city,
+                      collection: City.order(name: :asc),
                       label: false,
-                      placeholder: 'Github username (optional)',
-                      input_html: { autocomplete: "github", class: 'devise-input' } %>
-          <%= f.association :batch,
                       required: true,
-                      autofocus: true,
-                      label: false,
-                      label_method: :number,
-                      prompt: 'Batch number',
+                      prompt: 'Select City',
                       input_html: { autocomplete: "batch", class: 'devise-input devise-dropdown' } %>
           <%= f.input :password,
                       required: true,
