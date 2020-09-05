@@ -68,20 +68,18 @@
             <% end %>
           </div>
         </div>
-        <% unless post.user == current_user %>
-          <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newComment", id: "#{post.id}" } do |f| %>
-            <%= f.input :content,
-                        required: true,
-                        label: false,
-                        placeholder: 'Add a comment...',
-                        input_html: { class: "post-card-form-input  #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }", data: { action: "keyup->posts#postButton" } } %>
-            <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }", data: { target: 'posts.button' } %>
-          <% end %>
+        <%= simple_form_for [post, @comment], remote: true, data: { action: "ajax:success->posts#newComment", id: "#{post.id}" } do |f| %>
+          <%= f.input :content,
+                      required: true,
+                      label: false,
+                      placeholder: 'Add a comment...',
+                      input_html: { class: "post-card-form-input  #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }", data: { action: "keyup->posts#postButton" } } %>
+          <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }", data: { target: 'posts.button' } %>
         <% end %>
       </div>
 
       <!-- COMMENTS MODAL -->
-      <div class="modal fade " id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-target="posts.modal">
+      <div class="modal fade" id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-target="posts.modal">
         <div class="modal-dialog modal-dialog" role="document">
           <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode post-border-dark' : 'normal-mode post-border-normal' %>">
             <div class="modal-header">
