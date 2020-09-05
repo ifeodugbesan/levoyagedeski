@@ -1,9 +1,18 @@
 class TipsController < ApplicationController
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
   def index
-    @tips = policy_scope(Tip)
-    @how_tos = @tips.where(tip_type: 'How To')
-    @solutions = @tips.where(tip_type: 'Solution')
+    if params[:query].present?
+      @tips = policy_scope(Tip).search_by_title_and_content(params[:query])
+      @how_tos = @tips.where(tip_type: 'How To')
+      @solutions = @tips.where(tip_type: 'Solution')
+    else
+      @how_tos = policy_scope(Tip).where(tip_type: 'How To')
+      @solutions = policy_scope(Tip).where(tip_type: 'Solution')
+    end
+    respond_to do |format|
+      format.js { render partial: 'tips_content' }
+      format.html
+    end
   end
 
   def show

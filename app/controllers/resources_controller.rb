@@ -1,7 +1,15 @@
 class ResourcesController < ApplicationController
   before_action :set_resources, only: [:edit, :update, :destroy]
   def index
-    @resources = policy_scope(Resource)
+    if params[:query].present?
+      @resources = policy_scope(Resource).search_by_title_and_description(params[:query])
+    else
+      @resources = policy_scope(Resource)
+    end
+    respond_to do |format|
+      format.js { render partial: 'resources_content' }
+      format.html
+    end
   end
 
   def new

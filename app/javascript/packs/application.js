@@ -16,7 +16,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css';
 
 hljs.configure({
-  languages: ['ruby', 'javascript', 'CSS', 'HTTP', 'SCSS', 'JSON', 'YAML', 'HTML/XML', 'ERB', 'shell-session']
+  languages: ['ruby', 'javascript', 'CSS', 'HTTP', 'SCSS', 'JSON', 'YAML', 'HTML/XML', 'ERB', 'shell-session', 'bash']
 });
 
 

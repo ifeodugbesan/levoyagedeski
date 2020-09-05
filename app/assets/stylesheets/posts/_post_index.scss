@@ -1,7 +1,7 @@
 .post-card {
   width: 580px;
   border-radius: 2px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 16px auto;
   @include for-phone-only {
     border-radius: 0;
     width: 100%;
@@ -190,12 +190,15 @@
 .post-index-user {
   width: 300px;
   border-radius: 2px;
-  position: sticky;
-  top: 92px;
   .post-card-avatar {
     height: 64px !important;
     width: 64px !important;
   }
+}
+
+.post-sticky {
+  position: sticky;
+  top: 92px;
 }
 
 .city-form-wrapper {

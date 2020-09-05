@@ -1,16 +1,38 @@
 <div class="posts-container d-flex justify-content-center" data-controller="posts">
-  <div class="post-index-left mr-3">
-    <div class="post-index-user p-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
-      <div class="post-card-user-info boldest mb-2">
-        <%= render 'users/user_avatar', user: current_user, classes: 'post-card-avatar' %>
-        <%= link_to user_path(current_user), class: 'no-decoration' do %>
-          <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
+  <div class="post-index-left mr-3 mb-3">
+    <div class="post-sticky">
+      <div class="post-index-user p-3 mb-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
+        <div class="post-card-user-info boldest mb-2">
+          <%= render 'users/user_avatar', user: current_user, classes: 'post-card-avatar' %>
+          <%= link_to user_path(current_user), class: 'no-decoration' do %>
+            <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
+          <% end %>
+        </div>
+        <% if current_user.batch %>
+          <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch ? "Batch ##{current_user.batch.number} - #{current_user.city.name}" : current_user.city.name %></h6>
         <% end %>
+        <%= link_to "Add a new Post", new_post_path, class: '' %>
       </div>
-      <% if current_user.batch %>
-        <h6 class="boldest mb-1 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch ? "Batch ##{current_user.batch.number} - #{current_user.city.name}" : current_user.city.name %></h6>
-      <% end %>
-      <%= link_to "Add a new Post", new_post_path, class: '' %>
+      <div class="post-index-user p-3 mb-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
+        <p class="<%= @dark_mode ? 'white' : 'black' %>">Latest Tip</p>
+          <p class="m-0 v-small-text <%= @dark_mode ? 'grey' : 'black' %>"><%= @tip.tip_type %></p>
+          <%= link_to @tip.title, tip_path(@tip), class: "no-decoration link-hover bold #{ @dark_mode ? 'white' : 'black' }" %>
+          <p class="mt-3 mb-1 v-small-text <%= @dark_mode ? 'grey' : 'black' %>">Posted by</p>
+        <div class="post-card-user-info boldest">
+          <%= render 'users/user_avatar', user: @tip.user, classes: 'avatar mr-1' %>
+          <%= link_to user_path(@tip.user), class: 'no-decoration' do %>
+            <span class="small-text m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= @tip.user.username ? @tip.user.username : @tip.user.full_name %></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="post-index-user p-3 mb-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
+        <p class="<%= @dark_mode ? 'white' : 'black' %>">Latest Resource</p>
+        <%= link_to @resource.link, target: '_blank' do %>
+          <%= cl_image_tag @resource.photo.key, class: 'w-100' %>
+        <% end %>
+        <p class="boldest s-medium-text mt-2 mb-0 <%= @dark_mode ? 'grey' : 'black' %>"><%= @resource.title %></p>
+        <p class="m-0 lighter small-text <%= @dark_mode ? 'white' : 'black' %>"><%= @resource.description %></p>
+      </div>
     </div>
   </div>
   <div class="post-index-posts">
@@ -99,7 +121,8 @@
     <% end %>
   </div>
 </div>
-<% unless current_user.batch %>
+
+<% unless current_user.city %>
   <div class="city-form-wrapper">
     <div class="city-form-container">
       <%= image_tag 'le-wagon-logo.png', class: 'city-form-logo' %>
