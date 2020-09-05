@@ -1,6 +1,6 @@
 <% if tip.upvotes&.map(&:user).include?(current_user) %>
   <%= link_to upvote_path(Upvote.where(tip: tip, user: current_user).first), remote: true, class: "no-decoration", data: { action: "ajax:success->tips#toggleUpvote" }, method: :delete do %>
-    <i class="fas fa-thumbs-up lv-green"></i> <span><%= tip.upvotes.count %></span>
+    <i class="fas fa-thumbs-up lv-blue"></i> <span class="lv-blue"><%= tip.upvotes.count %></span>
   <% end %>
 <% else %>
   <%= link_to tip_upvotes_path(tip), remote: true, class: "no-decoration", data: { action: "ajax:success->tips#toggleUpvote" }, method: :post do  %>

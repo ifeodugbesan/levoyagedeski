@@ -1,69 +1,29 @@
-<% if policy(Resource).create? %>
-  <%= link_to new_resource_path, class: 'add-new-button' do %>
-    <%= image_tag "#{ @dark_mode ? 'add-new-white.png' : 'add-new.png' }" %>
+<div class="tips-container" data-controller="tabs">
+  <% if policy(Resource).create? %>
+    <%= link_to new_resource_path, class: 'add-new-button' do %>
+      <%= image_tag "#{ @dark_mode ? 'add-new-white.png' : 'add-new.png' }" %>
+    <% end %>
   <% end %>
-<% end %>
-<h1 class="boldest text-center <%= @dark_mode ? 'grey' : 'black' %>" data-target="common.resourcesHeader">Resources</h1>
-<h6 class="boldest text-center mb-4 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.resourcesHeader">Here is a list of many different useful resources.</h6>
-<div class="resource-tabs <%= @dark_mode ? 'tab-border-dark' : 'tab-border-normal' %>" data-target="common.tabsHolder">
-  <div class="front-end-tab resource-tab tab-active boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="front-end">
-    Front End | Design
-  </div>
-  <div class="back-end-tab resource-tab boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="back-end">
-    Ruby - Rails | JS
-  </div>
-</div>
-<div class="resources-content" data-target="common.resourcesContent">
-  <div class="<%= @dark_mode ? 'background-dark-one' : 'background-alice-blue' %> front-end-container resource-active" data-target="common.resourceTabs" data-type="front-end">
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Colors</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Colors').order(created_at: :asc) %>
-      </div>
-    </div>
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Fonts</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Fonts').order(created_at: :asc) %>
-      </div>
-    </div>
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Icons</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Icons').order(created_at: :asc) %>
-      </div>
-    </div>
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Royalty Free Images</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Royalty Free Images').order(created_at: :asc) %>
-      </div>
-    </div>
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Illustrations</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Illustrations').order(created_at: :asc) %>
-      </div>
-    </div>
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Inspiration</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Inspiration').order(created_at: :asc) %>
-      </div>
+  <h1 class="boldest text-center <%= @dark_mode ? 'grey' : 'black' %>" data-target="common.resourcesHeader">Resources</h1>
+  <h6 class="boldest text-center mb-4 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.resourcesHeader">Here is a list of many different useful resources.</h6>
+  <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 pb-3">
+      <%= form_tag resources_path, method: :get, data: { action: "ajax:success->tabs#updateResults" }, remote: true do |f| %>
+        <%= text_field_tag :query, params[:query], class: "navbar-search-input devise-input w-100 px-2 #{ @dark_mode ? 'post-border-dark dark-mode white' : 'post-border-normal normal-mode'}", placeholder: 'Search for a resource...', autocomplete: 'off' %>
+      <% end %>
     </div>
   </div>
-  <div class="<%= @dark_mode ? 'background-dark-two' : 'background-beau-blue' %> back-end-container" data-target="common.resourceTabs" data-type="back-end">
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Ruby - Rails</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Ruby - Rails').order(created_at: :asc) %>
-      </div>
+  </div>
+  <div class="resource-tabs <%= @dark_mode ? 'tab-border-dark' : 'tab-border-normal' %>" data-target="common.tabsHolder">
+    <div class="front-end-tab resource-tab tab-active boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="front-end">
+      Front End | Design
     </div>
-    <div class="resources-container">
-      <h2 class="resource-category boldest mb-3 <%= @dark_mode ? 'white' : 'black' %>">Javascript</h2>
-      <div class="row">
-        <%= render 'resource_cards', resources: @resources.where(category: 'Javascript').order(created_at: :asc) %>
-      </div>
+    <div class="back-end-tab resource-tab boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>" data-target="common.tab" data-action="click->common#switchTabs" data-type="back-end">
+      Ruby - Rails | JS
     </div>
+  </div>
+  <div class="" data-target="tabs.container">
+    <%= render 'resources_content' %>
   </div>
 </div>

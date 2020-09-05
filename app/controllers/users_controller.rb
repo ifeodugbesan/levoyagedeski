@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @not_me = current_user != @user
-    @my_posts = Post.where(user: current_user)
-    @my_tips = Tip.where(user: current_user)
-    @my_articles = Article.where(user: current_user)
+    @my_posts = Post.where(user: @user)
+    @my_tips = Tip.where(user: @user)
+    @my_articles = Article.where(user: @user)
     authorize @user
   end
 
