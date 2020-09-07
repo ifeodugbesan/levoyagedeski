@@ -24,7 +24,7 @@
 }
 
 .stay-connected {
-  background: #87BABD;
+  background: #4D77B7;
   padding: 60px 20px 5px 20px;
 }
 
@@ -72,7 +72,7 @@
 
 .stay-connected-text {
   margin-top: 24px;
-  width: 60%;
+  width: 85%;
   @include for-medium-devices-down {
     width: 90%;
   }
@@ -190,9 +190,9 @@
   transform: rotate(-9deg);
   z-index: 30;
   width: 100%;
-  top: 0;
+  bottom: 70px;
   @include for-phone-only {
-    top: 30px;
+    bottom: 30px;
   }
 }
 

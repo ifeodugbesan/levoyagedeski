@@ -41,12 +41,14 @@
       <h3 class="boldest text-center home-family-content-text">We are a community and network of people who help each other, using our internal chat and alumni database to share tips and opportunities.</h3>
     </div>
     <%= image_tag 'home-bus.jpg', class: 'home-bus' %>
+    <%= link_to new_user_session_path do %>
+      <h3 class="home-family-message boldest text-center px-3">Join the journey.....</h3>
+    <% end %>
   </div>
-  <div class="home-slant-break">
-    <h3 class="home-family-message boldest text-center px-3">Join the journey.....</h3>
-    <%= image_tag 'home-slant-break.png', class: 'home-slant-break' %>
-  </div>
-  <div class="home-work">
+<!--   <div class="home-slant-break">
+    <%#= image_tag 'home-slant-break.png', class: 'home-slant-break' %>
+  </div> -->
+<!--   <div class="home-work">
     <h1 class="boldest text-center">Find jobs or collaborate on projects</h1>
     <div class="container">
       <div class="home-work-content">
@@ -56,14 +58,14 @@
         </div>
         <div class="work-card">
           <div class="work-card-logo">
-            <%= image_tag 'hoxton-digital.png' %>
+            <%#= image_tag 'hoxton-digital.png' %>
           </div>
           <h5 class="w-100 mt-4 mb-2"><strong>Role:</strong> Back End Developer</h5>
           <h5 class="w-100"><strong>Description:</strong> We are looking for a back end developer for a Ruby on Rails project. Ideally you will have 1+ years experience.</h5>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <% if @first_visit %>
     <%= link_to seen_pwa_path, remote: true, style: "cursor: default" do %>
       <div class="pwa-underlay" data-target="common.pwaUnderlay" data-action="click->common#hide">

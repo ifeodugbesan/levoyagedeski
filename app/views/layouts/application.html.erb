@@ -38,9 +38,9 @@
       </div>
       <%= yield %>
     </div>
-    <% if params[:controller] == 'pages' && params[:action] == 'home' %>
-      <%= render 'shared/footer' %>
-    <% end %>
+    <%# if params[:controller] == 'pages' && params[:action] == 'home' %>
+      <%#= render 'shared/footer' %>
+    <%# end %>
     <%= render 'shared/pwa_navbar' %>
     <%= javascript_pack_tag 'application' %>
   </body>
