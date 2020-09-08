@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @not_me = current_user != @user
     @my_posts = Post.where(user: @user)
     @my_tips = Tip.where(user: @user)
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def update_batch
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     authorize @user
     batch = Batch.find(params[:user][:batch_id])
     city = City.find(params[:user][:city_id])

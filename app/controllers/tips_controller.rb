@@ -56,7 +56,7 @@ class TipsController < ApplicationController
   private
 
   def set_tip
-    @tip = Tip.find(params[:id])
+    @tip = Tip.friendly.find(params[:id])
   end
 
   def tip_params

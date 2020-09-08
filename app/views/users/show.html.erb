@@ -6,9 +6,9 @@
           <%= render 'users/user_avatar', user: @user, classes: '' %>
         </div>
         <div class="user-show-profile-info flex-grow-1">
-          <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.username ? @user.username : @user.full_name %></h1>
-          <% if current_user.city %>
-            <h6 class="boldest mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= current_user.batch ? "Batch ##{current_user.batch.number} - #{current_user.city.name}" : current_user.city.name %></h6>
+          <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.username.present? ? @user.username : @user.full_name %></h1>
+          <% if @user.city %>
+            <h6 class="boldest mb-2 <%= @dark_mode ? 'grey' : 'black' %>"><%= @user.batch ? "Batch ##{@user.batch.number} - #{@user.city.name}" : @user.city.name %></h6>
           <% end %>
           <% if @not_me %>
             <%= link_to "Message", edit_user_registration_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>

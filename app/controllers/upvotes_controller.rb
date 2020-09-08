@@ -1,6 +1,6 @@
 class UpvotesController < ApplicationController
   def create
-    tip = Tip.find(params[:tip_id])
+    tip = Tip.friendly.find(params[:tip_id])
     @upvote = Upvote.new(tip: tip, user: current_user)
     render partial: 'tips/upvote', locals: { tip: tip } if @upvote.save
     authorize @upvote
