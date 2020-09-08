@@ -44,14 +44,14 @@
         </div>
       </div>
     </div>
-    <div class="back-end-container" data-target="common.resourceTabs" data-type="tips">
+    <div class="back-end-container" data-target="common.resourceTabs" data-type="tips" style="display: none;">
       <div class="resources-container">
         <div class="row">
           <%= render './tips/tips_cards', tips: @my_tips %>
         </div>
       </div>
     </div>
-    <div class="front-end-container" data-target="common.resourceTabs" data-type="articles">
+    <div class="front-end-container" data-target="common.resourceTabs" data-type="articles" style="display: none;">
       <div class="resources-container">
         <% @my_articles.each do |article| %>
           <%= link_to article_path(article), class: 'no-decoration' do %>
