@@ -10,11 +10,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :articles, dependent: :destroy
-  has_many :project_members, dependent: :destroy
-  has_many :careers, through: :project_members
   has_many :messages, dependent: :destroy
   has_many :conversations, through: :messages, dependent: :destroy
   has_one_attached :avatar
+  extend FriendlyId
+  friendly_id :user_username, use: :slugged
   include PgSearch
   pg_search_scope :search_by_name,
                   against: [:first_name, :last_name, :username],
@@ -34,6 +34,10 @@ class User < ApplicationRecord
       user.image_url = auth.info.image
       user.password = Devise.friendly_token[0, 20]
     end
+  end
+
+  def user_username
+    username.present? ? username : "#{first_name}-#{last_name}"
   end
 
   def full_name

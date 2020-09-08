@@ -5,7 +5,7 @@
         <div class="post-card-user-info boldest mb-2">
           <%= render 'users/user_avatar', user: current_user, classes: 'post-card-avatar' %>
           <%= link_to user_path(current_user), class: 'no-decoration' do %>
-            <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username ? current_user.username : current_user.full_name %></span>
+            <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username.present? ? current_user.username : current_user.full_name %></span>
           <% end %>
         </div>
         <% if current_user.batch %>
