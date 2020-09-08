@@ -1,7 +1,7 @@
 <% tips.each do |tip| %>
   <div class="col-md-6">
     <%= link_to tip_path(tip), class: 'no-decoration' do %>
-      <div class="article-card tip-card <%= 'grey-background' if @dark_mode %>">
+      <div class="article-card tip-card <%= @dark_mode ? 'grey-background' : 'bg-white'  %>">
         <h3 class="boldest <%= @dark_mode ? 'grey' : 'black' %>"><%= tip.title %></h3>
         <div class="article-user-index">
           <%= render 'users/user_avatar', user: tip.user, classes: "" %>
