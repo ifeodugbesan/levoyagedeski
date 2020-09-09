@@ -8,4 +8,8 @@ class Article < ApplicationRecord
   def slug_name
     title.gsub(/\s/, '-')
   end
+
+  def should_generate_new_friendly_id?
+    true
+  end
 end

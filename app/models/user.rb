@@ -55,4 +55,8 @@ class User < ApplicationRecord
   def new_messages
     chats.map { |c| c.messages.where.not(user: self).where.not(read: true) }.flatten.reject(&:blank?)
   end
+
+  def should_generate_new_friendly_id?
+    true
+  end
 end
