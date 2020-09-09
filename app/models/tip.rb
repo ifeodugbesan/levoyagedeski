@@ -20,4 +20,8 @@ class Tip < ApplicationRecord
   def slug_title
     title.gsub(/\s/, '-')
   end
+
+  def should_generate_new_friendly_id?
+    true
+  end
 end
