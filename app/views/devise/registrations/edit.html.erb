@@ -41,7 +41,7 @@
         <div class="row">
           <div class="col-12 col-sm-6">
             <% if current_user.batch.present? %>
-              <%= f.association :batch, collection: Batch.order(number: :asc), label: false, :label_method => lambda { |batch| "Batch ##{batch.number}" }, prompt: "Select Batch", input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
+              <%= f.association :batch, collection: Batch.order(number: :asc), label: false, :label_method => lambda { |batch| "#{batch.number}" }, prompt: "Select Batch", input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
             <% end %>
           </div>
           <div class="col-12 col-sm-6">

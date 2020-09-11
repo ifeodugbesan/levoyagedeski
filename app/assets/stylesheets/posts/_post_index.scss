@@ -66,6 +66,9 @@
 .post-comments {
   flex-grow: 1;
   overflow: scroll;
+}
+
+.modal-post-comments {
   @include for-small-devices-down {
     height: 60vh;
   }
