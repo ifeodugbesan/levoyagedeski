@@ -64,8 +64,11 @@
 }
 
 .post-comments {
-  max-height: 50vh;
+  flex-grow: 1;
   overflow: scroll;
+  @include for-small-devices-down {
+    height: 60vh;
+  }
 }
 
 .post-card-form-input {
@@ -271,12 +274,49 @@
   }
 }
 
+.modal-dialog {
+  max-width: 700px;
+  @include for-medium-devices-down {
+    max-width: 500px;
+  }
+}
 
+.modal-body {
+  height: 600px;
+  @include for-small-devices-down {
+    height: auto;
+  }
+}
 
+.modal-comments {
+  min-width: 350px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  // justify-content: space-between;
+  @include for-medium-devices-down {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+}
 
+.post-modal-image {
+  object-fit: cover;
+  max-height: 100%;
+  max-width: 500px;
+  @include for-medium-devices-down {
+    display: none;
+    align-items: flex-start;
+  }
+}
 
-
-
+.modal-dialog-centered {
+  @include for-medium-devices-down {
+    align-items: flex-start;
+  }
+}
 
 
 
