@@ -1,4 +1,9 @@
 <div class="post-card-user-info boldest py-1">
+  <% if comment.user.avatar.attached?  %>
+    <%= cl_image_tag comment.user.avatar.key, width: 40, class: 'avatar-sm' %>
+  <% else %>
+    <%= image_tag 'default-user.png', width: 40, class: 'avatar-sm' %>
+  <% end %>
   <%= link_to user_path(comment.user), class: 'no-decoration' do %>
     <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= comment.user.username ? comment.user.username : comment.user.full_name %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= comment.content %></span>
   <% end %>

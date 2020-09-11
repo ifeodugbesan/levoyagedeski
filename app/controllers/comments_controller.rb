@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.post = @post
-    render partial: 'posts/comment', locals: { comment: @comment } if @comment.save
+    render partial: 'posts/modal_comment', locals: { comment: @comment } if @comment.save
     authorize @comment
   end
 
