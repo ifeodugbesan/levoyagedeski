@@ -100,7 +100,7 @@
                   <% end %>
                 </div>
                 <hr class="w-100 m-0">
-                <div class="post-comments post-modal-comments-box_<%= post.id %> px-2" data-target="posts.commentsBox">
+                <div class="post-comments modal-post-comments post-modal-comments-box_<%= post.id %> px-2" data-target="posts.commentsBox">
                   <div class="post-card-user-info boldest py-2">
                     <% if post.user.avatar.attached?  %>
                       <%= cl_image_tag post.user.avatar.key, width: 40, class: 'avatar-sm' %>
