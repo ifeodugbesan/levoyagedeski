@@ -14,17 +14,13 @@ require("@rails/actiontext")
 
 import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css';
-import intlTelInput from 'intl-tel-input';
-import 'intl-tel-input/build/css/intlTelInput.css';
 
 hljs.configure({
   languages: ['ruby', 'javascript', 'CSS', 'HTTP', 'SCSS', 'JSON', 'YAML', 'HTML/XML', 'ERB', 'shell-session', 'bash']
 });
 
-const input = document.querySelector("#phone");
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  intlTelInput(input);
   document.querySelectorAll('pre').forEach((block) => {
     hljs.highlightBlock(block);
     block.classList.remove('angelscript')
