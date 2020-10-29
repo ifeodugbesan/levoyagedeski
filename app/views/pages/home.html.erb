@@ -1,4 +1,9 @@
-
+<div class="p-3">
+  <%= simple_form_for @post do |f| %>
+    <%= f.input :caption, input_html: { id: 'phone' } %>
+    <%= submit_tag ("Search") %>
+  <% end %>
+</div>
 <div class="home-wrapper">
   <% if !user_signed_in? %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between d-none" style="position: relative; z-index: 2500;height: 60px !important" data-target="common.pwaHomeNavbar">
