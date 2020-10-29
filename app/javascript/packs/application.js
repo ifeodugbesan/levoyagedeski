@@ -24,9 +24,9 @@ hljs.configure({
 const input = document.querySelector("#phone");
 
 document.addEventListener('DOMContentLoaded', (event) => {
+  intlTelInput(input);
   document.querySelectorAll('pre').forEach((block) => {
     hljs.highlightBlock(block);
     block.classList.remove('angelscript')
-    intlTelInput(input);
   });
 });
