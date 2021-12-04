@@ -16,19 +16,16 @@
                       input_html: { autocomplete: "email", class: 'devise-input' } %>
           <%= f.input :first_name,
                       required: true,
-                      autofocus: true,
                       label: false,
                       placeholder: 'First name',
                       input_html: { autocomplete: "first name", class: 'devise-input' } %>
           <%= f.input :last_name,
                       required: true,
-                      autofocus: true,
                       label: false,
                       placeholder: 'Last name',
                       input_html: { autocomplete: "last name", class: 'devise-input' } %>
           <%= f.input :username,
                       required: false,
-                      autofocus: true,
                       label: false,
                       placeholder: 'Username (optional)',
                       input_html: { autocomplete: "username", class: 'devise-input' } %>
@@ -36,8 +33,13 @@
                       collection: City.order(name: :asc),
                       label: false,
                       required: true,
-                      prompt: 'Select City',
+                      prompt: 'Select City (optional)',
                       input_html: { autocomplete: "batch", class: 'devise-input devise-dropdown' } %>
+          <%= f.input :batch_number,
+                      required: false,
+                      label: false,
+                      placeholder: 'Batch number (optional)',
+                      input_html: { autocomplete: "username", class: 'devise-input' } %>
           <%= f.input :password,
                       required: true,
                       label: false,

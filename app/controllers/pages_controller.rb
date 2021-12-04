@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :resources, :seen_pwa]
+  skip_before_action :authenticate_user!, only: [:home, :resources, :seen_pwa, :toggle_dark_mode]
 
   def home
     @post = Post.new

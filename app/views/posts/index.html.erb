@@ -15,23 +15,27 @@
       </div>
       <div class="post-index-user p-3 mb-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
         <p class="<%= @dark_mode ? 'white' : 'black' %>">Latest Tip</p>
+        <% if @tip %>
           <p class="m-0 v-small-text <%= @dark_mode ? 'grey' : 'black' %>"><%= @tip.tip_type %></p>
           <%= link_to @tip.title, tip_path(@tip), class: "no-decoration link-hover bold #{ @dark_mode ? 'white' : 'black' }" %>
           <p class="mt-3 mb-1 v-small-text <%= @dark_mode ? 'grey' : 'black' %>">Posted by</p>
-        <div class="post-card-user-info boldest">
-          <%= render 'users/user_avatar', user: @tip.user, classes: 'avatar mr-1' %>
-          <%= link_to user_path(@tip.user), class: 'no-decoration' do %>
-            <span class="small-text m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= @tip.user.username ? @tip.user.username : @tip.user.full_name %></span>
-          <% end %>
-        </div>
+          <div class="post-card-user-info boldest">
+            <%= render 'users/user_avatar', user: @tip.user, classes: 'avatar mr-1' %>
+            <%= link_to user_path(@tip.user), class: 'no-decoration' do %>
+              <span class="small-text m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= @tip.user.username ? @tip.user.username : @tip.user.full_name %></span>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="post-index-user p-3 mb-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
         <p class="<%= @dark_mode ? 'white' : 'black' %>">Latest Resource</p>
-        <%= link_to @resource.link, target: '_blank' do %>
-          <%= cl_image_tag @resource.photo.key, class: 'w-100' %>
+        <% if @resource %>
+          <%= link_to @resource.link, target: '_blank' do %>
+            <%= cl_image_tag @resource.photo.key, class: 'w-100' %>
+          <% end %>
+          <p class="boldest s-medium-text mt-2 mb-0 <%= @dark_mode ? 'grey' : 'black' %>"><%= @resource.title %></p>
+         <p class="m-0 lighter small-text <%= @dark_mode ? 'white' : 'black' %>"><%= @resource.description %></p>
         <% end %>
-        <p class="boldest s-medium-text mt-2 mb-0 <%= @dark_mode ? 'grey' : 'black' %>"><%= @resource.title %></p>
-        <p class="m-0 lighter small-text <%= @dark_mode ? 'white' : 'black' %>"><%= @resource.description %></p>
       </div>
     </div>
   </div>
@@ -135,17 +139,17 @@
   </div>
 </div>
 
-<% unless current_user.city %>
+<!-- <%# unless current_user.city %>
   <div class="city-form-wrapper">
     <div class="city-form-container">
-      <%= image_tag 'le-wagon-logo.png', class: 'city-form-logo' %>
+      <%#= image_tag 'le-wagon-logo.png', class: 'city-form-logo' %>
       <h1 class="boldest text-center devise-form-title">Which batch did you attend?</h1>
-      <%= simple_form_for current_user, url: update_batch_user_path(current_user), html: { class: "w-75 city-form" } do |f| %>
-        <%= f.association :batch, collection: Batch.order(number: :asc), label: false, :label_method => lambda { |batch| "#{batch.number}" }, prompt: "Select Batch" %>
+      <%#= simple_form_for current_user, url: update_batch_user_path(current_user), html: { class: "w-75 city-form" } do |f| %>
+        <%#= f.association :batch, collection: Batch.order(number: :asc), label: false, :label_method => lambda { |batch| "#{batch.number}" }, prompt: "Select Batch" %>
         <h5 class="boldest text-center my-0 mx-3">in</h5>
-        <%= f.association :city, collection: City.order(name: :asc), label: false, prompt: 'Select City' %>
-        <%= f.submit 'Go', class: 'primary-button' %>
-      <% end %>
+        <%#= f.association :city, collection: City.order(name: :asc), label: false, prompt: 'Select City' %>
+        <%#= f.submit 'Go', class: 'primary-button' %>
+      <%# end %>
     </div>
   </div>
-<% end %>
+<%# end %> -->
