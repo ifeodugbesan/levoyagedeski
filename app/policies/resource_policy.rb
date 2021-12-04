@@ -14,7 +14,7 @@ class ResourcePolicy < ApplicationPolicy
   end
 
   def edit?
-    record.user == user
+    user&.admin
   end
 
   def update?
