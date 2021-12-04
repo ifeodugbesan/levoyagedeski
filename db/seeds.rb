@@ -1,45 +1,45 @@
 
 # City.destroy_all
 
-cities = ["Buenos Aires 🇦🇷",
-          "Milan 🇮🇹",
-          "Rome 🇮🇹",
-          "Lisbon 🇵🇹",
-          "Munich 🇩🇪",
-          "Shanghai 🇨🇳",
-          "Marseille 🇫🇷",
-          "Tokyo 🇯🇵",
-          "Mexico 🇲🇽",
-          "Belo Horizonte 🇧🇷",
+cities = [
+          "Amsterdam 🇳🇱",
+          "Bali 🇮🇩",
+          "Barcelona 🇪🇸",
+          "Berlin 🇩🇪",
           "Bordeaux 🇫🇷",
           "Brussels 🇧🇪",
+          "Buenos Aires 🇦🇷",
+          "Casablanca 🇲🇦",
+          "Cologne 🇩🇪"
+          "Dubai 🇦🇪",
+          "Istanbul 🇹🇷",
           "Lausanne 🇨🇭",
           "Lille 🇫🇷",
+          "Lima 🇵🇪"
+          "Lisbon 🇵🇹",
           "London 🇬🇧",
           "Lyon 🇫🇷",
-          "Montreal 🇨🇦",
-          "Nantes 🇫🇷",
-          "Paris 🇫🇷",
-          "Seoul 🇰🇷",
-          "Barcelona 🇪🇸",
-          "Rio de Janeiro 🇧🇷",
-          "São Paulo 🇧🇷",
-          "Amsterdam 🇳🇱",
-          "Singapore 🇸🇬",
-          "Melbourne 🇦🇺",
-          "Bali 🇮🇩",
           "Madrid 🇪🇸",
+          "Marseille 🇫🇷",
+          "Mauritius 🇲🇺"
+          "Melbourne 🇦🇺",
+          "Mexico 🇲🇽",
+          "Milan 🇮🇹",
+          "Montreal 🇨🇦",
+          "Munich 🇩🇪",
+          "Nantes 🇫🇷",
+          "Nice 🇫🇷",
           "Oslo 🇳🇴",
-          "Istanbul 🇹🇷",
+          "Paris 🇫🇷",
           "Rennes 🇫🇷",
-          "Berlin 🇩🇪",
-          "Dubai 🇦🇪",
-          "Stockholm 🇸🇪",
-          "Shenzhen 🇨🇳",
-          "Chengdu 🇨🇳",
-          "Copenhagen 🇩🇰",
-          "Kyoto 🇯🇵",
+          "Rio de Janeiro 🇧🇷",
+          "Santiago 🇵🇭"
+          "Shanghai 🇨🇳",
+          "Singapore 🇸🇬",
+          "São Paulo 🇧🇷",
           "Tel Aviv 🇮🇱"
+          "Tokyo 🇯🇵"
+          "Online"
         ]
 
 cities.each do |city|

@@ -1,4 +1,5 @@
 class TipsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
   def index
     if params[:query].present?

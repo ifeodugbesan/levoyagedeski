@@ -5,12 +5,8 @@ class ResourcePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user
-  end
-
   def new?
-    user&.admin
+    user
   end
 
   def create?
@@ -18,14 +14,14 @@ class ResourcePolicy < ApplicationPolicy
   end
 
   def edit?
-    new?
+    record.user == user
   end
 
   def update?
-    new?
+    edit?
   end
 
   def destroy?
-    new?
+    edit?
   end
 end
