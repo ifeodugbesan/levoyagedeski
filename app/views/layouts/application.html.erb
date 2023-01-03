@@ -24,7 +24,7 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag 'favicon.png' %>
     <%= render 'shared/pwa' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
@@ -34,7 +34,7 @@
     <div class="min-height <%= @dark_mode == true ? 'dark-mode' : 'normal-mode' %>" data-target="common.minHeightDiv">
       <div class="loader-underlay" data-target="common.loaderUnderlay"></div>
       <div class="loader" data-target="common.loader">
-        <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "loader-logo" %>
+        <%= image_tag 'levoyagedeski-lime.png', class: "loader-logo" %>
       </div>
       <%= yield %>
     </div>

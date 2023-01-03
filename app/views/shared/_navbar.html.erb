@@ -1,6 +1,7 @@
 <div class="navbar-container">
   <% if user_signed_in? %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.navbar">
+      <!-- WEB LOGO -->
       <div class="show-web w-100 d-flex justify-content-between align-items-center">
         <%= link_to root_path, class: "nav-link px-0" do %>
           <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo-signed-in" %>
@@ -10,106 +11,79 @@
           <%= link_to user_path(current_user) do %>
             <%= image_tag "#{ @dark_mode ? 'user-white.png' : 'user.png' }", class: 'post-card-plane mx-3' %>
           <% end %>
-          <%= link_to conversations_path do %>
-            <% if current_user.new_messages.any? %>
-              <div class="nav-chat position-relative">
-                <%= image_tag "#{ @dark_mode ? 'message-white.png' : 'message.png' }", class: 'post-card-plane' %>
-                <span class="notification-icon">
-                  <%= current_user.new_messages.count %>
-                </span>
-              </div>
-            <% else %>
-              <%= image_tag "#{ @dark_mode ? 'message-white.png' : 'message.png' }", class: 'post-card-plane' %>
-            <% end %>
+          <%= link_to info_path do %>
+            <%= image_tag "#{ @dark_mode ? 'info-white.png' : 'info.png' }", class: 'post-card-plane mb-2 mb-sm-0' %>
           <% end %>
         </span>
       </div>
+      <!-- MOBILE LOGO -->
       <div class="show-mobile">
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo" %>
           <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
         <% end %>
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-action="click->navbar#navbarToggler" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <div class="hamburger">
-          <div class="hamburger-stick ham-one"></div>
-          <div class="hamburger-stick ham-two"></div>
-          <div class="hamburger-stick ham-three"></div>
-        </div>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="show-mobile">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <%= link_to "Posts", posts_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Inbox", conversations_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
-            </li>
-            <li class="nav-item pt-1">
-              <%= render 'shared/dark_mode_link' %>
-            </li>
-            <li class="nav-item d-flex align-items-center justify-content-start pt-3 pb-2">
-              <%= link_to user_path(current_user) do %>
-                <%= image_tag "#{ @dark_mode ? 'user-white.png' : 'user.png' }", class: 'post-card-plane' %>
-              <% end %>
-              <%= link_to conversations_path do %>
-                <% if current_user.new_messages.any? %>
-                  <div class="nav-chat position-relative">
-                    <%= image_tag "#{ @dark_mode ? 'message-white.png' : 'message.png' }", class: 'post-card-plane' %>
-                    <span class="notification-icon">
-                      <%= current_user.new_messages.count %>
-                    </span>
-                  </div>
-                <% else %>
-                  <%= image_tag "#{ @dark_mode ? 'message-white.png' : 'message.png' }", class: 'post-card-plane' %>
-                <% end %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="navbar-spacer" data-target="navbar.spacer"></div>
-  <% else %>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between" data-target="navbar.navbar">
-      <%= link_to root_path, class: "nav-link px-0" do %>
-        <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo" %>
-        <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
-      <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-action="click->navbar#navbarToggler" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <div class="hamburger">
-          <div class="hamburger-stick ham-one"></div>
-          <div class="hamburger-stick ham-two"></div>
-          <div class="hamburger-stick ham-three"></div>
-        </div>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <div class="show-mobile">
         <ul class="navbar-nav mr-auto">
-          <%= render 'shared/dark_mode_link' %>
-          <li class="nav-item ml-3">
-            <%= link_to "Posts", posts_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
+          <li class="nav-item d-flex align-items-center">
+            <%= render 'shared/dark_mode_link' %>
+          </li>
+          <li class="nav-item mx-3">
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag "#{ @dark_mode ? 'user-white.png' : 'user.png' }", class: 'post-card-plane' %>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Log in", new_user_session_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
+            <%= link_to info_path do %>
+              <%= image_tag "#{ @dark_mode ? 'info-white.png' : 'info.png' }", class: 'post-card-plane' %>
+            <% end %>
           </li>
         </ul>
       </div>
     </div>
     <div class="navbar-spacer" data-target="navbar.spacer"></div>
+  <% else %>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between" data-target="navbar.navbar">
+      <% if params[:controller] == "pages" && params[:action] == "home" %>
+        <%= link_to root_path, class: "nav-link px-0" do %>
+          <%= image_tag 'levoyagedeski-lime.png', class: "logo" %>
+          <span class="logo-text light-grey">le voyage de ski</span>
+        <% end %>
+      <% else %>
+        <%= link_to root_path, class: "nav-link px-0" do %>
+          <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo" %>
+        <% end %>
+      <% end %>
+      <ul class="navbar-nav">
+        <%= render 'shared/dark_mode_link' %>
+        <li class="nav-item">
+          <%= link_to info_path do %>
+            <%= image_tag 'info-white.png', class: 'post-card-plane ml-3' %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-spacer" data-target="navbar.spacer"></div>
   <% end %>
 </div>
+
 <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
-  <div class="pwa-top-bar<%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.pwaTopBar">
+  <div class="pwa-top-bar <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.pwaTopBar">
     <div class="navbar-brand" data-action="click->navbar#scrollTop">
-      <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "pwa-logo" %>
-      <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
-    </div>
-    <div class="new-post">
-      <%= link_to new_post_path do %>
-        <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }" %>
+      <%= link_to root_path, class: 'text-decoration-none' do %>
+        <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "pwa-logo" %>
+        <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
       <% end %>
     </div>
+    <% if params[:controller] == 'posts' || params[:controller] == 'users' && params[:action] == 'show' %>
+      <div class="new-post">
+        <%= link_to new_post_path, data: { action: 'click->common#showLoader' } do %>
+          <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }" %>
+        <% end %>
+      </div>
+    <% end %>
+
   </div>
   <div class="pwa-top-bar-spacer" data-target="navbar.pwaTopBarSpacer"></div>
 <% end %>

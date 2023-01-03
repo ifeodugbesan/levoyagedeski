@@ -1,12 +1,12 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :resources, :seen_pwa, :toggle_dark_mode]
+  skip_before_action :authenticate_user!, only: [:home, :info, :seen_pwa, :toggle_dark_mode]
 
   def home
     @post = Post.new
     redirect_to posts_path if user_signed_in?
   end
 
-  def resources
+  def info
   end
 
   def seen_pwa

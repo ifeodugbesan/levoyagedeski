@@ -38,36 +38,6 @@
       </div>
     <%# end %> -->
 
-    <% if user_signed_in? %>
-      <div class="pwa-navbar-section">
-        <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
-            <% if current_user.new_messages.any? %>
-              <div class="nav-chat position-relative">
-                <% if params[:controller] == 'conversations' || params[:controller] == 'messages' %>
-                  <%= image_tag 'message-lime.png', class: 'post-card-plane' %>
-                <% else %>
-                  <%= image_tag 'message-white.png', class: 'post-card-plane' %>
-                <% end %>
-                <span class="notification-icon">
-                  <%= current_user.new_messages.count %>
-                </span>
-              </div>
-            <% else %>
-              <% if params[:controller] == 'conversations' || params[:controller] == 'messages' %>
-                <%= image_tag 'message-lime.png', class: 'post-card-plane' %>
-              <% else %>
-                <%= image_tag 'message-white.png', class: 'post-card-plane' %>
-              <% end %>
-            <% end %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="pwa-navbar-section">
-        <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
-          <%= image_tag 'message-white.png', class: 'post-card-plane' %>
-        <% end %>
-      </div>
-    <% end %>
     <%= link_to no_user_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
         <!-- CONDITION BELOW - OR HOME PAGE FOR LOGGED IN USERS -->
@@ -77,6 +47,15 @@
           <%= image_tag 'user-white.png', class: 'pwa-navbar-icon' %>
         <% end %>
       </div>
+    <% end %>
+    <%= link_to info_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
+      <li class="pwa-navbar-section">
+        <% if params[:controller] == 'pages' && params[:action] == 'info' %>
+          <%= image_tag 'info-lime.png', class: 'pwa-navbar-icon' %>
+        <% else %>
+          <%= image_tag 'info-white.png', class: 'pwa-navbar-icon' %>
+        <% end %>
+      </li>
     <% end %>
     <%= render 'shared/dark_mode_link_pwa' %>
   </div>

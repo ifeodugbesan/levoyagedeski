@@ -13,10 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :conversations do
-    resources :messages
-  end
-
+  get 'info', to: 'pages#info'
   get 'seen_pwa', to: 'pages#seen_pwa'
   get 'toggle_dark_mode', to: 'pages#toggle_dark_mode'
   get 'no_user', to: 'users#no_user'

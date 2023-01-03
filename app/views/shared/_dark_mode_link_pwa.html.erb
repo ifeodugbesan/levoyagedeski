@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center flex-grow-1">
     <span class="white mr-1 tiny-text">L</span>
     <%= link_to toggle_dark_mode_path(dark_mode: false), remote: true, data: { action: "ajax:success->common#toggleDarkModePwa" } do %>
-      <div class="switch switch-dark" data-target="common.switchPwa">
+      <div class="switch <%= 'switch-dark' if @dark_mode %>" data-target="common.switchPwa">
         <div class="toggle toggle-dark"></div>
       </div>
     <% end %>

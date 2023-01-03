@@ -13,7 +13,7 @@ export default class extends Controller {
       // if (navigator.standalone) {
         // this.minHeightDivTarget.style.minHeight = `${window.innerHeight - 140}px`;
       // } else {
-        this.minHeightDivTarget.style.minHeight = `${window.innerHeight - 400}px`;
+        this.minHeightDivTarget.style.minHeight = `${window.innerHeight - 81}px`;
       // }
     }
     if (navigator.standalone) {
@@ -92,6 +92,6 @@ export default class extends Controller {
     this.loaderUnderlayTarget.style.display = 'block';
     setTimeout(function() {
       window.location.reload(true)
-    }, 300)
+    }, 600)
   }
 }
