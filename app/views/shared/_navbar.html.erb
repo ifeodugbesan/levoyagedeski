@@ -3,11 +3,10 @@
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.navbar">
       <div class="show-web w-100 d-flex justify-content-between align-items-center">
         <%= link_to root_path, class: "nav-link px-0" do %>
-          <%= image_tag "levoyagedeski.png", class: "logo-signed-in" %>
+          <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo-signed-in" %>
         <% end %>
         <span class="d-flex align-items-center">
           <%= render 'shared/dark_mode_link' %>
-          <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           <%= link_to user_path(current_user) do %>
             <%= image_tag "#{ @dark_mode ? 'user-white.png' : 'user.png' }", class: 'post-card-plane mx-3' %>
           <% end %>
@@ -27,7 +26,7 @@
       </div>
       <div class="show-mobile">
         <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "levoyagedeski.png", class: "logo" %>
+          <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo" %>
           <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
         <% end %>
       </div>
@@ -75,7 +74,7 @@
   <% else %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-between" data-target="navbar.navbar">
       <%= link_to root_path, class: "nav-link px-0" do %>
-        <%= image_tag "levoyagedeski.png", class: "logo" %>
+        <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo" %>
         <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-action="click->navbar#navbarToggler" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,11 +86,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <%= render 'shared/dark_mode_link' %>
+          <li class="nav-item ml-3">
             <%= link_to "Posts", posts_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Log in", new_user_session_path, class: "nav-link black" %>
+            <%= link_to "Log in", new_user_session_path, class: "nav-link #{ @dark_mode ? 'light-grey' : 'black' }" %>
           </li>
         </ul>
       </div>
@@ -100,10 +100,15 @@
   <% end %>
 </div>
 <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
-  <div class="pwa-top-bar <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.pwaTopBar" style="justify-content: <%= user_signed_in? ? 'space-between' : 'center' %>">
+  <div class="pwa-top-bar<%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.pwaTopBar">
     <div class="navbar-brand" data-action="click->navbar#scrollTop">
-      <%= image_tag "levoyagedeski.png", class: "pwa-logo" %>
+      <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "pwa-logo" %>
       <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
+    </div>
+    <div class="new-post">
+      <%= link_to new_post_path do %>
+        <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }" %>
+      <% end %>
     </div>
   </div>
   <div class="pwa-top-bar-spacer" data-target="navbar.pwaTopBarSpacer"></div>

@@ -1,9 +1,9 @@
 .primary-button {
   display: inline-block;
   padding: 12px 24px;
-  background: -webkit-linear-gradient(#4A525D, #010711);
-  background: -o-linear-gradient(#4A525D, #010711);
-  background: linear-gradient(#4A525D, #010711);
+  background: -webkit-linear-gradient(#363636, #000000);
+  background: -o-linear-gradient(#363636, #000000);
+  background: linear-gradient(#363636, #000000);
   border: none;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   color: $lime;
@@ -45,5 +45,25 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   &:hover {
     text-decoration: none;
+  }
+}
+
+.dark-mode {
+  .primary-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: -webkit-linear-gradient(#7b7b7b, #3e3e3e);
+    background: -o-linear-gradient(#7b7b7b, #3e3e3e);
+    background: linear-gradient(#7b7b7b, #3e3e3e);
+    border: none;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    color: $lime;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $lime;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+    }
   }
 }

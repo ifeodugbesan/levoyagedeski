@@ -37,6 +37,7 @@
         <%# end %>
       </div>
     <%# end %> -->
+
     <% if user_signed_in? %>
       <div class="pwa-navbar-section">
         <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>

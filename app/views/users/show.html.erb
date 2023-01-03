@@ -7,7 +7,7 @@
         </div>
         <div class="user-show-profile-info flex-grow-1">
           <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.username.present? ? @user.username : @user.full_name %></h1>
-          <p class=""><%= pluralize(@user.posts.count, 'post') %></p>
+          <p class="<%= @dark_mode ? 'light-grey' : 'black' %>"><%= pluralize(@user.posts.count, 'post') %></p>
           <% if @not_me %>
             <a href="/conversations?recipient_id=<%= @user.id %>&sender_id=<%= current_user.id %>" class="outline-button small-text mr-1 <%= @dark_mode ? 'white border-grey' : 'black' %>">Message</a>
           <% else %>

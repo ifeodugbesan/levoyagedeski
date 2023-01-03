@@ -41,8 +41,14 @@
   border: 1px solid rgba(0,0,0,0.1);
 }
 
-.post-card-heart, .post-card-plane {
+.post-card-heart, .post-card-plane, .new-post img {
   height: 25px;
+}
+
+.new-post {
+  position: absolute;
+  right: 10px;
+
 }
 
 #new_comment {

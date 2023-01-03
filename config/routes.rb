@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :comments, only: [:destroy]
   resources :likes, only: [:destroy]
 
+  resources :users, only: [:show]
+
   resources :conversations do
     resources :messages
   end

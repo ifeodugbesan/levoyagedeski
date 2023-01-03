@@ -9,6 +9,25 @@
   }
 }
 
+.dark-mode {
+  .devise-input {
+    background: transparent;
+    color: #FFFFFF;
+    &:focus {
+      border-color: #ced4da !important;
+    }
+  }
+}
+
+.form-control.is-valid {
+  border-color: #ced4da !important;
+  box-shadow: none !important;
+}
+
+#file-upload-button {
+  background: red;
+}
+
 @media only screen
   and (device-width: 375px)
   and (device-height: 812px)
@@ -102,8 +121,15 @@
   height: 50px;
 }
 
+
 .devise-input::placeholder {
  color: #D1D1D1;
+}
+
+.dark-mode {
+  .devise-input::placeholder {
+    color: #495057;
+  }
 }
 
 .devise-links {

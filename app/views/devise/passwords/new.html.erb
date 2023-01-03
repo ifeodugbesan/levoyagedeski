@@ -1,7 +1,7 @@
 <div class="devise-wrapper">
   <div class="devise-container">
     <div class="devise-form">
-      <h1 class="boldest text-center devise-form-title">Forgot password?</h1>
+      <h1 class="boldest text-center devise-form-title <%= @dark_mode ? 'white' : 'black' %>">Forgot password?</h1>
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
 
