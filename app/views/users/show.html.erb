@@ -24,8 +24,14 @@
         <div class="row">
           <% @my_posts.each do |post| %>
             <div class="col-4 post-grid <%= @dark_mode ? 'user-show-post-border-dark' : 'user-show-post-border-normal' %>">
-              <div class="user-show-posts" style="background-image: url('<%= cl_image_path post.photo.key, width: 500, quality: :auto %>')">
-              </div>
+              <% if is_photo?(post.photo) %>
+                <div class="user-show-posts" style="background-image: url('<%= cl_image_path post.photo.key, width: 500, quality: :auto %>')">
+                </div>
+              <% elsif is_video?(post.photo) %>
+                <div class="user-show-posts p-0">
+                  <%= cl_video_tag post.photo.key, controls: true, class: 'w-100' %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>

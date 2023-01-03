@@ -27,9 +27,15 @@
         </div>
         <% if post.photo.attached? %>
           <div class="post-card-image">
-            <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
-            <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
-            <%= cl_image_tag post.photo.key, width: 500, quality: :auto, data: { target: "posts.image" }, class: 'post-image' %>
+            <% unless is_video?(post.photo) %>
+              <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
+              <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
+            <% end %>
+            <% if post.photo.content_type.split("/")[0] == "image" %>
+              <%= cl_image_tag post.photo.key, width: 500, data: { target: "posts.image" }, class: 'post-image' %>
+            <% else post.photo.content_type.split("/")[0] == "video" %>
+              <%= cl_video_tag post.photo.key, width: 500, controls: true, data: { target: "posts.image" }, class: 'post-image post-video' %>
+            <% end %>
             <div class="white-heart">
               <%= image_tag 'white-heart.png', data: { target: 'heart'} %>
             </div>
