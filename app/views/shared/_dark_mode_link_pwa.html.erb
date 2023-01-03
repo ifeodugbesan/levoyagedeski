@@ -1,5 +1,5 @@
-<% if @dark_mode %>
-  <div class="d-flex align-items-center">
+<div class="pwa-navbar-section">
+  <div class="d-flex align-items-center flex-grow-1">
     <span class="white mr-1 tiny-text">L</span>
     <%= link_to toggle_dark_mode_path(dark_mode: false), remote: true, data: { action: "ajax:success->common#toggleDarkModePwa" } do %>
       <div class="switch switch-dark" data-target="common.switchPwa">
@@ -8,14 +8,4 @@
     <% end %>
     <span class="white ml-1 tiny-text">D</span>
   </div>
-<% else %>
-  <div class="d-flex align-items-center">
-    <span class="mr-1 tiny-text">L</span>
-    <%= link_to toggle_dark_mode_path(dark_mode: true), remote: true, data: { action: "ajax:success->common#toggleDarkModePwa" } do %>
-      <div class="switch" data-target="common.switchPwa">
-        <div class="toggle"></div>
-      </div>
-    <% end %>
-    <span class="ml-1 tiny-text">D</span>
-  </div>
-<% end %>
+</div>

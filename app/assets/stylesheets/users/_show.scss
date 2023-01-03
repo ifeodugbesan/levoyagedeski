@@ -20,6 +20,13 @@
 
 .user-show-profile-info {
   width: 50%;
+  h1 {
+    margin-bottom: 0;
+  }
+  p {
+    margin: -4px 0 6px;
+    font-weight: lighter;
+  }
   @include for-small-devices-down {
     margin-left: 24px;
   }

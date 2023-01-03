@@ -1,51 +1,6 @@
 
 # City.destroy_all
 
-cities = [
-          "Amsterdam 🇳🇱",
-          "Bali 🇮🇩",
-          "Barcelona 🇪🇸",
-          "Berlin 🇩🇪",
-          "Bordeaux 🇫🇷",
-          "Brussels 🇧🇪",
-          "Buenos Aires 🇦🇷",
-          "Casablanca 🇲🇦",
-          "Cologne 🇩🇪"
-          "Dubai 🇦🇪",
-          "Istanbul 🇹🇷",
-          "Lausanne 🇨🇭",
-          "Lille 🇫🇷",
-          "Lima 🇵🇪"
-          "Lisbon 🇵🇹",
-          "London 🇬🇧",
-          "Lyon 🇫🇷",
-          "Madrid 🇪🇸",
-          "Marseille 🇫🇷",
-          "Mauritius 🇲🇺"
-          "Melbourne 🇦🇺",
-          "Mexico 🇲🇽",
-          "Milan 🇮🇹",
-          "Montreal 🇨🇦",
-          "Munich 🇩🇪",
-          "Nantes 🇫🇷",
-          "Nice 🇫🇷",
-          "Oslo 🇳🇴",
-          "Paris 🇫🇷",
-          "Rennes 🇫🇷",
-          "Rio de Janeiro 🇧🇷",
-          "Santiago 🇵🇭"
-          "Shanghai 🇨🇳",
-          "Singapore 🇸🇬",
-          "São Paulo 🇧🇷",
-          "Tel Aviv 🇮🇱"
-          "Tokyo 🇯🇵"
-          "Online"
-        ]
-
-cities.each do |city|
-  City.create!(name: city)
-end
-
 # count = 1
 
 # 425.times do

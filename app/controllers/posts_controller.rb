@@ -3,8 +3,6 @@ class PostsController < ApplicationController
   def index
     @posts = policy_scope(Post).order(created_at: :desc)
     # @posts = policy_scope(Post).where.not(user: current_user)
-    @resource = Resource.last
-    @tip = Tip.last
     @comment = Comment.new
   end
 

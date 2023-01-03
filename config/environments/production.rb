@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://levoyage.herokuapp.com/" }
+  config.action_mailer.default_url_options = { host: "http://levoyagedeski.herokuapp.com/" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -59,7 +59,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "levoyage_production"
+  # config.active_job.queue_name_prefix = "levoyagedeski_production"
 
   config.action_mailer.perform_caching = false
 

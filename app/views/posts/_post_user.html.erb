@@ -1,23 +1,17 @@
 <div class="post-card-user">
-  <div class="post-card-user-info boldest">
-    <% if post.user.avatar.attached?  %>
-      <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
-    <% else %>
-      <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
-    <% end %>
-    <%= link_to user_path(post.user), class: 'no-decoration' do %>
-      <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span>
-    <% end %>
-  </div>
   <% if post.likes&.map(&:user).include?(current_user) %>
     <%= link_to like_path(Like.where(user: current_user, post: post).first), remote: true, id: "like-toggle_#{post.id}", data: { action: "ajax:success->posts#toggleLike" }, method: :delete do %>
-      <%= image_tag 'post-card-heart-blue.png', class: 'post-card-heart' %>
+      <%= image_tag "#{ @dark_mode ? 'post-card-heart-lime.png' : 'post-card-heart-black.png' }", class: 'post-card-heart' %>
     <% end %>
   <% else %>
     <%= link_to post_likes_path(post), remote: true, id: "like-toggle_#{post.id}", data: { action: "ajax:success->posts#toggleLike" }, method: :post do %>
       <%= image_tag "#{ @dark_mode ? 'post-card-heart-white.png' : 'post-card-heart.png' }", class: 'post-card-heart' %>
     <% end %>
   <% end %>
+  <%# unless post.user == current_user %>
+    <a href="/conversations?recipient_id=<%= post.user.id %>&sender_id=<%= current_user.id %>" class="ml-3 <%= @dark_mode ? 'white border-grey' : 'black' %>">
+      <%= image_tag "#{ @dark_mode ? 'message-white.png' : 'message.png' }", class: 'post-card-plane' %>
+    </a>
+  <%# end %>
 </div>
-<p class="text-12 bold grey m-0"><%= time_ago_in_words(post.created_at) %> ago</p>
 <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= pluralize(post.likes.count, 'like') %></p>

@@ -39,7 +39,7 @@ export default class extends Controller {
 
   newComment() {
     let [data, status, xhr] = event.detail;
-    event.target.previousElementSibling.lastElementChild.insertAdjacentHTML('beforeend', xhr.response);
+    event.target.previousElementSibling.lastElementChild.insertAdjacentHTML('beforebegin', xhr.response);
     let moreComments = document.querySelector(`.post-modal_${event.target.dataset.id}`)
     let modalComments = document.querySelector(`.post-modal-comments-box_${event.target.dataset.id}`)
     modalComments.insertAdjacentHTML('beforeend', xhr.response);

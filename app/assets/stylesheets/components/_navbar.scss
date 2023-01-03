@@ -52,19 +52,17 @@
 }
 
 .logo-text {
-  height: 26px;
+  font-size: 26px;
+  font-family: 'Fredoka One', cursive;
+  letter-spacing: -1px;
   @include for-phone-only {
-    height: 20px;
+    font-size: 18px;
   }
 }
 
-
-
 .nav-link {
-  display: inline-block;
-  font-weight: 900;
-  font-family: 'Cera', sans-serif;
-
+  display: inline-flex;
+  align-items: center;
 }
 
 .hamburger {
@@ -137,8 +135,8 @@
   height: 20px;
   width: 30px;
   border-radius: 15px;
-  background-color: #4E77B7;
-  border: 3px solid #4E77B7;
+  background-color: $black;
+  border: 3px solid $black;
   position: relative;
   transition: all 0.1s ease;
 }
@@ -172,12 +170,11 @@
   position: fixed;
   z-index: 2500;
   bottom: 0;
-  background: #051a40;
-  border-top: 1px solid #575757;
+  background: #000000;
+  border-top: 1px solid #404040;
   display: none;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .pwa-top-bar {
@@ -265,8 +262,8 @@
 }
 
 @media only screen
-  and (device-width: 414px)
-  and (device-height: 896px)
+  and (device-width: 390px)
+  and (device-height: 844px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
     .pwa-navbar-spacer {
@@ -278,36 +275,47 @@
     }
 }
 
-// PWA NAVBAR
+@media only screen
+  and (device-width: 393px)
+  and (device-height: 852px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .pwa-navbar-spacer {
+      height: 81px;
+    }
+    .pwa-navbar {
+      height: 80px;
+      padding-bottom: 20px;
+    }
+}
 
+@media only screen
+  and (device-width: 430px)
+  and (device-height: 932px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .pwa-navbar-spacer {
+      height: 81px;
+    }
+    .pwa-navbar {
+      height: 80px;
+      padding-bottom: 20px;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media only screen
+  and (device-width: 428px)
+  and (device-height: 926px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .pwa-navbar-spacer {
+      height: 81px;
+    }
+    .pwa-navbar {
+      height: 80px;
+      padding-bottom: 20px;
+    }
+}
 
 
 

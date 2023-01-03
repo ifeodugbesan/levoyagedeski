@@ -4,6 +4,10 @@ body {
   margin: 0 auto;
 }
 
+html, body {
+  overscroll-behavior-y: none;
+}
+
 .min-height {
   min-height: calc(100vh - 92px);
   @include for-phone-only {

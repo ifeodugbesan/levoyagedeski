@@ -1,56 +1,82 @@
 <div class="pwa-navbar-container">
   <div class="pwa-navbar-spacer" data-target="navbar.pwaNavbarSpacer"></div>
-  <div class="pwa-navbar <%= 'grey-background' if @dark_mode %>" data-target="navbar.pwaNavbar">
+  <div class="pwa-navbar" data-target="navbar.pwaNavbar">
     <%= link_to posts_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
         <% if params[:controller] == 'posts' %>
-          <%= image_tag 'posts-blue.png', class: 'pwa-navbar-icon' %>
+          <%= image_tag 'posts-lime.png', class: 'pwa-navbar-icon' %>
         <% else %>
           <%= image_tag 'posts.png', class: 'pwa-navbar-icon' %>
         <% end %>
-        <p class="pwa-navbar-text <%= params[:controller] == 'posts' ? 'pwa-active' : '' %>">Posts</p>
       </div>
     <% end %>
-    <%= link_to tips_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
+<!--     <%#= link_to tips_path, class: "pwa-navbar-section no-decoration", data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
-        <% if params[:controller] == 'tips' %>
-          <%= image_tag 'careers-blue.png', class: 'pwa-navbar-icon' %>
-        <% else %>
-          <%= image_tag 'careers.png', class: 'pwa-navbar-icon' %>
-        <% end %>
-        <p class="pwa-navbar-text <%= params[:controller] == 'tips' ? 'pwa-active' : '' %>">Tips</p>
+        <%# if params[:controller] == 'tips' %>
+          <%#= image_tag 'careers-blue.png', class: 'pwa-navbar-icon' %>
+        <%# else %>
+          <%#= image_tag 'careers.png', class: 'pwa-navbar-icon' %>
+        <%# end %>
       </div>
-    <% end %>
-    <%= link_to resources_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
+    <%# end %>
+    <%#= link_to resources_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
-        <% if params[:controller] == 'resources' %>
-          <%= image_tag 'resources-blue.png', class: 'pwa-navbar-icon' %>
-        <% else %>
-          <%= image_tag 'resources.png', class: 'pwa-navbar-icon' %>
-        <% end %>
-        <p class="pwa-navbar-text <%= params[:controller] == 'resources' ? 'pwa-active' : '' %>">Resources</p>
+        <%# if params[:controller] == 'resources' %>
+          <%#= image_tag 'resources-blue.png', class: 'pwa-navbar-icon' %>
+        <%# else %>
+          <%#= image_tag 'resources.png', class: 'pwa-navbar-icon' %>
+        <%# end %>
       </div>
-    <% end %>
-    <%= link_to articles_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
+    <%# end %>
+    <%#= link_to articles_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
-        <% if params[:controller] == 'articles' %>
-          <%= image_tag 'articles-blue.png', class: 'pwa-navbar-icon' %>
-        <% else %>
-          <%= image_tag 'articles.png', class: 'pwa-navbar-icon' %>
+        <%# if params[:controller] == 'articles' %>
+          <%#= image_tag 'articles-blue.png', class: 'pwa-navbar-icon' %>
+        <%# else %>
+          <%#= image_tag 'articles.png', class: 'pwa-navbar-icon' %>
+        <%# end %>
+      </div>
+    <%# end %> -->
+    <% if user_signed_in? %>
+      <div class="pwa-navbar-section">
+        <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
+            <% if current_user.new_messages.any? %>
+              <div class="nav-chat position-relative">
+                <% if params[:controller] == 'conversations' || params[:controller] == 'messages' %>
+                  <%= image_tag 'message-lime.png', class: 'post-card-plane' %>
+                <% else %>
+                  <%= image_tag 'message-white.png', class: 'post-card-plane' %>
+                <% end %>
+                <span class="notification-icon">
+                  <%= current_user.new_messages.count %>
+                </span>
+              </div>
+            <% else %>
+              <% if params[:controller] == 'conversations' || params[:controller] == 'messages' %>
+                <%= image_tag 'message-lime.png', class: 'post-card-plane' %>
+              <% else %>
+                <%= image_tag 'message-white.png', class: 'post-card-plane' %>
+              <% end %>
+            <% end %>
         <% end %>
-        <p class="pwa-navbar-text <%= params[:controller] == 'articles' ? 'pwa-active' : '' %>">Articles</p>
+      </div>
+    <% else %>
+      <div class="pwa-navbar-section">
+        <%= link_to conversations_path, data: { action: 'click->common#showLoader' } do %>
+          <%= image_tag 'message-white.png', class: 'post-card-plane' %>
+        <% end %>
       </div>
     <% end %>
     <%= link_to no_user_path, class: 'pwa-navbar-section no-decoration', data: { action: 'click->common#showLoader' } do %>
       <div class="pwa-navbar-section">
         <!-- CONDITION BELOW - OR HOME PAGE FOR LOGGED IN USERS -->
-        <% if params[:controller] == 'pages' && params[:action] == 'home' || params[:controller] == 'users' && params[:action] == 'show' %>
-          <%= image_tag 'profile-blue.png', class: 'pwa-navbar-icon' %>
+        <% if params[:controller] == 'users' && params[:action] == 'show' %>
+          <%= image_tag 'user-lime.png', class: 'pwa-navbar-icon' %>
         <% else %>
-          <%= image_tag 'profile.png', class: 'pwa-navbar-icon' %>
+          <%= image_tag 'user-white.png', class: 'pwa-navbar-icon' %>
         <% end %>
-        <p class="pwa-navbar-text <%= (params[:controller] == 'pages' && params[:action] == 'home' || params[:controller] == 'users' && params[:action] == 'show') ? 'pwa-active' : '' %>">Profile</p>
       </div>
     <% end %>
+    <%= render 'shared/dark_mode_link_pwa' %>
   </div>
 </div>

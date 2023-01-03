@@ -22,17 +22,14 @@
 }
 
 .post-card-content {
-  margin: 10px;
-  @include for-phone-only {
-    margin-bottom: 0;
-  }
+  margin: 10px 10px 0;
 }
 
 .post-card-user {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 
 .post-card-avatar {
@@ -44,7 +41,7 @@
   border: 1px solid rgba(0,0,0,0.1);
 }
 
-.post-card-heart {
+.post-card-heart, .post-card-plane {
   height: 25px;
 }
 
@@ -115,7 +112,7 @@
 }
 
 .post-submit {
-  color: #167FFB !important;
+  color: #000000;
   pointer-events: auto !important;
 }
 
@@ -318,6 +315,12 @@
 .modal-dialog-centered {
   @include for-medium-devices-down {
     align-items: flex-start;
+  }
+}
+
+.dark-mode {
+  .post-submit {
+    color: $lime !important;
   }
 }
 

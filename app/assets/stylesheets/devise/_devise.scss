@@ -46,7 +46,6 @@
   margin: 50px auto;
   border-radius: 5px;
   display: flex;
-  background: #FFF;
   @include for-small-devices-down {
     flex-direction: column;
     min-height: auto;
@@ -62,6 +61,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
   @include for-small-devices-down {
     width: 90%;
     margin: 0 auto;
