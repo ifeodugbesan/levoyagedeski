@@ -3,10 +3,10 @@
     <div class="container">
       <div class="user-show-profile d-flex justify-content-center mb-4">
         <div class="user-show-avatar">
-          <%= render 'users/user_avatar', user: @user, classes: '' %>
+          <%= render 'users/user_avatar', user: @user, classes: 'user-show-default-avatar' %>
         </div>
         <div class="user-show-profile-info flex-grow-1">
-          <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.username.present? ? @user.username : @user.full_name %></h1>
+          <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.user_username %></h1>
           <p class="<%= @dark_mode ? 'light-grey' : 'black' %>"><%= pluralize(@user.posts.count, 'post') %></p>
           <% if @not_me %>
             <a href="/conversations?recipient_id=<%= @user.id %>&sender_id=<%= current_user.id %>" class="outline-button small-text mr-1 <%= @dark_mode ? 'white border-grey' : 'black' %>">Message</a>

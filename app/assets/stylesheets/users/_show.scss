@@ -18,6 +18,33 @@
   }
 }
 
+.user-show-default-avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  color: $lime;
+  font-weight: bold;
+  font-size: 100px;
+  flex-shrink: 0;
+  @include for-medium-devices-down {
+    height: 150px;
+    width: 150px;
+    font-size: 80px;
+  }
+  @include for-phone-only {
+    font-size: 50px;
+    height: 100px;
+    width: 100px;
+  }
+}
+
 .user-show-profile-info {
   width: 50%;
   h1 {

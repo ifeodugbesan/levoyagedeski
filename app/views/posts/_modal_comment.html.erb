@@ -2,10 +2,10 @@
   <% if comment.user.avatar.attached?  %>
     <%= cl_image_tag comment.user.avatar.key, width: 40, class: 'avatar-sm' %>
   <% else %>
-    <%= image_tag 'default-user.png', width: 40, class: 'avatar-sm' %>
+    <%= render 'users/user_avatar', user: comment.user, classes: 'avatar-sm default-comment-avatar' %>
   <% end %>
   <%= link_to user_path(comment.user), class: 'no-decoration' do %>
-    <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= comment.user.username ? comment.user.username : comment.user.full_name %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= comment.content %></span>
+    <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= comment.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= comment.content %></span>
   <% end %>
 </div>
 

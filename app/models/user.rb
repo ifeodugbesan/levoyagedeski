@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   validates :first_name, presence: :true
   validates :last_name, presence: :true
-  validates :username, uniqueness: true
+  # validates :username, uniqueness: true
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -24,20 +24,12 @@ class User < ApplicationRecord
     username.present? ? username : "#{first_name}-#{last_name}"
   end
 
+  def initials
+    "#{first_name.first.upcase}#{last_name.first.upcase}"
+  end
+
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  def avatar_key
-    avatar.attached? ? avatar.key : 'default-user_rt3abl'
-  end
-
-  def chats
-    (Conversation.where(sender: self) + Conversation.where(recipient: self)).sort_by(&:updated_at)
-  end
-
-  def new_messages
-    chats.map { |c| c.messages.where.not(user: self).where.not(read: true) }.flatten.reject(&:blank?)
   end
 
   def should_generate_new_friendly_id?

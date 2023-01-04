@@ -84,8 +84,14 @@ body {
 .text-36 {
   font-size: 36px;
 }
+.text-28 {
+  font-size: 28px;
+}
 .text-24 {
   font-size: 24px;
+}
+.text-20 {
+  font-size: 20px;
 }
 .text-16 {
   font-size: 16px;
@@ -103,8 +109,6 @@ body {
   font-size: 8px;
 }
 
-
-
 // TEXT DECORATIONS
 .underline {
   text-decoration: underline;
@@ -112,7 +116,7 @@ body {
 
 .link-hover:hover {
   text-decoration: none !important;
-  color: #167FFB !important
+  // color: #000000 !important
 }
 
 .no-decoration {

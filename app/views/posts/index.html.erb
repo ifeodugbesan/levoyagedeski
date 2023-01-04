@@ -2,10 +2,10 @@
   <div class="post-index-left mr-3 mb-3">
     <div class="post-sticky">
       <div class="post-index-user p-3 mb-3 <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
-        <div class="post-card-user-info boldest mb-2">
-          <%= render 'users/user_avatar', user: current_user, classes: 'post-card-avatar' %>
+        <div class="post-card-user-info boldest mb-2 d-flex align-items-center">
+          <%= render 'users/user_avatar', user: current_user, classes: 'post-card-avatar default-avatar text-28' %>
           <%= link_to user_path(current_user), class: 'no-decoration' do %>
-            <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username.present? ? current_user.username : current_user.full_name %></span>
+            <span class="ml-2 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.user_username %></span>
           <% end %>
         </div>
         <%= link_to "New Post", new_post_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
@@ -15,14 +15,14 @@
   <div class="post-index-posts">
     <% @posts.each do |post| %>
       <div class="post-card <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
-        <div class="post-card-user-info boldest" style="margin: 10px;">
+        <div class="post-card-user-info boldest d-flex align-items-center" style="margin: 10px;">
           <% if post.user.avatar.attached?  %>
             <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
           <% else %>
-            <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
+            <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar text-20' %>
           <% end %>
           <%= link_to user_path(post.user), class: 'no-decoration' do %>
-            <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span>
+            <span class="ml-2 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
           <% end %>
         </div>
         <% if post.photo.attached? %>
@@ -49,10 +49,10 @@
             <% if post.user.avatar.attached? %>
               <%= cl_image_tag post.user.avatar.key, width: 40, class: 'avatar-sm' %>
             <% else %>
-              <%= image_tag 'default-user.png', width: 40, class: 'avatar-sm' %>
+              <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-comment-avatar' %>
             <% end %>
             <%= link_to user_path(post.user), class: 'no-decoration' do %>
-              <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
+              <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
             <% end %>
           </div>
           <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
@@ -91,10 +91,10 @@
                   <% if post.user.avatar.attached?  %>
                     <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
                   <% else %>
-                    <%= image_tag 'default-user.png', width: 40, class: 'post-card-avatar' %>
+                    <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar' %>
                   <% end %>
                   <%= link_to user_path(post.user), class: 'no-decoration' do %>
-                    <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span>
+                    <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
                   <% end %>
                 </div>
                 <hr class="w-100 m-0">
@@ -103,10 +103,10 @@
                     <% if post.user.avatar.attached?  %>
                       <%= cl_image_tag post.user.avatar.key, width: 40, class: 'avatar-sm' %>
                     <% else %>
-                      <%= image_tag 'default-user.png', width: 40, class: 'avatar-sm' %>
+                      <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-avatar' %>
                     <% end %>
                     <%= link_to user_path(post.user), class: 'no-decoration' do %>
-                      <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.username ? post.user.username : post.user.full_name %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
+                      <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
                     <% end %>
                   </div>
                   <% post.comments.each do |comment| %>

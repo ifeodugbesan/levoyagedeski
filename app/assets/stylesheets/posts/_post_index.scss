@@ -41,6 +41,23 @@
   border: 1px solid rgba(0,0,0,0.1);
 }
 
+.default-avatar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  color: $lime;
+}
+
+.default-comment-avatar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background: #000000;
+  color: $lime;
+}
+
 .post-card-heart, .post-card-plane, .new-post img {
   height: 25px;
 }
