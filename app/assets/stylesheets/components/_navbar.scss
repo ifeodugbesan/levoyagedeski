@@ -41,6 +41,7 @@
 
 .logo {
   height: 60px;
+  margin-right: 6px;
   @include for-phone-only {
     height: 40px;
   }
