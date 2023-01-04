@@ -6,11 +6,12 @@
           <%= render 'users/user_avatar', user: @user, classes: 'user-show-default-avatar' %>
         </div>
         <div class="user-show-profile-info flex-grow-1">
-          <h1 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= @user.user_username %></h1>
+          <h1 class="boldest <%= @dark_mode ? 'white' : 'black' %>"><%= @user.user_username %></h1>
           <p class="<%= @dark_mode ? 'light-grey' : 'black' %>"><%= pluralize(@user.posts.count, 'post') %></p>
           <% if @not_me %>
             <a href="/conversations?recipient_id=<%= @user.id %>&sender_id=<%= current_user.id %>" class="outline-button small-text mr-1 <%= @dark_mode ? 'white border-grey' : 'black' %>">Message</a>
           <% else %>
+            <%= link_to "Users", all_users_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" if policy(User).all? %>
             <%= link_to "Edit Profile", edit_user_registration_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
             <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "outline-button small-text #{ @dark_mode ? 'white border-grey' : 'black' }" %>
           <% end %>

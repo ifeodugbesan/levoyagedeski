@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :messages, dependent: :destroy
-  has_many :conversations, through: :messages, dependent: :destroy
   has_one_attached :avatar
   extend FriendlyId
   friendly_id :user_username, use: :slugged

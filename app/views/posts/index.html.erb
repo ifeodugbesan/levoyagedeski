@@ -16,7 +16,7 @@
     <% @posts.each do |post| %>
       <div class="post-card <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
         <div class="post-card-user-info boldest d-flex align-items-center" style="margin: 10px;">
-          <% if post.user.avatar.attached?  %>
+          <% if post.user.avatar.attached? %>
             <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
           <% else %>
             <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar text-20' %>
@@ -45,16 +45,18 @@
           <div class="post-user" data-target="posts.postCard">
             <%= render 'post_user', post: post %>
           </div>
-          <div class="post-card-user-info boldest py-1">
-            <% if post.user.avatar.attached? %>
-              <%= cl_image_tag post.user.avatar.key, width: 40, class: 'avatar-sm' %>
-            <% else %>
-              <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-comment-avatar' %>
-            <% end %>
-            <%= link_to user_path(post.user), class: 'no-decoration' do %>
-              <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
-            <% end %>
-          </div>
+          <% if post.caption.present? %>
+            <div class="post-card-user-info boldest py-1">
+              <% if post.user.avatar.attached? %>
+                <%= cl_image_tag post.user.avatar.key, width: 40, class: 'avatar-sm' %>
+              <% else %>
+                <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-comment-avatar' %>
+              <% end %>
+              <%= link_to user_path(post.user), class: 'no-decoration' do %>
+                <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
+              <% end %>
+            </div>
+          <% end %>
           <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
             <% if post.comments.count > 5 %>
               <p class="text-12 bold m-0 grey cursor-pointer post-modal_<%= post.id %>" data-toggle="modal" data-target="#post-modal_<%= post.id %>" data-count="<%= post.comments.count %>">view all <%= post.comments.count %> comments</span></p>

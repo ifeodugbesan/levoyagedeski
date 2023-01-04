@@ -1,0 +1,38 @@
+<div class="container">
+  <h3 class="boldest text-center mt-3 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Users</h3>
+  <% @users.each do |user| %>
+    <div class="user-show-profile d-flex justify-content-center mb-4">
+      <%= render 'users/user_avatar', user: user, classes: 'user-all-default-avatar' %>
+      <div class="user-show-profile-info user-all flex-grow-1 ml-3">
+        <h2 class="boldest my-2 <%= @dark_mode ? 'white' : 'black' %>"><%= user.user_username %></h2>
+        <div class="d-flex align-items-center justify-content-start">
+          <div class="d-flex align-items-center mr-3">
+            <% if @dark_mode %>
+              <%= image_tag 'posts-users-lime.png', class: 'pwa-navbar-icon' %>
+            <% else %>
+              <%= image_tag 'posts-black.png', class: 'pwa-navbar-icon' %>
+            <% end %>
+            <p class="<%= @dark_mode ? 'light-grey' : 'black' %> pl-2 mb-0"><%= user.posts.count %></p>
+          </div>
+           <div class="d-flex align-items-center mr-3">
+            <% if @dark_mode %>
+              <%= image_tag 'user-card-heart-lime.png', class: 'pwa-navbar-icon' %>
+            <% else %>
+              <%= image_tag 'post-card-heart.png', class: 'pwa-navbar-icon' %>
+            <% end %>
+            <p class="<%= @dark_mode ? 'light-grey' : 'black' %> pl-2 mb-0"><%= user.likes.count %></p>
+          </div>
+           <div class="d-flex align-items-center mr-3">
+            <% if @dark_mode %>
+              <%= image_tag 'comments-lime.png', class: 'pwa-navbar-icon' %>
+            <% else %>
+              <%= image_tag 'comments-black.png', class: 'pwa-navbar-icon' %>
+            <% end %>
+            <p class="<%= @dark_mode ? 'light-grey' : 'black' %> pl-2 mb-0"><%= user.comments.count %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

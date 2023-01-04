@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def all
+    @users = User.all
+    authorize current_user
+  end
+
   def no_user
     redirect_to user_path(current_user)
     authorize current_user

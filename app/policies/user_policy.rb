@@ -13,6 +13,10 @@ class UserPolicy < ApplicationPolicy
     user
   end
 
+  def all?
+    user.admin
+  end
+
   def update_batch?
     no_user?
   end

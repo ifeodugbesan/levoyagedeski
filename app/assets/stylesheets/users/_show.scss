@@ -47,9 +47,6 @@
 
 .user-show-profile-info {
   width: 50%;
-  h1 {
-    margin-bottom: 0;
-  }
   p {
     margin: -4px 0 6px;
     font-weight: lighter;
@@ -97,6 +94,47 @@
       padding: 0 !important;
     }
     .row {
+      margin: 0 !important;
+    }
+  }
+}
+
+// ALL USERS
+
+.user-all-default-avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  color: $lime;
+  font-weight: bold;
+  font-size: 80px;
+  flex-shrink: 0;
+  @include for-medium-devices-down {
+    height: 120px;
+    width: 120px;
+    font-size: 60px;
+  }
+  @include for-phone-only {
+    font-size: 40px;
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.user-all {
+  @include for-phone-only {
+    h1 {
+      font-size: 22px !important;
+    }
+    p {
+      font-size: 14px !important;
       margin: 0 !important;
     }
   }
