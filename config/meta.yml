@@ -1,5 +1,5 @@
 meta_product_name: "Le Voyage de Ski"
 meta_title: "Le Voyage de Ski | Plan-Peisey"
-meta_description: "Capturing the moments from le voyage de ski."
-meta_image: "cover.jpg" # should exist in `app/assets/images/`
+meta_description: "Capturing the moments from Les Arcs 2023"
+meta_image: "cover.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards

@@ -1,6 +1,6 @@
 {
-  "short_name": "le voyage",
-  "name": "le voyage",
+  "short_name": "le voyage de ski",
+  "name": "le voyage de ski",
   "icons": [
     {
       "src": "/images/lev-192.png",
@@ -14,8 +14,8 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#4E77B7",
+  "background_color": "#000000",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#4E77B7"
+  "theme_color": "#000000"
 }

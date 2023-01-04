@@ -59,7 +59,7 @@
         <%= render 'shared/dark_mode_link' %>
         <li class="nav-item">
           <%= link_to info_path do %>
-            <%= image_tag 'info-white.png', class: 'post-card-plane ml-3' %>
+            <%= image_tag params[:controller] == "pages" && params[:action] == "home" ? 'info-white.png' : 'info.png', class: 'post-card-plane ml-3' %>
           <% end %>
         </li>
       </ul>

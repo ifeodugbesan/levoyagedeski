@@ -8,7 +8,7 @@
             <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= current_user.username.present? ? current_user.username : current_user.full_name %></span>
           <% end %>
         </div>
-        <%= link_to "Add a new Post", new_post_path, class: "#{ @dark_mode ? 'white' : 'black' }" %>
+        <%= link_to "New Post", new_post_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
       </div>
     </div>
   </div>

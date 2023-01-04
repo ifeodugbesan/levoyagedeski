@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Add new Post</h1>
+  <h1 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">New Post</h1>
   <%= simple_form_for @post do |f| %>
     <p class="mb-2 <%= @dark_mode ? 'white' : 'black' %>">Photo</p>
     <%= f.input :photo, as: :file, label: false, input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }" } %>
