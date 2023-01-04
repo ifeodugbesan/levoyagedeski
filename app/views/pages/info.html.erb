@@ -1,9 +1,18 @@
 <div class="info-container">
   <h1 class="boldest text-center mb-4 <%= @dark_mode ? 'white' : 'black' %>">info</h1>
 
+  <!-- CHALET -->
+
+  <h3 class="bold my-3 <%= @dark_mode ? 'white' : 'black' %>">Chalet 🏠</h3>
+
+  <%= link_to "https://www.skibeat.co.uk/ski/france/les_arcs/plan_peisey/chalet_bayona", target: "_blank", class: "info-link #{ @dark_mode ? 'light-grey' : 'black' }" do %>
+    <span>Chalet Bayona</span>
+    <%= image_tag "#{ @dark_mode ? 'go-white.png' : 'go.png' }", height: 24 %>
+  <% end %>
+
   <!-- LOCATION -->
 
-  <h3 class="bold my-3 <%= @dark_mode ? 'white' : 'black' %>">Location 🏠</h3>
+  <h3 class="bold my-3 <%= @dark_mode ? 'white' : 'black' %>">Location 📍</h3>
 
   <%= link_to "https://www.google.com/maps/place/Chalet+Bayona/@45.5500692,6.7609522,16.44z/data=!4m8!3m7!1s0x4789701d2ff60d49:0x8e874cdeef1594f6!5m2!4m1!1i2!8m2!3d45.5502887!4d6.7629647", target: "_blank", class: "info-link #{ @dark_mode ? 'light-grey' : 'black' }" do %>
     <span>Chalet Bayona | 73210 Peisey-Nancroix, France</span>
@@ -44,5 +53,4 @@
   <% end %>
 
 </div>
-
 
