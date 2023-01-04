@@ -49,13 +49,43 @@
 }
 
 @media only screen
-  and (device-width: 414px)
-  and (device-height: 896px)
+  and (device-width: 390px)
+  and (device-height: 844px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
-    .devise-wrapper {
-      min-height: calc(100vh - 140px);
-    }
+  .devise-wrapper {
+    min-height: calc(100vh - 140px);
+  }
+}
+
+@media only screen
+  and (device-width: 393px)
+  and (device-height: 852px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .devise-wrapper {
+    min-height: calc(100vh - 140px);
+  }
+}
+
+@media only screen
+  and (device-width: 430px)
+  and (device-height: 932px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .devise-wrapper {
+    min-height: calc(100vh - 140px);
+  }
+}
+
+@media only screen
+  and (device-width: 428px)
+  and (device-height: 926px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .devise-wrapper {
+    min-height: calc(100vh - 140px);
+  }
 }
 
 .devise-container {
