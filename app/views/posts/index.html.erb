@@ -17,7 +17,7 @@
       <div class="post-card <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
         <div class="post-card-user-info boldest d-flex align-items-center" style="margin: 10px;">
           <% if post.user.avatar.attached? %>
-            <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
+            <%= cl_image_tag post.user.avatar.key, width: 40, format: :jpg, class: 'post-card-avatar' %>
           <% else %>
             <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar text-20' %>
           <% end %>
@@ -32,7 +32,7 @@
               <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
             <% end %>
             <% if post.photo.content_type.split("/")[0] == "image" %>
-              <%= cl_image_tag post.photo.key, width: 500, data: { target: "posts.image" }, class: 'post-image' %>
+              <%= cl_image_tag post.photo.key, width: 500, format: :jpg, data: { target: "posts.image" }, class: 'post-image' %>
             <% elsif post.photo.content_type.split("/")[0] == "video" %>
               <%= cl_video_tag post.photo.key, width: 500, controls: true, data: { target: "posts.image" }, class: 'post-image post-video' %>
             <% end %>
@@ -48,7 +48,7 @@
           <% if post.caption.present? %>
             <div class="post-card-user-info boldest py-1">
               <% if post.user.avatar.attached? %>
-                <%= cl_image_tag post.user.avatar.key, width: 40, class: 'avatar-sm' %>
+                <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
               <% else %>
                 <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-comment-avatar' %>
               <% end %>
@@ -84,14 +84,14 @@
           <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
             <div class="modal-body post-comments-body d-flex p-0">
               <% if post.photo.content_type.split("/")[0] == "image" %>
-                <%= cl_image_tag post.photo.key, class: 'post-modal-image' %>
+                <%= cl_image_tag post.photo.key, format: :jpg, class: 'post-modal-image' %>
               <% elsif post.photo.content_type.split("/")[0] == "video" %>
                 <%= cl_video_tag post.photo.key, controls: true, class: 'post-modal-image post-video' %>
               <% end %>
               <div class="modal-comments <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
                 <div class="post-card-user-info boldest p-2">
                   <% if post.user.avatar.attached?  %>
-                    <%= cl_image_tag post.user.avatar.key, width: 40, class: 'post-card-avatar' %>
+                    <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'post-card-avatar' %>
                   <% else %>
                     <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar' %>
                   <% end %>
@@ -103,7 +103,7 @@
                 <div class="post-comments modal-post-comments post-modal-comments-box_<%= post.id %> px-2" data-target="posts.commentsBox">
                   <div class="post-card-user-info boldest py-2">
                     <% if post.user.avatar.attached?  %>
-                      <%= cl_image_tag post.user.avatar.key, width: 40, class: 'avatar-sm' %>
+                      <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
                     <% else %>
                       <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-avatar' %>
                     <% end %>

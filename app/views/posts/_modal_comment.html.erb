@@ -1,6 +1,6 @@
 <div class="post-card-user-info boldest py-1">
   <% if comment.user.avatar.attached?  %>
-    <%= cl_image_tag comment.user.avatar.key, width: 40, class: 'avatar-sm' %>
+    <%= cl_image_tag comment.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
   <% else %>
     <%= render 'users/user_avatar', user: comment.user, classes: 'avatar-sm default-comment-avatar' %>
   <% end %>
