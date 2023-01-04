@@ -68,6 +68,13 @@
   }
 }
 
+.user-show-posts:hover {
+  .post-delete {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .user-show-video {
   position: absolute;
   top: 0;
@@ -96,6 +103,28 @@
     .row {
       margin: 0 !important;
     }
+  }
+}
+
+
+
+.post-delete {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 6px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  img {
+    width: 24px;
   }
 }
 

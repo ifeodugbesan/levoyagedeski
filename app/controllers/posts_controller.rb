@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:danger] = "Post deleted!"
-    redirect_to posts_path
+    redirect_to user_path(@post.user)
     authorize @post
   end
 

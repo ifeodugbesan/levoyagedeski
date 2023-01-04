@@ -13,6 +13,12 @@
     </div>
   </div>
   <div class="post-index-posts">
+    <% if @posts.empty? %>
+      <div class="d-flex flex-column align-items-center">
+        <p class="pt-5 <%= @dark_mode ? 'white' : 'black' %>">No posts yet. Be the first to post!</p>
+        <%= link_to "New post", new_post_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
+      </div>
+    <% end %>
     <% @posts.each do |post| %>
       <div class="post-card <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
         <div class="post-card-user-info boldest d-flex align-items-center" style="margin: 10px;">

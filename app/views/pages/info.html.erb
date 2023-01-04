@@ -15,7 +15,7 @@
   <h3 class="bold my-3 <%= @dark_mode ? 'white' : 'black' %>">Location 📍</h3>
 
   <%= link_to "https://www.google.com/maps/place/Chalet+Bayona/@45.5500692,6.7609522,16.44z/data=!4m8!3m7!1s0x4789701d2ff60d49:0x8e874cdeef1594f6!5m2!4m1!1i2!8m2!3d45.5502887!4d6.7629647", target: "_blank", class: "info-link #{ @dark_mode ? 'light-grey' : 'black' }" do %>
-    <span>Chalet Bayona | 73210 Peisey-Nancroix, France</span>
+    <span>73210 Peisey-Nancroix, France</span>
     <%= image_tag "#{ @dark_mode ? 'go-white.png' : 'go.png' }", height: 24 %>
   <% end %>
 
@@ -49,6 +49,15 @@
 
   <%= link_to "https://www.sport2000rent.com/en/skirental/shop", target: "_blank", class: "info-link #{ @dark_mode ? 'light-grey' : 'black' }" do %>
     <span>Sport 2000 rent | Noz Sports/Paradis Sport</span>
+    <%= image_tag "#{ @dark_mode ? 'go-white.png' : 'go.png' }", height: 24 %>
+  <% end %>
+
+  <!-- WEATHER -->
+
+  <h3 class="bold my-3 <%= @dark_mode ? 'white' : 'black' %>">Weather ❄️</h3>
+
+  <%= link_to "https://www.snow-forecast.com/resorts/Les-Arcs/6day/mid", target: "_blank", class: "info-link #{ @dark_mode ? 'light-grey' : 'black' }" do %>
+    <span>Snow-forecast | Les Arcs</span>
     <%= image_tag "#{ @dark_mode ? 'go-white.png' : 'go.png' }", height: 24 %>
   <% end %>
 

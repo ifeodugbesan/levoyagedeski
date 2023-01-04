@@ -20,7 +20,6 @@
       <div class="show-mobile">
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "logo" %>
-          <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
         <% end %>
       </div>
 
@@ -38,6 +37,13 @@
             <%= link_to info_path do %>
               <%= image_tag "#{ @dark_mode ? 'info-white.png' : 'info.png' }", class: 'post-card-plane' %>
             <% end %>
+          </li>
+          <li class="nav-item ml-3">
+            <div class="new-post-mobile">
+              <%= link_to new_post_path, data: { action: 'click->common#showLoader' } do %>
+                <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }" %>
+              <% end %>
+            </div>
           </li>
         </ul>
       </div>
