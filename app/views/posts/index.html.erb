@@ -132,18 +132,3 @@
     <% end %>
   </div>
 </div>
-
-<!-- <%# unless current_user.city %>
-  <div class="city-form-wrapper">
-    <div class="city-form-container">
-      <%#= image_tag 'le-wagon-levoyagedeski.png', class: 'city-form-logo' %>
-      <h1 class="boldest text-center devise-form-title">Which batch did you attend?</h1>
-      <%#= simple_form_for current_user, url: update_batch_user_path(current_user), html: { class: "w-75 city-form" } do |f| %>
-        <%#= f.association :batch, collection: Batch.order(number: :asc), label: false, :label_method => lambda { |batch| "#{batch.number}" }, prompt: "Select Batch" %>
-        <h5 class="boldest text-center my-0 mx-3">in</h5>
-        <%#= f.association :city, collection: City.order(name: :asc), label: false, prompt: 'Select City' %>
-        <%#= f.submit 'Go', class: 'primary-button' %>
-      <%# end %>
-    </div>
-  </div>
-<%# end %> -->

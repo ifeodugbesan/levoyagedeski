@@ -8,10 +8,5 @@
       <%= image_tag "#{ @dark_mode ? 'post-card-heart-white.png' : 'post-card-heart.png' }", class: 'post-card-heart' %>
     <% end %>
   <% end %>
-  <%# unless post.user == current_user %>
-    <a href="/conversations?recipient_id=<%= post.user.id %>&sender_id=<%= current_user.id %>" class="ml-3 <%= @dark_mode ? 'white border-grey' : 'black' %>">
-      <%= image_tag "#{ @dark_mode ? 'message-white.png' : 'message.png' }", class: 'post-card-plane' %>
-    </a>
-  <%# end %>
 </div>
 <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= pluralize(post.likes.count, 'like') %></p>
