@@ -23,7 +23,7 @@
         <div class="row">
           <% if @my_posts.empty? %>
             <div class="d-flex flex-column align-items-center mx-auto">
-              <p class="pt-5 <%= @dark_mode ? 'white' : 'black' %>">No posts yet. Be the first to post!</p>
+              <p class="pt-5 <%= @dark_mode ? 'white' : 'black' %>">No posts yet. What are you waiting for?!</p>
               <%= link_to "New post", new_post_path, class: "outline-button small-text mr-1 #{ @dark_mode ? 'white border-grey' : 'black' }" %>
             </div>
           <% end %>
