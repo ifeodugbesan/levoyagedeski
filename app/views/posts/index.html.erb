@@ -33,7 +33,7 @@
             <% end %>
             <% if post.photo.content_type.split("/")[0] == "image" %>
               <%= cl_image_tag post.photo.key, width: 500, data: { target: "posts.image" }, class: 'post-image' %>
-            <% else post.photo.content_type.split("/")[0] == "video" %>
+            <% elsif post.photo.content_type.split("/")[0] == "video" %>
               <%= cl_video_tag post.photo.key, width: 500, controls: true, data: { target: "posts.image" }, class: 'post-image post-video' %>
             <% end %>
             <div class="white-heart">
@@ -81,7 +81,11 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
             <div class="modal-body post-comments-body d-flex p-0">
-              <%= cl_image_tag post.photo.key, quality: :auto, class: "post-modal-image" %>
+              <% if post.photo.content_type.split("/")[0] == "image" %>
+                <%= cl_image_tag post.photo.key, class: 'post-modal-image' %>
+              <% elsif post.photo.content_type.split("/")[0] == "video" %>
+                <%= cl_video_tag post.photo.key, controls: true, class: 'post-modal-image post-video' %>
+              <% end %>
               <div class="modal-comments <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
                 <div class="post-card-user-info boldest p-2">
                   <% if post.user.avatar.attached?  %>
