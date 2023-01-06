@@ -56,9 +56,14 @@
 
   <h3 class="bold my-3 <%= @dark_mode ? 'white' : 'black' %>">Weather ❄️</h3>
 
+  <%= link_to "https://en.lesarcs.com/webcams-1", target: "_blank", class: "info-link #{ @dark_mode ? 'light-grey' : 'black' }" do %>
+    <span>Live Webcams</span>
+    <%= image_tag "#{ @dark_mode ? 'go-lime.png' : 'go.png' }", height: 24 %>
+  <% end %>
+
   <%= link_to "https://www.snow-forecast.com/resorts/Les-Arcs/6day/mid", target: "_blank", class: "info-link #{ @dark_mode ? 'light-grey' : 'black' }" do %>
     <span>Snow-forecast | Les Arcs</span>
-    <%= image_tag "#{ @dark_mode ? 'go-white.png' : 'go.png' }", height: 24 %>
+    <%= image_tag "#{ @dark_mode ? 'go-lime.png' : 'go.png' }", height: 24 %>
   <% end %>
 
 </div>
