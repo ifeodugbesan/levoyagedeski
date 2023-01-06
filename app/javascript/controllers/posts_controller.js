@@ -2,12 +2,40 @@ import { Controller } from "stimulus"
 import $ from 'jquery'
 
 export default class extends Controller {
-  static targets = ["postCard", "heart", "modal", "flash", "button"]
+  static targets = ["postCard", "heart", "modal", "flash", "button", "volumeOn", "volumeOff", "video"]
 
   connect() {
     if (navigator.standalone) {
       this.modalTargets.forEach((modal) => modal.style.top = `65px`);
     }
+    let videos = this.videoTargets
+    videos.forEach((video) => {
+        // We can only control playback without insteraction if video is mute
+        video.muted = true;
+        // Play is a promise so we need to check we have it
+        let playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.then((_) => {
+                let observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                          console.log(entry.intersectionRatio)
+                            if (
+                                entry.intersectionRatio !== 1 &&
+                                !video.paused
+                            ) {
+                                video.pause();
+                            } else if (video.paused) {
+                                video.play();
+                            }
+                        });
+                    },
+                    { threshold: 0.2 }
+                );
+                observer.observe(video);
+            });
+        }
+    });
   }
 
   toggleLike() {
@@ -111,4 +139,17 @@ export default class extends Controller {
       event.target.parentElement.nextElementSibling.nextElementSibling.classList.remove('post-submit')
     }
   }
+
+  toggleMute(event) {
+    this.videoTargets.forEach((video) => {
+      video.muted = !video.muted;
+    })
+    this.volumeOnTargets.forEach(vol => vol.classList.toggle('d-none'))
+    this.volumeOffTargets.forEach(vol => vol.classList.toggle('d-none'))
+  }
 }
+
+
+
+
+

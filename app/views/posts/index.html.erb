@@ -21,26 +21,40 @@
     <% end %>
     <% @posts.each do |post| %>
       <div class="post-card <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
-        <div class="post-card-user-info boldest d-flex align-items-center" style="margin: 10px;">
-          <% if post.user.avatar.attached? %>
-            <%= cl_image_tag post.user.avatar.key, width: 40, format: :jpg, class: 'post-card-avatar' %>
-          <% else %>
-            <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar text-20' %>
-          <% end %>
-          <%= link_to user_path(post.user), class: 'no-decoration' do %>
-            <span class="ml-2 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
-          <% end %>
+        <div class="post-card-user-info boldest d-flex align-items-center justify-content-between user-info <%= 'video-behind' if is_video?(post.photo) %>">
+          <div class="">
+            <% if post.user.avatar.attached? %>
+              <%= cl_image_tag post.user.avatar.key, width: 40, format: :jpg, class: 'post-card-avatar' %>
+            <% else %>
+              <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar text-20' %>
+            <% end %>
+            <%= link_to user_path(post.user), class: 'no-decoration' do %>
+              <span class="ml-2 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
+            <% end %>
+          </div>
+          <div class="dropdown">
+            <i class="fas fa-ellipsis-h <%= @dark_mode ? 'white' : 'black' %> mr-1 pr-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu dropdown-menu-right <%= 'post-border-dark drop-bg' if @dark_mode %>" aria-labelledby="dropdownMenuButton">
+              <%= link_to "Delete", post_path(post), method: :delete, class: "dropdown-item #{ @dark_mode ? 'white' : 'black' }", data: { confirm: "Are you sure you want to delete this post?" } %>
+            </div>
+          </div>
         </div>
         <% if post.photo.attached? %>
           <div class="post-card-image">
-            <% unless is_video?(post.photo) %>
+            <%# unless is_video?(post.photo) %>
               <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
               <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
-            <% end %>
+            <%# end %>
             <% if post.photo.content_type.split("/")[0] == "image" %>
               <%= cl_image_tag post.photo.key, width: 500, format: :jpg, data: { target: "posts.image" }, class: 'post-image' %>
             <% elsif post.photo.content_type.split("/")[0] == "video" %>
-              <%= cl_video_tag post.photo.key, width: 500, controls: true, data: { target: "posts.image" }, class: 'post-image post-video' %>
+              <div class="video">
+                <%= cl_video_tag post.photo.key, width: 500, autoplay: true, playsinline: true, loop: true, muted: true, data: { target: "posts.video" }, class: 'post-image post-video' %>
+              </div>
+              <div class="volume" data-action="click->posts#toggleMute">
+                <%= image_tag 'volume-on.png', class: 'd-none', width: 14, data: { target: 'posts.volumeOn'} %>
+                <%= image_tag 'volume-off.png', width: 14, data: { target: 'posts.volumeOff'} %>
+              </div>
             <% end %>
             <div class="white-heart">
               <%= image_tag 'white-heart.png', data: { target: 'heart'} %>
