@@ -8,33 +8,18 @@ export default class extends Controller {
     if (navigator.standalone) {
       this.modalTargets.forEach((modal) => modal.style.top = `65px`);
     }
+
     let videos = this.videoTargets
     videos.forEach((video) => {
-        // We can only control playback without insteraction if video is mute
-        video.muted = true;
-        // Play is a promise so we need to check we have it
-        let playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.then((_) => {
-                let observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                          console.log(entry.intersectionRatio)
-                            if (
-                                entry.intersectionRatio !== 1 &&
-                                !video.paused
-                            ) {
-                                video.pause();
-                            } else if (video.paused) {
-                                video.play();
-                            }
-                        });
-                    },
-                    { threshold: 0.2 }
-                );
-                observer.observe(video);
-            });
+      window.addEventListener('scroll', () => {
+        if ((video.getBoundingClientRect().bottom > 200) && (video.getBoundingClientRect().top < (window.innerHeight - 100))) {
+          video.play();
+          console.log(true)
+        } else {
+          video.pause();
+          console.log(false)
         }
+      })
     });
   }
 
