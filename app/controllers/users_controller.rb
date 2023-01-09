@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def all
-    @users = User.all
+    @users = User.all.sort_by { |u| (u.posts.count + u.likes.count + u.comments.count) }.reverse
     authorize current_user
   end
 
