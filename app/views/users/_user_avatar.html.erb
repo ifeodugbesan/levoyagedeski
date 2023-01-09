@@ -1,9 +1,7 @@
 <% if user.avatar.attached? %>
   <%= cl_image_tag user.avatar.key, format: :jpg, class: classes %>
 <% else %>
-  <span>
-    <span class="<%= classes %>">
-      <%= user.initials %>
-    </span>
+  <span class="<%= classes %>">
+    <%= user.initials %>
   </span>
 <% end %>

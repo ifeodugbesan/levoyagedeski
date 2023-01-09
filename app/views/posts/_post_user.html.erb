@@ -9,4 +9,45 @@
     <% end %>
   <% end %>
 </div>
-<p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= pluralize(post.likes.count, 'like') %></p>
+<div class="number-of-likes">
+  <% if post.likes.count == 0 %>
+    <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= pluralize(post.likes.count, 'like') %></p>
+  <% elsif post.likes.count == 1 %>
+    <span class="d-flex align-items-center" style="margin-right: 4px;">
+      <% if post.likes.first.user.avatar.attached? %>
+        <%= cl_image_tag post.likes.first.user.avatar.key, format: :jpg, width: 40, class: 'avatar-mini' %>
+      <% else %>
+        <%= render 'users/user_avatar', user: post.likes.first.user, classes: 'avatar-mini-default' %>
+      <% end %>
+    </span>
+    <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>">
+      Liked by <%= post.likes.first.user.user_username %>
+    </p>
+  <% elsif post.likes.count == 2 %>
+    <span class="d-flex align-items-center" style="margin-right: -4px;">
+      <% post.likes.each_with_index do |l, index| %>
+        <% if l.user.avatar.attached? %>
+          <%= cl_image_tag l.user.avatar.key, format: :jpg, width: 40, class: "avatar-mini avatar-mini-bordered #{ 'left-sm' if index == 1 }" %>
+        <% else %>
+          <%= render 'users/user_avatar', user: l.user, classes: "avatar-mini-default #{ 'left-sm' if index == 1 }" %>
+        <% end %>
+      <% end %>
+    </span>
+    <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %> ">
+      Liked by <%= post.likes.first.user.user_username %> and <%= pluralize(post.likes.count - 1, 'other') %>
+    </p>
+  <% else %>
+    <span class="d-flex align-items-center" style="margin-right: -16px;">
+      <% post.likes.first(3).each_with_index do |l, index| %>
+        <% if l.user.avatar.attached? %>
+          <%= cl_image_tag l.user.avatar.key, format: :jpg, width: 40, class: "avatar-mini avatar-mini-bordered #{ 'left-sm' if index == 1 } #{ 'left-lg' if index == 2 }" %>
+        <% else %>
+          <%= render 'users/user_avatar', user: l.user, classes: "avatar-mini-default #{ 'left-sm' if index == 1 } #{ 'left-lg' if index == 2 }" %>
+        <% end %>
+      <% end %>
+    </span>
+    <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %> ">
+      Liked by <%= post.likes.first.user.user_username %> and <%= pluralize(post.likes.count - 1, 'other') %>
+    </p>
+  <% end %>
+</div>

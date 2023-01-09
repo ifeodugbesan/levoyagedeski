@@ -22,6 +22,22 @@
   }
 }
 
+.number-of-likes {
+  display: flex;
+  align-items: center;
+  .avatar-mini:last-child {
+    margin-right: 2px;
+  }
+}
+
+.left-sm {
+  left: -8px
+}
+
+.left-lg {
+  left: -16px;
+}
+
 .volume {
   height: 28px;
   width: 28px;
@@ -74,6 +90,12 @@
   font-size: 14px;
   background: #000000;
   color: $lime;
+}
+
+.dark-mode {
+  .default-comment-avatar, .default-avatar, .avatar-mini-default, .user-show-default-avatar {
+    background: #4f4747;
+  }
 }
 
 .post-card-heart, .post-card-plane, .new-post img {

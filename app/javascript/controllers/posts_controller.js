@@ -14,10 +14,10 @@ export default class extends Controller {
       window.addEventListener('scroll', () => {
         if ((video.getBoundingClientRect().bottom > 200) && (video.getBoundingClientRect().top < (window.innerHeight - 100))) {
           video.play();
-          console.log(true)
+          // console.log(true)
         } else {
           video.pause();
-          console.log(false)
+          // console.log(false)
         }
       })
     });
