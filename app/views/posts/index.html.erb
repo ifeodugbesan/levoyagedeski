@@ -29,7 +29,7 @@
               <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar text-20' %>
             <% end %>
             <%= link_to user_path(post.user), class: 'no-decoration' do %>
-              <span class="ml-2 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
+              <span class="link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
             <% end %>
           </div>
           <% if policy(post).destroy? %>
