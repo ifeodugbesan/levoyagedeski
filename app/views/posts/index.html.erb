@@ -22,16 +22,16 @@
     <% @posts.each do |post| %>
       <div class="post-card <%= @dark_mode ? 'post-border-dark' : 'post-border-normal' %>">
         <div class="post-card-user-info boldest d-flex align-items-center justify-content-between user-info <%= 'video-behind' if is_video?(post.photo) %>">
-          <div class="">
+          <%= link_to user_path(post.user), class: 'no-decoration' do %>
+            <div class="">
             <% if post.user.avatar.attached? %>
               <%= cl_image_tag post.user.avatar.key, width: 40, format: :jpg, class: 'post-card-avatar' %>
             <% else %>
               <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar text-20' %>
             <% end %>
-            <%= link_to user_path(post.user), class: 'no-decoration' do %>
-              <span class="link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
-            <% end %>
-          </div>
+            <span class="link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
+            </div>
+          <% end %>
           <% if policy(post).destroy? %>
             <div class="dropdown">
               <i class="fas fa-ellipsis-h <%= @dark_mode ? 'white' : 'black' %> mr-1 pr-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
@@ -68,16 +68,16 @@
             <%= render 'post_user', post: post %>
           </div>
           <% if post.caption.present? %>
-            <div class="post-card-user-info boldest py-1">
-              <% if post.user.avatar.attached? %>
-                <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
-              <% else %>
-                <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-comment-avatar' %>
-              <% end %>
-              <%= link_to user_path(post.user), class: 'no-decoration' do %>
+            <%= link_to user_path(post.user), class: 'no-decoration' do %>
+              <div class="post-card-user-info boldest py-1">
+                <% if post.user.avatar.attached? %>
+                  <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
+                <% else %>
+                  <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-comment-avatar' %>
+                <% end %>
                 <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           <% end %>
           <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
             <% if post.comments.count > 5 %>

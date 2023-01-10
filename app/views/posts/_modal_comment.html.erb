@@ -1,13 +1,13 @@
-<div class="post-card-user-info boldest py-1">
-  <% if comment.user.avatar.attached?  %>
-    <%= cl_image_tag comment.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
-  <% else %>
-    <%= render 'users/user_avatar', user: comment.user, classes: 'avatar-sm default-comment-avatar' %>
-  <% end %>
-  <%= link_to user_path(comment.user), class: 'no-decoration' do %>
-    <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= comment.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= comment.content %></span>
-  <% end %>
-</div>
+<%= link_to user_path(comment.user), class: 'no-decoration' do %>
+  <div class="post-card-user-info boldest py-1">
+    <% if comment.user.avatar.attached?  %>
+      <%= cl_image_tag comment.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
+    <% else %>
+      <%= render 'users/user_avatar', user: comment.user, classes: 'avatar-sm default-comment-avatar' %>
+    <% end %>
+      <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= comment.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= comment.content %></span>
+  </div>
+<% end %>
 
 <div class="alert bg-success alert-dismissible fade show m-0 p-0" role="alert" data-target="posts.flash">
   <p class="text-center m-0 boldest small-text white">Comment Created!</p>
