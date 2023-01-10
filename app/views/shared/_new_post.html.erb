@@ -1,0 +1,30 @@
+<% if params[:controller] == 'posts' || params[:controller] == 'users' && params[:action] == 'show' %>
+  <%= simple_form_for Post.new, html: { id: 'post-form' } do |f| %>
+    <div class="post-upload-container">
+      <%= f.input :photo, as: :file, label: false, input_html: { class: "d-none", id: "photo-input" }, label_html: { class: 'post-upload' }, label: "+" %>
+      <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }", width: 25, data: { action: "" } %>
+    </div>
+    <div id="post-form-container" class="post-upload-form animate-hide d-none <%= @dark_mode ? 'dark-bg' : 'normal-bg' %>">
+      <div class="post-upload-form__container">
+        <div class="d-flex justify-content-between">
+          <div data-action="click->upload#hideForm" data-confirm="You will lose unsaved changes if you continue">
+            <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }", width: 25, class: 'post-exit' %>
+          </div>
+          <%= f.submit 'Post', class: 'post-submit-btn', data: { action: 'click->common#showLoader' } %>
+        </div>
+        <h3 class="boldest text-center my-3 w-100 <%= @dark_mode ? 'grey' : 'black' %>">New Post</h3>
+        <div class="media-container">
+          <div id="heic" class="d-none">
+            <p class="text-center <%= @dark_mode ? 'white' : 'black' %>">No preview for HEIC images</p>
+            <p class="filename text-center <%= @dark_mode ? 'white' : 'black' %>">No preview for HEIC images</p>
+          </div>
+          <%= image_tag "", class: "d-none", id: "photo-preview" %>
+          <%= video_tag "", class: "d-none", controls: true, id: "video-preview" %>
+        </div>
+        <div class="w-100">
+          <%= f.input :caption, label: false, placeholder: 'Caption', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode white' : 'normal-mode' }" } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

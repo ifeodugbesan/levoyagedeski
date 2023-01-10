@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     @not_me = current_user != @user
-    @my_posts = Post.where(user: @user)
+    @my_posts = Post.where(user: @user).order(created_at: :desc)
     authorize @user
   end
 

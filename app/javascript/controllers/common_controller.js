@@ -3,24 +3,19 @@ import $ from 'jquery'
 
 export default class extends Controller {
   static targets = [
-                    "pwaPopup", "pwaUnderlay", "pwaHomeNavbar", "loader", "loaderUnderlay", "resourceTabs",
-                    "tabsHolder", "resourcesHeader", "resourcesContent", "minHeightDiv", "switch", "switchPwa",
-                    "tab"
+                    "pwaPopup", "pwaUnderlay", "pwaHomeNavbar", "loader", "loaderUnderlay",
+                    "minHeightDiv", "switch", "switchPwa", "webPost", "pwaPost"
                    ]
 
   connect() {
     if (window.innerWidth < 577) {
-      // if (navigator.standalone) {
-        // this.minHeightDivTarget.style.minHeight = `${window.innerHeight - 140}px`;
-      // } else {
         this.minHeightDivTarget.style.minHeight = `${window.innerHeight - 81}px`;
-      // }
     }
     if (navigator.standalone) {
-      this.resourcesHeaderTargets.forEach((header) => { header.style.display = 'none' });
-      // this.tabsHolderTarget.classList.add('pwa-resource-tabs');
-      // this.resourcesContentTarget.style.marginTop = '51px'
       this.pwaHomeNavbarTarget.classList.remove('d-none');
+      this.webPostTarget.remove();
+    } else {
+      this.pwaPostTarget.remove();
     }
     if (this.hasPwaPopupTarget) {
       const pwaUnderlay = this.pwaUnderlayTarget
@@ -55,28 +50,6 @@ export default class extends Controller {
   showLoader() {
     this.loaderTarget.style.display = 'inline-block';
     this.loaderUnderlayTarget.style.display = 'block';
-  }
-
-  switchTabs() {
-    this.tabTargets.forEach((tab) => {
-      tab.classList.remove('tab-active')
-    })
-    event.target.classList.add('tab-active')
-    this.resourceTabsTargets.forEach((tab) => {
-      if (event.currentTarget.dataset.type == tab.dataset.type) {
-        tab.style.display = 'block'
-        setTimeout(function() {
-          tab.classList.add('resource-active')
-        }, 1)
-      } else {
-        tab.classList.remove('resource-active')
-        setTimeout(function() {
-          tab.style.display = 'none'
-        }, 200)
-      }
-    })
-    document.body.scrollTop = 0
-    document.documentElement.scrollTop = 0
   }
 
   toggleDarkMode() {

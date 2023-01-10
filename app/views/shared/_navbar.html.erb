@@ -39,10 +39,8 @@
             <% end %>
           </li>
           <li class="nav-item ml-3">
-            <div class="new-post-mobile">
-              <%= link_to new_post_path, data: { action: 'click->common#showLoader' } do %>
-                <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }" %>
-              <% end %>
+            <div data-controller="upload" data-target="common.webPost">
+              <%= render 'shared/new_post' %>
             </div>
           </li>
         </ul>
@@ -75,20 +73,17 @@
 </div>
 
 <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
-  <div class="pwa-top-bar <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>" data-target="navbar.pwaTopBar">
+  <div class="pwa-top-bar <%= @dark_mode ? 'dark-mode' : 'normal-mode' %> <%= 'justify-content-between' if params[:controller] == 'posts' || params[:controller] == 'users' && params[:action] == 'show' %>" data-target="navbar.pwaTopBar">
     <div class="navbar-brand" data-action="click->navbar#scrollTop">
       <%= link_to root_path, class: 'text-decoration-none' do %>
         <%= image_tag "#{ @dark_mode ? 'levoyagedeski-lime.png' : 'levoyagedeski.png' }", class: "pwa-logo" %>
         <span class="logo-text <%= @dark_mode ? 'light-grey' : 'black' %>">le voyage de ski</span>
       <% end %>
     </div>
-    <% if params[:controller] == 'posts' || params[:controller] == 'users' && params[:action] == 'show' %>
-      <div class="new-post">
-        <%= link_to new_post_path, data: { action: 'click->common#showLoader' } do %>
-          <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }" %>
-        <% end %>
-      </div>
-    <% end %>
+    <div data-controller="upload" data-target="common.pwaPost">
+      <%= render 'shared/new_post' %>
+    </div>
+
 
   </div>
   <div class="pwa-top-bar-spacer" data-target="navbar.pwaTopBarSpacer"></div>

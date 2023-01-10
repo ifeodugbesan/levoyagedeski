@@ -10,6 +10,24 @@
   }
 }
 
+.post-upload-container {
+  position: relative;
+}
+
+.post-upload {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  color: transparent;
+}
+
+.post_photo {
+  margin: 0 !important;
+}
+
 .post-card-image {
   position: relative;
 }
@@ -20,6 +38,67 @@
   @include for-phone-only {
     border-radius: 0;
   }
+}
+
+.post-upload-form {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.4s cubic-bezier(.5,-0.37,.51,1.35), width 0.4s cubic-bezier(.5,-0.37,.51,1.35), left 0.4s cubic-bezier(.5,-0.37,.51,1.35);
+}
+
+.post-upload-form__container {
+  padding: 24px;
+}
+
+.animate-hide {
+  height: 0;
+  width: 0;
+  padding: 0;
+}
+
+.post-exit {
+  transform: rotate(45deg);
+  width: 34px;
+  height: 34px;
+}
+
+.media-container {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-submit-btn {
+  font-weight: bold;
+  border: none;
+  color: #000000;
+  background: transparent;
+}
+
+.dark-mode {
+  .post-submit-btn {
+    color: $lime;
+  }
+}
+
+#photo-preview, #video-preview {
+  max-height: 400px;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+#heic {
+  padding: 120px 0;
 }
 
 .number-of-likes {

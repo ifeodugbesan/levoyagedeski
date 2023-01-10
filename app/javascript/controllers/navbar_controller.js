@@ -14,7 +14,7 @@ export default class extends Controller {
     if (navigator.standalone) {
       this.spacerTarget.remove();
       if (this.hasNavbarTarget) {
-        this.navbarTarget.style.display = 'none'
+        this.navbarTarget.remove();
       }
       this.pwaNavbarTarget.style.display = 'flex';
       this.pwaNavbarSpacerTarget.style.display = 'block';
