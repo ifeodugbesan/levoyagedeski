@@ -222,6 +222,16 @@ body {
   border-color: #424242 !important;
 }
 
+.border-dark {
+  border-color: #484848 !important;
+}
+
+.dark-mode {
+  .border-bottom {
+    border-color: #484848 !important;
+  }
+}
+
 .border-grey-normal {
   border-top: 1px solid #E5E5E5;
 }

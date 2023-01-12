@@ -2,11 +2,13 @@ import { Controller } from "stimulus"
 import $ from 'jquery'
 
 export default class extends Controller {
-  static targets = ["postCard", "heart", "modal", "flash", "button", "volumeOn", "volumeOff", "video"]
+  static targets = ["postCard", "heart", "modal", "flash", "button", "volumeOn", "volumeOff",
+                    "video", "likes", "likesClose", "comments", "commentsClose", "offCanvas", "underlay"]
 
   connect() {
     if (navigator.standalone) {
-      this.modalTargets.forEach((modal) => modal.style.top = `65px`);
+      // this.modalTargets.forEach((modal) => modal.style.top = `65px`);
+      this.offCanvasTargets.forEach((canvas) => canvas.classList.add("standalone-padding"));
     }
 
     let videos = this.videoTargets
@@ -131,6 +133,30 @@ export default class extends Controller {
     })
     this.volumeOnTargets.forEach(vol => vol.classList.toggle('d-none'))
     this.volumeOffTargets.forEach(vol => vol.classList.toggle('d-none'))
+  }
+
+  showLikes() {
+    const likes = document.getElementById(`likesOffcanvas${event.target.dataset.id}`)
+    likes.classList.toggle('loff-show')
+    console.log(likes.firstElementChild)
+    likes.firstElementChild.classList.add('offcanvas-underlay')
+  }
+
+  showComments() {
+    const comments = document.getElementById(`commentsOffcanvas${event.target.dataset.id}`)
+    comments.classList.toggle('loff-show')
+    console.log(comments.firstElementChild)
+    comments.firstElementChild.classList.add('offcanvas-underlay')
+  }
+
+  hideOffcanvasFromX(event) {
+    event.currentTarget.parentElement.parentElement.parentElement.classList.remove('loff-show')
+    event.currentTarget.parentElement.parentElement.previousElementSibling.classList.remove('offcanvas-underlay')
+  }
+
+  hideOffcanvas(event) {
+    event.currentTarget.parentElement.classList.remove('loff-show')
+    event.currentTarget.classList.remove('offcanvas-underlay')
   }
 }
 

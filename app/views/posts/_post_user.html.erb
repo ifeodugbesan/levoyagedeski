@@ -21,7 +21,7 @@
       <% end %>
     </span>
     <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>">
-      Liked by <%= post.likes.first.user.user_username %>
+      Liked by <%= link_to post.likes.first.user.user_username, user_path(post.likes.first.user), class: "no-decoration" %>
     </p>
   <% elsif post.likes.count == 2 %>
     <span class="d-flex align-items-center" style="margin-right: -4px;">
@@ -34,7 +34,7 @@
       <% end %>
     </span>
     <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %> ">
-      Liked by <%= post.likes.first.user.user_username %> and <%= pluralize(post.likes.count - 1, 'other') %>
+      Liked by <%= link_to post.likes.first.user.user_username, user_path(post.likes.first.user), class: "no-decoration" %> and <span class="cursor-pointer" data-action="click->posts#showLikes" data-id="<%= post.id %>"><%= pluralize(post.likes.count - 1, 'other') %></span>
     </p>
   <% else %>
     <span class="d-flex align-items-center" style="margin-right: -16px;">
@@ -47,7 +47,7 @@
       <% end %>
     </span>
     <p class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %> ">
-      Liked by <%= post.likes.first.user.user_username %> and <%= pluralize(post.likes.count - 1, 'other') %>
+      Liked by <%= link_to post.likes.first.user.user_username, user_path(post.likes.first.user), class: "no-decoration" %> and <span class="cursor-pointer" data-action="click->posts#showLikes" data-id="<%= post.id %>"><%= pluralize(post.likes.count - 1, 'other') %></span>
     </p>
   <% end %>
 </div>

@@ -69,6 +69,180 @@
   height: 34px;
 }
 
+.offcanvas {
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  width: 105vw;
+  left: 100%;
+  z-index: 5000;
+  transition: left 0.3s cubic-bezier(.5,-0.37,.51,1.35);
+  @include for-medium-devices-up {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.offcanvas-bg {
+  background: #FFFFFF;
+  @include for-medium-devices-up {
+    background: transparent !important;
+  }
+}
+
+.dark-mode {
+  .offcanvas-bg {
+    background: #151515;
+  }
+}
+
+.offcanvas-underlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 5500;
+  @include for-small-devices-down {
+    display: none;
+  }
+}
+
+.offcanvas__container {
+  width: 100vw;
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 6000;
+  @include for-medium-devices-up {
+    width: fit-content;
+    justify-content: center;
+    height: unset;
+    position: relative;
+  }
+}
+
+.offcanvas__container-likes {
+  background: #FFFFFF !important;
+}
+
+.dark-mode {
+  .offcanvas__container-likes {
+    background: #151515 !important;
+  }
+}
+
+.offcanvas__container-likes {
+  padding: 24px 24px 0 !important;
+  @include for-medium-devices-up {
+    padding: 16px 16px 0 !important;
+    width: 400px;
+    justify-content: center;
+    height: 600px;
+    position: relative;
+  }
+}
+
+.offcanvas__container-comments {
+  @include for-medium-devices-up {
+    padding: 0;
+  }
+}
+
+.modal-body, .modal-content {
+  @include for-medium-devices-up {
+    width: fit-content;
+  }
+}
+
+.offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offcanvas-header-comments {
+  @include for-medium-devices-up {
+    display: none;
+  }
+}
+
+.loff-show {
+  left: 0;
+}
+
+.standalone-padding {
+  padding-bottom: 60px;
+}
+
+@media only screen
+  and (device-width: 375px)
+  and (device-height: 812px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .standalone-padding {
+    padding-bottom: 81px;
+  }
+}
+
+@media only screen
+  and (device-width: 414px)
+  and (device-height: 896px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .standalone-padding {
+    padding-bottom: 81px;
+  }
+}
+
+@media only screen
+  and (device-width: 390px)
+  and (device-height: 844px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .standalone-padding {
+    padding-bottom: 81px;
+  }
+}
+
+@media only screen
+  and (device-width: 393px)
+  and (device-height: 852px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .standalone-padding {
+    padding-bottom: 81px;
+  }
+}
+
+@media only screen
+  and (device-width: 430px)
+  and (device-height: 932px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .standalone-padding {
+    padding-bottom: 81px;
+  }
+}
+
+@media only screen
+  and (device-width: 428px)
+  and (device-height: 926px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+  .standalone-padding {
+    padding-bottom: 81px;
+  }
+}
+
+
+
 .media-container {
   min-height: 320px;
   display: flex;
@@ -234,15 +408,29 @@
 
 .comments-modal {
   border-radius: 2px !important;
+  flex-grow: 1;
+}
+
+.post-likes-modal {
+  // max-height: 87%;
+  overflow: scroll;
+  flex-grow: 1;
 }
 
 .modal-content {
   background-color: unset;
+  border: none;
 }
 
 .post-comments {
   flex-grow: 1;
   overflow: scroll;
+}
+
+.post-comments-body {
+  @include for-medium-devices-up {
+    justify-content: center;
+  }
 }
 
 .modal-post-comments {
@@ -269,6 +457,15 @@
 
 .post-card-form-input::placeholder {
   color: #D1D1D1;
+}
+
+.all-comments-input {
+  padding-left: 0;
+}
+
+.all-comments-button {
+  padding-right: 0;
+  width: 48px !important;
 }
 
 .post-card-form-button {
@@ -483,6 +680,9 @@
     width: 100%;
     min-width: unset;
     max-width: unset;
+  }
+  @include for-medium-devices-up {
+    padding: 12px 12px 0;
   }
 }
 

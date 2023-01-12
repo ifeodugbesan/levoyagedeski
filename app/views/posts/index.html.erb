@@ -43,10 +43,8 @@
         </div>
         <% if post.photo.attached? %>
           <div class="post-card-image">
-            <%# unless is_video?(post.photo) %>
               <div class="post-like-overlay" data-action="click->posts#showLikeToggle"></div>
               <div class="post-like-toggle" data-action="click->posts#doubleClickToggleLike" data-id="<%= post.id %>"></div>
-            <%# end %>
             <% if post.photo.content_type.split("/")[0] == "image" %>
               <%= cl_image_tag post.photo.key, width: 500, format: :jpg, data: { target: "posts.image" }, class: 'post-image' %>
             <% elsif post.photo.content_type.split("/")[0] == "video" %>
@@ -81,7 +79,7 @@
           <% end %>
           <div class="post-comments post-comments-box_<%= post.id %>" data-target="posts.commentsBox">
             <% if post.comments.count > 5 %>
-              <p class="text-12 bold m-0 grey cursor-pointer post-modal_<%= post.id %>" data-toggle="modal" data-target="#post-modal_<%= post.id %>" data-count="<%= post.comments.count %>">view all <%= post.comments.count %> comments</span></p>
+              <p class="text-12 bold m-0 grey cursor-pointer post-modal_<%= post.id %>" data-action="click->posts#showComments" data-id="<%= post.id %>" data-count="<%= post.comments.count %>">view all <%= post.comments.count %> comments</span></p>
             <% else %>
               <% post.comments.each do |comment| %>
                 <%= render 'modal_comment', comment: comment %>
@@ -100,10 +98,61 @@
         <% end %>
       </div>
 
+      <!-- LIKES MODAL -->
+      <!-- LIKES MODAL -->
+      <!-- LIKES MODAL -->
+      <!-- LIKES MODAL -->
+      <!-- LIKES MODAL -->
+
+      <div id="likesOffcanvas<%= post.id %>" class="offcanvas offcanvas-bg" data-target="posts.offCanvas">
+        <!-- OFFCANVAS UNDERLAY -->
+        <div class="underlay" data-action="click->posts#hideOffcanvas" data-target="posts.underlay"></div>
+        <!-- OFFCANVAS UNDERLAY -->
+        <div class="offcanvas__container justify-content-start offcanvas-bg offcanvas__container-likes">
+          <div class="border-bottom pb-3 offcanvas-header">
+            <div class="cursor-pointer" data-action="click->posts#hideOffcanvasFromX" data-confirm="You will lose unsaved changes if you continue">
+              <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }", width: 25, class: 'post-exit' %>
+            </div>
+            <h4 class="boldest text-center m-0 <%= @dark_mode ? 'white' : 'black' %>">Likes</h4>
+            <div style="height: 25px; width: 32px;">
+            </div>
+          </div>
+          <div class="post-likes-modal pt-3 <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
+            <% post.likes.each do |like| %>
+              <%= link_to user_path(like.user), class: "no-decoration" do %>
+                <div class="user-show-profile d-flex justify-content-center align-items-center mb-3">
+                  <%= render 'users/user_avatar', user: like.user, classes: 'avatar-large default-avatar bold text-28' %>
+                  <div class="user-show-profile-info user-all flex-grow-1 ml-2">
+                    <h5 class="boldest m-0 <%= @dark_mode ? 'white' : 'black' %>"><%= like.user.user_username %></h5>
+                     <p class="m-0 <%= @dark_mode ? 'grey' : 'grey' %>"><%= like.user.full_name %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
       <!-- COMMENTS MODAL -->
-      <div class="modal fade" id="post-modal_<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-target="posts.modal">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content comments-modal <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
+      <!-- COMMENTS MODAL -->
+      <!-- COMMENTS MODAL -->
+      <!-- COMMENTS MODAL -->
+      <!-- COMMENTS MODAL -->
+
+      <div id="commentsOffcanvas<%= post.id %>" class="offcanvas offcanvas-bg" data-target="posts.offCanvas">
+        <!-- OFFCANVAS UNDERLAY -->
+        <div class="underlay" data-action="click->posts#hideOffcanvas" data-target="posts.underlay"></div>
+        <!-- OFFCANVAS UNDERLAY -->
+        <div class="offcanvas__container offcanvas__container-comments pb-0 offcanvas-bg">
+          <div class="border-bottom pb-3 offcanvas-header offcanvas-header-comments">
+            <div class="cursor-pointer" data-action="click->posts#hideOffcanvasFromX">
+              <%= image_tag "#{ @dark_mode ? 'plus-white.png' : 'plus.png' }", width: 25, class: 'post-exit' %>
+            </div>
+            <h4 class="boldest text-center m-0 <%= @dark_mode ? 'grey' : 'black' %>">Comments</h4>
+            <div style="height: 25px; width: 32px;">
+            </div>
+          </div>
+          <div class="modal-content comments-modal">
             <div class="modal-body post-comments-body d-flex p-0">
               <% if post.photo.content_type.split("/")[0] == "image" %>
                 <%= cl_image_tag post.photo.key, format: :jpg, class: 'post-modal-image' %>
@@ -111,28 +160,19 @@
                 <%= cl_video_tag post.photo.key, controls: true, class: 'post-modal-image post-video' %>
               <% end %>
               <div class="modal-comments <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
-                <div class="post-card-user-info boldest p-2">
-                  <% if post.user.avatar.attached?  %>
-                    <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'post-card-avatar' %>
-                  <% else %>
-                    <%= render 'users/user_avatar', user: post.user, classes: 'post-card-avatar default-avatar' %>
+                <div class="post-comments modal-post-comments post-modal-comments-box_<%= post.id %>" data-target="posts.commentsBox">
+                  <% if post.caption.present? %>
+                    <div class="post-card-user-info boldest py-2 border-bottom">
+                      <% if post.user.avatar.attached?  %>
+                        <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
+                      <% else %>
+                        <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-avatar' %>
+                      <% end %>
+                      <%= link_to user_path(post.user), class: 'no-decoration' do %>
+                        <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
+                      <% end %>
+                    </div>
                   <% end %>
-                  <%= link_to user_path(post.user), class: 'no-decoration' do %>
-                    <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span>
-                  <% end %>
-                </div>
-                <hr class="w-100 m-0">
-                <div class="post-comments modal-post-comments post-modal-comments-box_<%= post.id %> px-2" data-target="posts.commentsBox">
-                  <div class="post-card-user-info boldest py-2">
-                    <% if post.user.avatar.attached?  %>
-                      <%= cl_image_tag post.user.avatar.key, format: :jpg, width: 40, class: 'avatar-sm' %>
-                    <% else %>
-                      <%= render 'users/user_avatar', user: post.user, classes: 'avatar-sm default-avatar' %>
-                    <% end %>
-                    <%= link_to user_path(post.user), class: 'no-decoration' do %>
-                      <span class="m-0 link-hover <%= @dark_mode ? 'white' : 'black' %>"><%= post.user.user_username %></span> <span class="s-medium-text <%= @dark_mode ? 'white' : 'black' %>" style="font-weight: 200;"><%= post.caption %></span>
-                    <% end %>
-                  </div>
                   <% post.comments.each do |comment| %>
                     <%= render 'modal_comment', comment: comment %>
                   <% end %>
@@ -143,9 +183,9 @@
                                 required: true,
                                 label: false,
                                 placeholder: 'Add a comment...',
-                                input_html: { class: "post-card-form-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }", data: { action: "keyup->posts#postModalButton" } } %>
+                                input_html: { class: "post-card-form-input all-comments-input #{ @dark_mode ? 'dark-mode border-grey white' : 'normal-mode' }", data: { action: "keyup->posts#postModalButton" } } %>
                     <%= f.hidden_field :modal, :value => 'true' %>
-                    <%= f.submit 'Post', class: "post-card-form-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }", data: { target: 'posts.button' } %>
+                    <%= f.submit 'Post', class: "post-card-form-button all-comments-button #{ @dark_mode ? 'dark-mode border-grey grey' : 'normal-mode' }", data: { target: 'posts.button' } %>
                   <% end %>
                 </div>
               </div>
@@ -156,3 +196,5 @@
     <% end %>
   </div>
 </div>
+
+
