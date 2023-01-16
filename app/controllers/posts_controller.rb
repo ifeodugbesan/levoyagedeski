@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     authorize @post
     attachment_name = @post.photo.blob.filename.to_s
     attachment_url = @post.photo.service_url(secure: true)
-    content_type = @post.photo.content_type
+    content_type = attachment_name.split('.').last
     file = Down.download(attachment_url)
 
     send_file(
