@@ -57,6 +57,8 @@ class PostsController < ApplicationController
       filename: attachment_name,
       type: content_type
     )
+  rescue Down::NotFound => e
+    redirect_to posts_path, alert: "Couldn't download post"
   end
 
   private

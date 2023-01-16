@@ -38,7 +38,7 @@
                 <% if policy(post).destroy? %>
                   <%= link_to "Delete", post_path(post, show: true), method: :delete, class: "dropdown-item #{ @dark_mode ? 'white' : 'black' }", data: { confirm: "Are you sure you want to delete this post?" } %>
                 <% end %>
-                <%= link_to 'Download', download_post_path(post), method: :post, class: "dropdown-item #{ @dark_mode ? 'white' : 'black' }" %>
+                <%= link_to 'Download', download_post_path(post), method: :post, class: "dropdown-item #{ @dark_mode ? 'white' : 'black' }", target: :blank %>
               </div>
             </div>
         </div>
