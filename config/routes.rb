@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts, except: [:show] do
     resources :comments, only: [:new, :create]
     resources :likes, only: [:new, :create]
+    post :download, on: :member
   end
 
   resources :comments, only: [:destroy]

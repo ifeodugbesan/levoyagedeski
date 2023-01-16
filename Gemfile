@@ -22,6 +22,7 @@ gem 'pg_search'
 gem 'faker'
 gem 'friendly_id', '~> 5.4.0'
 gem 'sprockets-rails', '2.3.3'
+gem 'down'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

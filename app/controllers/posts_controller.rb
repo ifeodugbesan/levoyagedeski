@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :download]
+
   def index
     @posts = policy_scope(Post).order(created_at: :desc)
     # @posts = policy_scope(Post).where.not(user: current_user)
@@ -42,6 +43,20 @@ class PostsController < ApplicationController
     flash[:danger] = "Post deleted!"
     redirect_to params[:show].present? ? posts_path : user_path(@post.user)
     authorize @post
+  end
+
+  def download
+    authorize @post
+    attachment_name = @post.photo.blob.filename.to_s
+    attachment_url = @post.photo.service_url(secure: true)
+    content_type = @post.photo.content_type
+    file = Down.download(attachment_url)
+
+    send_file(
+      file,
+      filename: attachment_name,
+      type: content_type
+    )
   end
 
   private
