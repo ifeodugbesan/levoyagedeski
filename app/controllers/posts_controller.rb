@@ -58,6 +58,7 @@ class PostsController < ApplicationController
       type: content_type
     )
   rescue Down::NotFound => e
+    p e
     redirect_to posts_path, alert: "Couldn't download post"
   end
 

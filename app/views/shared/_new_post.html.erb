@@ -19,7 +19,7 @@
             <p class="filename text-center <%= @dark_mode ? 'white' : 'black' %>">No preview for HEIC images</p>
           </div>
           <%= image_tag "", class: "d-none", id: "photo-preview" %>
-          <%= video_tag "", class: "d-none", controls: true, id: "video-preview" %>
+          <%= video_tag "", class: "d-none", quality: :auto, controls: true, id: "video-preview" %>
         </div>
         <div class="w-100">
           <%= f.input :caption, label: false, placeholder: 'Caption', input_html: { class: "devise-input #{ @dark_mode ? 'dark-mode white' : 'normal-mode' }" } %>

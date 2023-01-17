@@ -44,7 +44,7 @@
                       <%= image_tag 'delete.png' %>
                     <% end %>
                   </span>
-                  <%= cl_video_tag post.photo.key, class: 'user-show-video' %>
+                  <%= cl_video_tag post.photo.key, quality: :auto, class: 'user-show-video' %>
                 </div>
               <% end %>
             </div>
