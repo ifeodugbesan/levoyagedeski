@@ -50,7 +50,7 @@
               <%= cl_image_tag post.photo.key, width: 500, format: :jpg, data: { target: "posts.image" }, class: 'post-image' %>
             <% elsif post.photo.content_type.split("/")[0] == "video" %>
               <div class="video">
-                <%= cl_video_tag post.photo.key, width: 500, autoplay: true, quality: :auto ,playsinline: true, loop: true, muted: true, data: { target: "posts.video" }, class: 'post-image post-video' %>
+                <%= cl_video_tag post.photo.key, width: 500, autoplay: true, quality: :auto , playsinline: true, loop: true, muted: true, data: { target: "posts.video" }, class: 'post-image post-video' %>
               </div>
               <div class="volume" data-action="click->posts#toggleMute">
                 <%= image_tag 'volume-on.png', class: 'd-none', width: 14, data: { target: 'posts.volumeOn'} %>
@@ -158,7 +158,7 @@
               <% if post.photo.content_type.split("/")[0] == "image" %>
                 <%= cl_image_tag post.photo.key, format: :jpg, class: 'post-modal-image' %>
               <% elsif post.photo.content_type.split("/")[0] == "video" %>
-                <%= cl_video_tag post.photo.key, controls: true, , quality: :auto, class: 'post-modal-image post-video' %>
+                <%= cl_video_tag post.photo.key, controls: true, quality: :auto, class: 'post-modal-image post-video' %>
               <% end %>
               <div class="modal-comments <%= @dark_mode ? 'dark-mode' : 'normal-mode' %>">
                 <div class="post-comments modal-post-comments post-modal-comments-box_<%= post.id %>" data-target="posts.commentsBox">
